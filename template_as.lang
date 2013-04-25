@@ -1,0 +1,22 @@
+[EN]
+
+[FR]
+TITLE = "Another Service - Cloud et hébergement applicatif"
+DESCRIPTION = "Services IT et hébergement cloud PHP, Java, Ruby, Python, MySQL, PostgreSQL, Mongo, CouchDB..."
+WEBSITE = "Retour au portail"
+MONIT = "Supervision"
+ISSUES = "Maintenances"
+COPYRIGHT = "Copyright &copy; 2012 Another Service. Tous droits réservés."
+ABOUT = "A propos"
+ABOUT_TEXT = "<a href='http://www.anotherservice.com'>Another Service</a> propose un service d'hébergement applicatif sur Internet à destination des professionnels sur une infrastructure cloud française robuste et extensible."
+SOCIAL = "Social"
+INFO = "Informations"
+INFO_1 = "<a href='/about'>A propos</a>"
+INFO_2 = "<a href='/about/contact'>Contact</a>"
+INFO_3 = "<a href='/about/partners'>Partenaires</a>"
+INFO_4 = "<a href='/about/legal'>Conditions</a>"
+RESOURCES = "Ressources"
+RES_1 = "<a href='/showcase'>Références</a>"
+RES_2 = "<a href='/doc'>Documentation</a>"
+RES_3 = "<a href='/help'>Support</a>"
+RES_4 = "<a href='/status'>Statut</a>"
