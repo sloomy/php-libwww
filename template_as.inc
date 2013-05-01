@@ -277,4 +277,4 @@ if( $_SESSION['MESSAGE'] )
 	}
 }
 
-?
+?>
