@@ -110,7 +110,7 @@ class template_as extends template
 		{
 			$menu_data = include_once($menu_file);
 			$menu = "";
-			$logged = $GLOBALS['security']->hasAccess('/');
+			$logged = $GLOBALS['security']->hasAccess('/panel');
 			foreach( $menu_data as $menu_item )
 			{
 				// check if the user has access to the target link
