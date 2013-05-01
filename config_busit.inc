@@ -3,7 +3,7 @@
 $GLOBALS['CONFIG']['DEBUG'] 		= true;
 $GLOBALS['CONFIG']['THROW_ERRORS'] 	= (E_ALL | E_STRICT) & ~E_NOTICE;
 
-if( $_SERVER["HTTP_HOST"] == 'localhost' || $_SERVER["HTTP_HOST"] == '127.0.0.1' || $_SERVER["HTTP_HOST"] == 'local.dev.bus-it.com' )
+if( $_SERVER["HTTP_HOST"] == 'localhost' || $_SERVER["HTTP_HOST"] == '127.0.0.1' || $_SERVER["HTTP_HOST"] == 'local.bus-it.com' )
 	$conf = parse_ini_file('../www.ini', true);
 else
 	$conf = parse_ini_file('/dns/com/bus-it/etc/settings/www.ini', true);

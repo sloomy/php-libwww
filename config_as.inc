@@ -5,6 +5,8 @@ $GLOBALS['CONFIG']['THROW_ERRORS'] 	= (E_ALL | E_STRICT) & ~E_NOTICE;
 
 if( $_SERVER["HTTP_HOST"] == 'localhost' || $_SERVER["HTTP_HOST"] == '127.0.0.1' || $_SERVER["HTTP_HOST"] == 'local.anotherservice.com' )
 	$conf = parse_ini_file('../www.ini', true);
+elseif( $_SERVER["HTTP_HOST"] == 'dev.anotherservice.com' || $_SERVER["HTTP_HOST"] == 'www.dev.anotherservice.com' )
+	$conf = parse_ini_file('/dns/com/anotherservice/etc/settings/www.dev.ini', true);
 else
 	$conf = parse_ini_file('/dns/com/anotherservice/etc/settings/www.ini', true);
 	
