@@ -120,12 +120,17 @@ class template_as extends template
 					$active = '';
 					if( preg_match('#^'.rtrim($menu_item['link'], '/').'(/index)?$#', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
 						$active = "class=\"active\"";
-						
-					$menu .= "
-						<li id=\"{$menu_item['text']}\" {$active}>
-							<a href=\"{$menu_item['link']}\" title=\"\">{$GLOBALS['lang'][$menu_item['text']]}</a>
-						</li>
-					";
+
+					if( !$logged && !$menu_item['anonymous'] )
+						continue;
+					else
+					{						
+						$menu .= "
+							<li id=\"{$menu_item['text']}\" {$active}>
+								<a href=\"{$menu_item['link']}\" title=\"\">{$GLOBALS['lang'][$menu_item['text']]}</a>
+							</li>
+						";
+					}
 				}
 			}
 			
