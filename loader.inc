@@ -19,8 +19,8 @@ $path = $GLOBALS['CONFIG']['URI'];
 $include = null;
 while( strlen($path) > 0 )
 {
-	$root = $GLOBALS['CONFIG']['ROOT'] . $GLOBALS['CONFIG']['SITE'] . $path;
-	//$root = $GLOBALS['CONFIG']['ROOT'] . $GLOBALS['CONFIG']['SITE'] . '/' . $path;
+	//$root = $GLOBALS['CONFIG']['ROOT'] . $GLOBALS['CONFIG']['SITE'] . $path;
+	$root = $GLOBALS['CONFIG']['ROOT'] . $GLOBALS['CONFIG']['SITE'] . '/' . $path;
 
 	if( file_exists($root . '.php') )
 	{
