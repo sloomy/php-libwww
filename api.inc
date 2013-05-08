@@ -39,7 +39,7 @@ class api
 			fclose($fh);
 			$response = json_decode($response, true);
 			if( isset($response['error']) )
-				throw new SiteException("Api error", 500, "Error code {$response['error']['code']} for /{$action}", $response['error']['message'] . ' | ' . $response['error']['debug']);
+				throw new SiteException("Api error", 500, "Error code {$response['error']['code']} for /{$action}", $response['error']['message'] . ' :: ' . $response['error']['debug']);
 			if( !isset($response['response']) )
 				throw new SiteException("Api error", 500, "Unexpected response to /{$action}", print_r($response, true));
 			return $response['response'];
