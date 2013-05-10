@@ -38,27 +38,17 @@ switch( $_SERVER["HTTP_HOST"] )
 {
 	case 'hosting.olympe.in':
 	case 'hosting.dev.olympe.in':
+	case 'local.hosting.olympe.in':
 		$GLOBALS['CONFIG']['SITE'] = 'on';
 		break;
 	case 'www.anotherservice.com':
 	case 'www.dev.anotherservice.com':
-	case 'local.anotherservice.com':
+	case 'local.www.anotherservice.com':
 		$GLOBALS['CONFIG']['SITE'] = 'as';
-		break;
-	case 'panel.bus-it.com':
-	case 'panel.dev.bus-it.com':
-		$GLOBALS['CONFIG']['SITE'] = 'bi';
-		break;
-	case 'developers.bus-it.com':
-	case 'dev.bus-it.com':
-	case 'developers.dev.bus-it.com':
-	case 'dev.dev.bus-it.com':
-	case 'local.dev.bus-it.com':
-		$GLOBALS['CONFIG']['SITE'] = 'dev';
 		break;
 	case 'www.bus-it.com':
 	case 'www.dev.bus-it.com':
-	case 'local.bus-it.com':
+	case 'local.www.bus-it.com':
 		$GLOBALS['CONFIG']['SITE'] = 'busit';
 		break;
 	default:
