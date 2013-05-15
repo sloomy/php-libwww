@@ -100,6 +100,13 @@ class template_as extends template
 			$top .= "<div id=\"box\">";
 		}
 		
+		if( $_SESSION['MESSAGE']['TEXT'] )
+		{
+			$top .= "<div style=\"margin: 0 auto; width: 500px; text-align: center; color: #ffffff; margin-top: 15px;\"><p class=\"large\">{$_SESSION['MESSAGE']['TEXT']}</p></div>";
+			unset($_SESSION['MESSAGE']['TEXT']);
+		}
+
+		
 		return $top;
 	}
 	
