@@ -266,18 +266,21 @@ class template_on extends template
 				<span>{$GLOBALS['lang']['COPYRIGHT']}</span>
 			</div>
 		</div>
-<!-- Piwik --> 
+<!-- Piwik -->
 <script type=\"text/javascript\">
-var pkBaseURL = ((\"https:\" == document.location.protocol) ? \"https://stats.olympe.in/\" : \"http://stats.olympe.in/\");
-document.write(unescape(\"%3Cscript src='\" + pkBaseURL + \"piwik.js' type='text/javascript'%3E%3C/script%3E\"));
-</script><script type=\"text/javascript\">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + \"piwik.php\", 3);
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-</script><noscript><p><img src=\"http://stats.olympe.in/piwik.php?idsite=3\" style=\"border:0\" alt=\"\" /></p></noscript>
-<!-- End Piwik Tracking Code -->
+  var _paq = _paq || [];
+  _paq.push([\"trackPageView\"]);
+  _paq.push([\"enableLinkTracking\"]);
+
+  (function() {
+    var u=((\"https:\" == document.location.protocol) ? \"https\" : \"http\") + \"://stats.anotherservice.com/\";
+    _paq.push([\"setTrackerUrl\", u+\"piwik.php\"]);
+    _paq.push([\"setSiteId\", \"6\"]);
+    var d=document, g=d.createElement(\"script\"), s=d.getElementsByTagName(\"script\")[0]; g.type=\"text/javascript\";
+    g.defer=true; g.async=true; g.src=u+\"piwik.js\"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
 	</body>
 </html>";
 		
