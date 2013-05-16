@@ -115,6 +115,7 @@ if( $_SESSION['MESSAGE'] )
 		{
 			$top .= $this->getSubMenu();
 		}
+
 		
 		return $top;
 	}
