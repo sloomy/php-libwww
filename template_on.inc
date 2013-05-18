@@ -143,7 +143,7 @@ class template_on extends template
 					<div class=\"backTo\">
 						<a href=\"http://www.olympe.in\" title=\"\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/topnav/website.png\" alt=\"\" /><span>{$GLOBALS['lang']['WEBSITE']}</span></a>
 						<a href=\"https://projets.olympe.in/projects/infrastructure/issues\" title=\"\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/topnav/work.png\" alt=\"\" /><span>{$GLOBALS['lang']['ISSUES']}</span></a>
-						<a href=\"http://monitoring.olympe.in/screens.php?sid=f7f0a71a27e91bcf\" title=\"\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/topnav/monitoring.png\" alt=\"\" /><span>{$GLOBALS['lang']['MONIT']}</span></a>
+						<a href=\"https://monitoring.anotherservice.com/screens.php?sid=f9566f64cb9f6e10\" title=\"\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/topnav/monitoring.png\" alt=\"\" /><span>{$GLOBALS['lang']['MONIT']}</span></a>
 					</div>
 					
 					".$this->getMainMenu()."
