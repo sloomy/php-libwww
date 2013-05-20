@@ -143,7 +143,7 @@ class template_on extends template
 					<div class=\"backTo\">
 						<a href=\"http://www.olympe.in\" title=\"\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/topnav/website.png\" alt=\"\" /><span>{$GLOBALS['lang']['WEBSITE']}</span></a>
 						<a href=\"https://projets.olympe.in/projects/infrastructure/issues\" title=\"\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/topnav/work.png\" alt=\"\" /><span>{$GLOBALS['lang']['ISSUES']}</span></a>
-						<a href=\"http://monitoring.olympe.in/screens.php?sid=f7f0a71a27e91bcf\" title=\"\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/topnav/monitoring.png\" alt=\"\" /><span>{$GLOBALS['lang']['MONIT']}</span></a>
+						<a href=\"https://monitoring.anotherservice.com/screens.php?sid=f9566f64cb9f6e10\" title=\"\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/topnav/monitoring.png\" alt=\"\" /><span>{$GLOBALS['lang']['MONIT']}</span></a>
 					</div>
 					
 					".$this->getMainMenu()."
@@ -266,18 +266,21 @@ class template_on extends template
 				<span>{$GLOBALS['lang']['COPYRIGHT']}</span>
 			</div>
 		</div>
-<!-- Piwik --> 
+<!-- Piwik -->
 <script type=\"text/javascript\">
-var pkBaseURL = ((\"https:\" == document.location.protocol) ? \"https://stats.olympe.in/\" : \"http://stats.olympe.in/\");
-document.write(unescape(\"%3Cscript src='\" + pkBaseURL + \"piwik.js' type='text/javascript'%3E%3C/script%3E\"));
-</script><script type=\"text/javascript\">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + \"piwik.php\", 3);
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-</script><noscript><p><img src=\"http://stats.olympe.in/piwik.php?idsite=3\" style=\"border:0\" alt=\"\" /></p></noscript>
-<!-- End Piwik Tracking Code -->
+  var _paq = _paq || [];
+  _paq.push([\"trackPageView\"]);
+  _paq.push([\"enableLinkTracking\"]);
+
+  (function() {
+    var u=((\"https:\" == document.location.protocol) ? \"https\" : \"http\") + \"://stats.anotherservice.com/\";
+    _paq.push([\"setTrackerUrl\", u+\"piwik.php\"]);
+    _paq.push([\"setSiteId\", \"6\"]);
+    var d=document, g=d.createElement(\"script\"), s=d.getElementsByTagName(\"script\")[0]; g.type=\"text/javascript\";
+    g.defer=true; g.async=true; g.src=u+\"piwik.js\"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
 	</body>
 </html>";
 		
