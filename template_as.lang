@@ -6,7 +6,7 @@ DESCRIPTION = "Services IT et hébergement cloud PHP, Java, Ruby, Python, MySQL,
 WEBSITE = "Retour au portail"
 MONIT = "Supervision"
 ISSUES = "Maintenances"
-COPYRIGHT = "Copyright &copy; 2012 Another Service. Tous droits réservés."
+COPYRIGHT = "Copyright &copy; 2013 Another Service. Tous droits réservés."
 ABOUT = "A propos"
 ABOUT_TEXT = "<a href='http://www.anotherservice.com'>Another Service</a> propose un service d'hébergement applicatif sur Internet à destination des professionnels sur une infrastructure cloud française robuste et extensible."
 SOCIAL = "Social"
