@@ -48,7 +48,7 @@ switch( $_SERVER["HTTP_HOST"] )
 		break;
 	case 'www.bus-it.com':
 	case 'www.dev.bus-it.com':
-	case 'local.www.bus-it.com':
+	case 'local.bus-it.com':
 		$GLOBALS['CONFIG']['SITE'] = 'busit';
 		break;
 	default:
