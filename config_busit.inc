@@ -11,8 +11,6 @@ else
 $GLOBALS['CONFIG']['API_HOST'] 		= 'https://' . $conf['Main']['API_HOST'];
 $GLOBALS['CONFIG']['API_USERNAME']	= $conf['Main']['API_USERNAME'];
 $GLOBALS['CONFIG']['API_PASSWORD']	= $conf['Main']['API_TOKEN'];
-
-if( $conf['Main']['DEBUG'] == 'inactive' )
 $GLOBALS['CONFIG']['DEBUG'] 		= false;
 unset($conf);
 

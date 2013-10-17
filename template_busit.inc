@@ -61,7 +61,7 @@ class template_busit extends template
 		{
 			$top .="
 				<div class=\"logo\">
-					<a href=\"/learn\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/logo.png\" alt=\"logo\" /></a>
+					<a href=\"/\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/logo.png\" alt=\"logo\" /></a>
 				</div>
 			";
 		}
@@ -101,7 +101,12 @@ $top .= "
 		<div class=\"core\">";
 	
 		$logged = $GLOBALS['security']->hasAccess('/panel');
-				
+
+		if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false  )
+		{
+			$top .= $this->getSubMenu();
+		}
+		
 		return $top;
 	}
 	
@@ -132,8 +137,30 @@ $top .= "
 							continue;
 						else
 						{
-						$menu .= "
+							if( is_array($menu_item['sub']) )
+							{
+								$menu .= "
+									<li class=\"{$menu_item['text']}\">
+										<a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a>
+										<ul>";
+									foreach( $menu_item['sub'] as $menu_subitem )
+									{
+										if( preg_match('!^'.rtrim($menu_subitem['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+											$subactive = "class=\"active\"";
+						
+										$menu .= "
+												<li class=\"{$menu_subitem['text']}\"><a id=\"link-{$menu_subitem['text']}\" href=\"{$menu_subitem['link']}\" title=\"\" {$subactive}>{$GLOBALS['lang'][$menu_subitem['text']]}</a></li>";
+									}
+									
+									$menu .= "
+										</ul>
+									</li>";
+							}
+							else
+							{
+								$menu .= "
 							<li class=\"{$menu_item['text']}\"><a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a></li>";
+							}
 						}
 					}
 				}
@@ -169,8 +196,9 @@ $top .= "
 		{
 			$menu_data = include_once($menu_file);
 			$menu = "
-					<div class=\"nav\">
-						<ul class=\"tabs\">
+					<div class=\"menu-fixed\">
+						<div class=\"container\">
+							<ul id=\"menu\">
 			";
 			
 			// check which submenu is active
@@ -180,7 +208,7 @@ $top .= "
 				// check if the user has access to the target link
 				if( $GLOBALS['security']->hasAccess($menu_item['link']) )
 				{
-					if( preg_match('#^'.rtrim($menu_item['link'], '/').'(/index)?$#', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+					if( preg_match('!^'.rtrim($menu_item['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
 						$active = $menu_item['link'];
 				}
 			}
@@ -194,32 +222,43 @@ $top .= "
 					if( $active == $menu_item['link'] || ($active === null && $menu_item['default'] == true) )
 						$a = "class=\"active\"";
 
-					$menu .= "
-							<li {$a}><a href=\"{$menu_item['link']}\" title=\"\">{$GLOBALS['lang'][$menu_item['text']]}</a></li>
-					";
+					if( is_array($menu_item['sub']) )
+					{
+						$menu .= "<li class=\"sub {$menu_item['text']}\"><a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a>
+							<ul>";
+								
+						foreach( $menu_item['sub'] as $menu_subitem )
+						{
+							if( preg_match('!^'.rtrim($menu_subitem['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+								$subactive = "class=\"active\"";
+						
+							$menu .= "
+								<li class=\"{$menu_subitem['text']}\"><a id=\"link-{$menu_subitem['text']}\" href=\"{$menu_subitem['link']}\" title=\"\" {$subactive}>{$GLOBALS['lang'][$menu_subitem['text']]}</a></li>";
+						}
+									
+						$menu .= "
+							</ul>
+						</li>";
+					}
+					else
+					{
+						$menu .= "
+									<li class=\"{$menu_item['text']}\"><a {$a} href=\"{$menu_item['link']}\">{$GLOBALS['lang'][$menu_item['text']]}</a></li>
+						";
+					}
 				}
 			}
 			
+			if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
+			{
+				$menu .= "
+									<li id=\"search-li\" class=\"search\"><input class=\"auto\" type=\"text\" id=\"search\" value=\"{$GLOBALS['lang']['search']}\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['search']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['search']}' : this.value; this.value=='{$GLOBALS['lang']['search']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" /></li>";
+			}
+			
 			$menu .= "
-						</ul>
-			";
-			
-			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
-			{
-				$menu .= "
-						<div class=\"icon\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/user.png\" alt=\"logo\" /></div>
-						<h5>".security::get('USER')."</h5>
-				";
-			}
-			else if( strstr($GLOBALS['CONFIG']['PAGE'], 'help') !== false )
-			{
-				$menu .= "
-						<div class=\"icon\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/help.png\" alt=\"logo\" /></div>
-						<h5>{$GLOBALS['lang']['HELP']}</h5>
-				";						
-			}
-			
-			$menu .= "</div>";
+								</ul>
+							</div>
+					</div>";
 			
 			return $menu;
 		}
@@ -240,16 +279,16 @@ $top .= "
 		$bottom .= $this->getObjects();
 		
 		$bottom .= "
-		<div class=\"clear\"><br /><br /></div>
+
 		<div id=\"footer\" class=\"footer\">
 			<div class=\"content\">
 				<ul>
 						<li><a href=\"/about\">{$GLOBALS['lang']['ABOUT']}</a></li>
 						<li><a href=\"/about/contact\">{$GLOBALS['lang']['CONTACT']}</a></li>
-						<li><a href=\"/help\">{$GLOBALS['lang']['HELP']}</a></li>
-						<li><a href=\"http://developers.bus-it.com\">{$GLOBALS['lang']['DEVELOPERS']}</a></li>
+						<li><a href=\"/doc\">{$GLOBALS['lang']['HELP']}</a></li>
+						<li><a href=\"/developers\">{$GLOBALS['lang']['DEVELOPERS']}</a></li>
 						<li><a href=\"/about/legal\">{$GLOBALS['lang']['LEGAL']}</a></li>
-						<li><a href=\"http://blog.bus-it.com\">{$GLOBALS['lang']['PRIVACY']}</a></li>
+						<li><a href=\"/about/privacy\">{$GLOBALS['lang']['PRIVACY']}</a></li>
 					</ul>
 				</ul>
 				<p>{$GLOBALS['lang']['COPYRIGHT']}</p>
@@ -290,7 +329,7 @@ $top .= "
 						</fieldset>
 						<fieldset>
 							<input class=\"auto\" type=\"password\" value=\"{$GLOBALS['lang']['password']}\" name=\"password\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['password']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['password']}' : this.value; this.value=='{$GLOBALS['lang']['password']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\"/>
-							".(isset($_GET['e'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['auth']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['register']}</span>")."
+							".(isset($_GET['elogin'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['auth']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['register']}</span>")."
 						</fieldset>						
 						<fieldset>
 							<input type=\"checkbox\" name=\"chbox\" />
@@ -324,6 +363,18 @@ $top .= "
 				</div>
 			</div>
 		";
+		
+				
+		if( isset($_GET['elogin']) )
+		{
+			$objects .= "<script type=\"text/javascript\">
+							$(document).ready(function() {
+								$(\"#login\").dialog(\"open\");
+								$(\".ui-dialog-titlebar\").hide();
+							});
+						</script>
+			";
+		}
 		
 		return $objects;
 	

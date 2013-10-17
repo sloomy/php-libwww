@@ -20,5 +20,6 @@ email = "Email"
 signup = "Signup"
 usertip = "Lowercase and numbers only."
 result = "Join status"
+search = "Rechercher sur Bus IT"
 
 [FR]
