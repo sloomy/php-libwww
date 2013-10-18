@@ -20,7 +20,7 @@ class api
 		if( is_array($file) )
 			$request['http']['content'] = self::buildMultipartQuery($params, $file);
 		else
-			$request['http']['content'] = http_build_query(array('json'=>json_encode($params)));
+			$request['http']['content'] = http_build_query($params);
 			
 		$request['http']['header']  = 'Content-Length: ' . strlen($request['http']['content']) . "\r\n";
 		
@@ -32,6 +32,7 @@ class api
 		try
 		{
 			$fh = fopen($GLOBALS['CONFIG']['API_HOST'].'/'.$action, 'r', false, stream_context_create( $request ));
+
 			if( $fh === false )
 				throw new SiteException("Internal communication error", 500, "No answer from /{$action}");
 

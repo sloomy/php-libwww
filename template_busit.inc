@@ -49,10 +49,21 @@ class template_busit extends template
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery/jquery-ui-1.10.3.custom.css\" />
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-1.9.1.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ui-1.10.3.custom.js\"></script>
+		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-raty.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/footer.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/main.js\"></script>
 	</head>
 	<body>
+	<div id=\"fb-root\"></div>
+	<script>
+		(function(d, s, id){
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = \"//connect.facebook.net/en_US/all.js#xfbml=1&appId=233857746673934\";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 	<div id=\"wrapper\">
 		<div class=\"header\">
 			<div class=\"content\">";
@@ -80,24 +91,6 @@ class template_busit extends template
 		$top .= "
 			</div>
 		</div>
-";
-
-if( $_SESSION['MESSAGE'] )
-{
-	$top .= "
-		<div id=\"message\">
-			<img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/notifications/".($_SESSION['MESSAGE']['TYPE']=='success'?"accept":"error").".png\" />
-			{$_SESSION['MESSAGE']['TEXT']}
-			<br />
-			<div style=\"text-align: right\"><a href=\"#\" onclick=\"document.getElementById('message').style.visibility = 'hidden';\">{$GLOBALS['lang']['DISMISS']}</a></div>
-		</div>
-	";
-	
-	// we displayed it, clear it
-	$_SESSION['MESSAGE'] = false;
-}
-
-$top .= "
 		<div class=\"core\">";
 	
 		$logged = $GLOBALS['security']->hasAccess('/panel');
@@ -318,6 +311,9 @@ $top .= "
 	
 	private function getObjects()
 	{
+		if( !isset($_SESSION['ANTISPAM']) )
+			$_SESSION['ANTISPAM'] = md5(time().'busit');
+
 		$objects = "
 			<div id=\"login\">
 				<div class=\"form-small\">
@@ -345,7 +341,22 @@ $top .= "
 			<div id=\"signup\">
 				<div class=\"form-small\">		
 					<h3 class=\"center\">{$GLOBALS['lang']['signup']}</h3>
-					<form action=\"/join_action\" method=\"post\" id=\"valid\" class=\"center\">
+					<form action=\"/signup_action\" method=\"post\" id=\"valid\" class=\"center\">
+						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
+						<fieldset>
+							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_EMAIL']?"{$_SESSION['JOIN_EMAIL']}":"{$GLOBALS['lang']['email']}")."\" name=\"email\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['email']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['email']}' : this.value; this.value=='{$GLOBALS['lang']['email']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+						</fieldset>
+						<fieldset autofocus>	
+							<input type=\"submit\" value=\"{$GLOBALS['lang']['signup']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
+						</fieldset>
+					</form>
+				</div>
+			</div>
+			<div id=\"register\">
+				<div class=\"form-small\">		
+					<h3 class=\"center\">{$GLOBALS['lang']['signup']}</h3>
+					<form action=\"/register_action\" method=\"post\" id=\"valid\" class=\"center\">
+						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
 						<fieldset>
 							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_USER']?"{$_SESSION['JOIN_USER']}":"{$GLOBALS['lang']['username']}")."\" name=\"username\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['username']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['username']}' : this.value; this.value=='{$GLOBALS['lang']['username']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
 							<span class=\"help-block\">{$GLOBALS['lang']['usertip']}</span>
@@ -362,9 +373,12 @@ $top .= "
 					</form>
 				</div>
 			</div>
+			<div id=\"message\">
+				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/notifications/".($_SESSION['MESSAGE']['TYPE']=='success'?"accept":"error").".png\" /><br />
+				<p>{$_SESSION['MESSAGE']['TEXT']}</p>
+			</div>
 		";
-		
-				
+
 		if( isset($_GET['elogin']) )
 		{
 			$objects .= "<script type=\"text/javascript\">
@@ -374,6 +388,20 @@ $top .= "
 							});
 						</script>
 			";
+		}
+		
+		
+		if( $_SESSION['MESSAGE'] )
+		{
+			$objects .= "<script type=\"text/javascript\">
+							$(document).ready(function() {
+								$(\"#message\").dialog(\"open\");
+								$(\".ui-dialog-titlebar\").hide();
+							});
+						</script>";
+			
+			// we displayed it, clear it
+			//$_SESSION['MESSAGE'] = false;
 		}
 		
 		return $objects;
