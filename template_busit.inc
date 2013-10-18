@@ -401,7 +401,7 @@ class template_busit extends template
 						</script>";
 			
 			// we displayed it, clear it
-			//$_SESSION['MESSAGE'] = false;
+			$_SESSION['MESSAGE'] = false;
 		}
 		
 		return $objects;
