@@ -24,7 +24,6 @@ class template_busit extends template
 		{
 			$stack = preg_replace("/^#+[0-9\\-]* (.+)$/m", "<li>\$1</li>", $stack);
 			$stack = preg_replace("/(\\{main\\}<\\/li>.)/s", "\$1</ol><ol style=\"border-left: 2px solid #E18B7C; margin-top: 10px; margin-bottom: 20px; padding-left: 20px; list-style: decimal inside;\">", $stack);
-			
 		}
 		
 		$this->output();
@@ -49,6 +48,7 @@ class template_busit extends template
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-1.9.1.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ui-1.10.3.custom.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-raty.js\"></script>
+		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-steps.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/footer.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/main.js\"></script>
 	</head>
@@ -371,11 +371,16 @@ class template_busit extends template
 					</form>
 				</div>
 			</div>
-			<div id=\"message\">
+		";
+		
+		if( $_SESSION['MESSAGE'] )
+		{
+			$objects .= "<div id=\"message\">
 				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/notifications/{$_SESSION['MESSAGE']['TYPE']}.png\" /><br />
 				<p>{$_SESSION['MESSAGE']['TEXT']}</p>
 			</div>
-		";
+			";
+		 }
 
 		if( isset($_GET['elogin']) )
 		{
