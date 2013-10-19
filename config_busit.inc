@@ -40,7 +40,7 @@ $GLOBALS['CONFIG']['MAIL_TEMPLATE'] = "
 						{CONTENT}
 					   <p style=\"margin: 20px 0;\">
                           The Bus IT Team<br />
-                          <a href=\"https://bus-it.com\" style=\"color: #2b6fab;\">https://bus-it.com</a>
+                          <a href=\"https://www.bus-it.com\" style=\"color: #2b6fab;\">https://www.bus-it.com</a>
                         </p>
                       </td>
                     </tr>
