@@ -36,7 +36,7 @@ $GLOBALS['CONFIG']['MAIL_TEMPLATE'] = "
                   <table id=\"templateContent\" style=\"border-spacing: 0; border-collapse: collapse; font-family: proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; height: 100%; width: 100%; background: #ffffff; margin: 0; padding: 0; border: 0;\">
                     <tr style=\"vertical-align: top; padding: 0;\">
                       <td style=\"vertical-align: top; text-align: left; padding: 0;\" align=\"left\" valign=\"top\">
-                        <h1 id=\"logo\" style=\"color: #2b6fab; display: block; font-family: hybrea, proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; font-size: 32px; font-weight: 200; text-align: left; margin: 0 0 40px;\" align=\"left\"><img src=\"\" alt=\"Bus IT\" width=\"120\" height=\"42\" style=\"outline: none; text-decoration: none; border: 0;\" /></h1>
+                        <h1 id=\"logo\" style=\"color: #2b6fab; display: block; font-family: hybrea, proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; font-size: 32px; font-weight: 200; text-align: left; margin: 0 0 40px;\" align=\"left\"><img src=\"https://www.bus-it.com/busit/images/logo-dark.png\" alt=\"Bus IT\" width=\"140\" height=\"42\" style=\"outline: none; text-decoration: none; border: 0;\" /></h1>
 						{CONTENT}
 					   <p style=\"margin: 20px 0;\">
                           The Bus IT Team<br />
