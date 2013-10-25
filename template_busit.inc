@@ -229,7 +229,7 @@ class template_busit extends template
 
 					if( is_array($menu_item['sub']) )
 					{
-						$menu .= "<li class=\"sub {$menu_item['text']}\"><a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a>
+						$menu .= "<li id=".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")." class=\"sub ".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\"><a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" title=\"\" {$active}>".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a>
 							<ul>";
 								
 						foreach( $menu_item['sub'] as $menu_subitem )
@@ -238,7 +238,7 @@ class template_busit extends template
 								$subactive = "class=\"active\"";
 						
 							$menu .= "
-								<li class=\"{$menu_subitem['text']}\"><a id=\"link-{$menu_subitem['text']}\" href=\"{$menu_subitem['link']}\" title=\"\" {$subactive}>{$GLOBALS['lang'][$menu_subitem['text']]}</a></li>";
+								<li class=\"{$menu_subitem['text']}\"><a id=\"link-{$menu_subitem['text']}\" href=\"{$menu_subitem['link']}\" title=\"\" {$subactive}>".($GLOBALS['lang'][$menu_subitem['text']]?"{$GLOBALS['lang'][$menu_subitem['text']]}":"{$menu_subitem['text']}")."</a></li>";
 						}
 									
 						$menu .= "
@@ -248,7 +248,7 @@ class template_busit extends template
 					else
 					{
 						$menu .= "
-									<li class=\"{$menu_item['text']}\"><a {$a} href=\"{$menu_item['link']}\">{$GLOBALS['lang'][$menu_item['text']]}</a></li>
+									<li class=\"{$menu_item['text']}\"><a {$a} href=\"{$menu_item['link']}\">".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a></li>
 						";
 					}
 				}
