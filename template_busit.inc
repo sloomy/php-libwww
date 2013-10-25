@@ -350,6 +350,45 @@ class template_busit extends template
 					<div class=\"clearfix\">&nbsp;</div>
 				</div>
 			</div>
+			<div id=\"login-base\" style=\"display: none;\">
+				<div class=\"form-small\">
+					<h3 class=\"center\">{$GLOBALS['lang']['login']}</h3>
+					<form action=\"/login_action\" method=\"post\" class=\"center\">
+						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
+						<fieldset>
+							<input class=\"auto\" type=\"text\" value=\"{$GLOBALS['lang']['username']}\" name=\"username\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['username']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['username']}' : this.value; this.value=='{$GLOBALS['lang']['username']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+						</fieldset>
+						<fieldset>
+							<input class=\"auto\" type=\"password\" value=\"{$GLOBALS['lang']['password']}\" name=\"password\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['password']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['password']}' : this.value; this.value=='{$GLOBALS['lang']['password']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\"/>
+							".(isset($_GET['elogin'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['auth']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['register']}</span>")."
+						</fieldset>						
+						<fieldset>
+							<input type=\"checkbox\" name=\"chbox\" />
+							<label for=\"remember\" style=\"display: inline-block; padding-left: 10px;\">{$GLOBALS['lang']['remember']}</label>
+						</fieldset>
+						<fieldset autofocus>
+							<input type=\"submit\" value=\"{$GLOBALS['lang']['login']}\" />
+						</fieldset>													
+					</form>
+					<div class=\"clearfix\">&nbsp;</div>
+				</div>
+			</div>
+			<div id=\"recovery\" style=\"display: none;\">
+				<div class=\"form-small\">
+					<h3 class=\"center\">{$GLOBALS['lang']['recovery']}</h3>
+					<form action=\"/recovery_action\" method=\"post\" class=\"center\">
+						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
+						<fieldset>
+							<input class=\"auto\" type=\"text\" value=\"{$GLOBALS['lang']['username']}\" name=\"username\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['username']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['username']}' : this.value; this.value=='{$GLOBALS['lang']['username']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+							".(isset($_GET['erecovery'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['erecovery']}</span>":"{$GLOBALS['lang']['recoverytip']}")."
+						</fieldset>
+						<fieldset autofocus>
+							<input type=\"submit\" value=\"{$GLOBALS['lang']['save']}\" />
+						</fieldset>													
+					</form>
+					<div class=\"clearfix\">&nbsp;</div>
+				</div>
+			</div>
 			<div id=\"signup\">
 				<div class=\"form-small\">		
 					<h3 class=\"center\">{$GLOBALS['lang']['signup']}</h3>
@@ -402,8 +441,24 @@ class template_busit extends template
 								$(\"#login\").dialog(\"open\");
 								$(\".ui-dialog-titlebar\").hide();
 							});
+							function recovery()
+							{
+								$(\"#login\").html($('#recovery').html());
+							}
+							
+							function norecovery()
+							{
+								$(\"#login\").html($('#login-base').html());
+							}
 						</script>
 			";
+		}
+
+		if( isset($_GET['erecovery']) )
+		{
+			$objects .= "<script type=\"text/javascript\">
+								$(\"#login\").html($('#recovery').html());
+						</script>";
 		}
 				
 		if( $_SESSION['MESSAGE'] )
