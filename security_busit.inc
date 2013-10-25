@@ -111,7 +111,7 @@ class security_busit extends security
 	{
 		security::clearGrant();
 		
-		$grants = api::send('system/self/grant/token/list', array('token'=>security::get('TOKEN')));
+		$grants = api::send('self/system/grant/token/list', array('token'=>security::get('TOKEN')));
 		foreach( $grants as $g )
 			security::setGrant($g['grant_name']);	
 	}

@@ -107,7 +107,7 @@ class template_busit extends template
 	
 		$logged = $GLOBALS['security']->hasAccess('/panel');
 
-		if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false  )
+		if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'admin') !== false  )
 		{
 			$top .= $this->getSubMenu();
 		}
@@ -274,9 +274,7 @@ class template_busit extends template
 	public function bottom()
 	{
 		$bottom = "";
-		$logged = $GLOBALS['security']->hasAccess('/panel');
-		if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'help') !== false )
-			$bottom .= "</div>";
+
 		
 		$bottom .= "	
 		</div>
