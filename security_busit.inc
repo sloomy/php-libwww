@@ -16,6 +16,10 @@ class access_busit
 		$a['/admin/group'] = array('ACCESS', 'GROUP_SELECT');
 		$a['/admin/group/index'] = array('ACCESS', 'GROUP_SELECT');
 
+		$a['/developers/panel'] = array('ACCESS', 'DEVELOPER_ACCESS');
+		$a['/developers/panel/connector'] = array('ACCESS', 'SELF_CONNECTOR_SELECT');
+		$a['/developers/panel/connector/add'] = array('ACCESS', 'SELF_CONNECTOR_INSERT');
+				
 		$a['/panel'] = array('SELF_ACCESS');
 		$a['/panel/index'] = array('SELF_ACCESS');
 		$a['/panel/instance'] = array('SELF_ACCESS');
