@@ -26,5 +26,6 @@ signup = "Signup"
 usertip = "Lowercase and numbers only."
 result = "Join status"
 search = "Search on Bus IT"
+signup_explain = "Thanks for registering to our platform, please choose a username and a password."
 
 [FR]
