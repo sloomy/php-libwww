@@ -17,17 +17,18 @@ class api
 
 		$request = array( 'http' => array( 'user_agent' => 'PHP/5.x (Olympe) API/1.0', 'method' => 'POST', 'timeout' => 10.0 ));
 
-		if( is_array($file) )
-			$request['http']['content'] = self::buildMultipartQuery($params, $file);
-		else
-			$request['http']['content'] = http_build_query($params);
-			
-		$request['http']['header']  = 'Content-Length: ' . strlen($request['http']['content']) . "\r\n";
 		
 		if( is_array($file) )
 			$request['http']['header'] .= 'Content-Type: multipart/form-data, boundary=' . $boundary . "\r\n";
 		else
 			$request['http']['header'] .= 'Content-Type: application/x-www-form-urlencoded' . "\r\n";
+			
+		if( is_array($file) )
+			$request['http']['content'] = self::buildMultipartQuery($params, $file);
+		else
+			$request['http']['content'] = http_build_query($params);
+			
+		$request['http']['header']  .= 'Content-Length: ' . strlen($request['http']['content']) . "\r\n";
 
 		try
 		{
@@ -59,11 +60,11 @@ class api
 		$content = '--' . $boundary . "\n";
 		
 		foreach( $params as $key => $value )
-			$content .= 'content-disposition: form-data; name="' . $key . '"' . "\n\n" . $value . "\n" . '--' . $boundary . "\n";
+			$content .= 'Content-Disposition: form-data; name="' . $key . '"' . "\n\n" . $value . "\n" . '--' . $boundary . "\n";
 		
-		$content .= 'content-disposition: form-data; name="file"; filename="' . $file['name'] . '"' . "\n";
+		$content .= 'Content-Disposition: form-data; name="upload"; filename="' . $file['name'] . '"' . "\n";
 		$content .= 'Content-Type: ' . $file['type'] . "\n";
-		$content .= 'Content-Transfer-Encoding: binary' . "\n\n";
+
 		$content .= $file['binary'];
 		$content .= "\n" . '--' . $boundary . "\n";
 
