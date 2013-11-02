@@ -73,7 +73,7 @@ class api
 					
 		$content .= "\r\n--{$boundary}--";
 
-		return $content;
+		return substr($content, 2); // no leading CRLF
 	}
 }
 
