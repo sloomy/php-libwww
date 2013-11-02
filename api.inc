@@ -24,7 +24,7 @@ class api
 			$request['http']['header'] .= 'Content-Type: application/x-www-form-urlencoded' . "\r\n";
 			
 		if( is_array($file) )
-			$request['http']['content'] = self::buildMultipartQuery($params, $file);
+			$request['http']['content'] = self::buildMultipartQuery($params, $file, $boundary);
 		else
 			$request['http']['content'] = http_build_query($params);
 			
@@ -54,19 +54,25 @@ class api
 		}
 	}
 	
-	public static function buildMultipartQuery($params, $file)
+	public static function buildMultipartQuery($params, $file, $boundary)
 	{
-		$boundary = "trlalaaaaaaaaaaaaaaaaalalalaalalaaaaaaaaaaa";
-		$content = '--' . $boundary . "\n";
+		$content = "";
 		
 		foreach( $params as $key => $value )
-			$content .= 'Content-Disposition: form-data; name="' . $key . '"' . "\n\n" . $value . "\n" . '--' . $boundary . "\n";
+		{
+			$content .= "\r\n--{$boundary}\r\n" .
+						"Content-Disposition: form-data; name=\"{$key}\"\r\n" . 
+						"\r\n" . 
+						$value;
+		}
 		
-		$content .= 'Content-Disposition: form-data; name="upload"; filename="' . $file['name'] . '"' . "\n";
-		$content .= 'Content-Type: ' . $file['type'] . "\n";
-
-		$content .= $file['binary'];
-		$content .= "\n" . '--' . $boundary . "\n";
+		$content .= "\r\n--{$boundary}\r\n" .
+					"Content-Disposition: form-data; name=\"upload\"; filename=\"{$file['name']}\"\r\n" .
+					"Content-Type: {$file['type']}\r\n";
+					"\r\n" .
+					$file['binary'];
+					
+		$content .= "\r\n--{$boundary}--\r\n";
 
 		return $content;
 	}
