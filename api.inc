@@ -71,7 +71,7 @@ class api
 					"\r\n" .
 					$file['binary'];
 					
-		$content .= "\r\n--{$boundary}--\r\n";
+		$content .= "\r\n--{$boundary}--";
 
 		return $content;
 	}
