@@ -20,7 +20,7 @@ class api
 		if( is_array($file) )
 			$request['http']['content'] = self::buildMultipartQuery($params, $file);
 		else
-			$request['http']['content'] = http_build_query($params, '', '&', PHP_QUERY_RFC3986);
+			$request['http']['content'] = http_build_query($params);
 			
 		$request['http']['header']  = 'Content-Length: ' . strlen($request['http']['content']) . "\r\n";
 		
