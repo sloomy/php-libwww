@@ -26,8 +26,8 @@ class api
 			$request['http']['content'] = self::buildMultipartQuery($params, $file, $boundary);
 		else
 			$request['http']['content'] = http_build_query($params);
-			
-		$request['http']['header']  .= 'Content-Length: ' . strlen($request['http']['content']) . "\r\n";
+		
+		$request['http']['header']  .= 'Content-Length: ' . mb_strlen($request['http']['content'], '8bit') . "\r\n";
 
 		try
 		{
@@ -73,7 +73,7 @@ class api
 					
 		$content .= "\r\n--{$boundary}--";
 
-		return substr($content, 2); // no leading CRLF
+		return $content;
 	}
 }
 
