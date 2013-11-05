@@ -80,7 +80,7 @@ class template_busit extends template
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
-	<div id=\"wrapper\" ".(strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false?"style=\"background-color: #e5e5e5;\"":"").">
+	<div id=\"wrapper\" ".((strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false)?"style=\"background-color: #e5e5e5;\"":"").">
 		<div class=\"header\">
 			<div class=\"content\">";
 		
