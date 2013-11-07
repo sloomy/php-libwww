@@ -263,6 +263,14 @@ class template_busit extends template
 				$menu .= "
 									<li id=\"search-li\" class=\"search\"><input class=\"auto\" type=\"text\" id=\"search\" value=\"{$GLOBALS['lang']['search']}\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['search']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['search']}' : this.value; this.value=='{$GLOBALS['lang']['search']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" /></li>";
 			}
+
+			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
+			{
+				$quota = api::send('self/system/quota/user/select');
+				$quota = $quota[0];
+				$menu .= "
+									<li style=\"float: right;\"><a href=\"/panel/credits\" id=\"credits\">{$GLOBALS['lang']['left']} {$quota['quota_used']} BIC</a></li>";
+			}
 			
 			$menu .= "
 								</ul>

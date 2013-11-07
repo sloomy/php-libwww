@@ -26,6 +26,7 @@ usertip = "Lowercase and numbers only."
 result = "Join status"
 search = "Search on Bus IT"
 signup_explain = "Thanks for registering to our platform, please choose a username and a password."
+left = "Credits left:"
 
 [FR]
 
@@ -56,3 +57,4 @@ usertip = "Minuscules et chiffres seulement."
 result = "Statut d'inscription"
 search = "Rechercher sur Bus IT"
 signup_explain = "Merci de votre inscription sur notre plateforme, veuillez choisir un nom d'utilisateur et un mot de passe."
+left = "Crédits restants:"
