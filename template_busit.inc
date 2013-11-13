@@ -67,12 +67,6 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel/space/view') !== false )
 if( strstr($GLOBALS['CONFIG']['PAGE'], 'showcase/view') !== false )
 	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/showcase.js\"></script>";
 	
-	if( strstr($GLOBALS['CONFIG']['PAGE'], 'connector') !== false )
-	{
-		$top .= "
-		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/store.js\"></script>";
-	}
-	
 	$top .= "
 	</head>
 	<body>
