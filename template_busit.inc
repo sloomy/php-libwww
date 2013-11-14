@@ -64,7 +64,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel/instance/view') !== false )
 	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/instance.js\"></script>";
 if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel/space/view') !== false )
 	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/view.js\"></script>";
-if( strstr($GLOBALS['CONFIG']['PAGE'], 'showcase/view') !== false )
+if( strstr($GLOBALS['CONFIG']['PAGE'], 'showcase') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'learn') !== false )
 	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/showcase.js\"></script>";
 	
 	$top .= "
