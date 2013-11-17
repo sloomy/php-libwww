@@ -120,6 +120,36 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 		
 		return $top;
 	}
+
+	public function topSimple()
+	{
+		$GLOBALS['lang']->import($GLOBALS['CONFIG']['CLASSPATH'] . '/template_busit.lang');
+		
+		$top = "
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:v=\"urn:schemas-microsoft-com:vml\">
+	<head>
+		<title>{$GLOBALS['lang']['TITLE']}</title>
+		<meta name=\"description\" content=\"{$GLOBALS['lang']['DESCRIPTION']}\" />
+		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
+		<meta http-equiv=\"Cache-control\" content=\"no-cache\">
+		<meta http-equiv=\"Expires\" content=\"-1\">
+		<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no\">
+		<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">
+		<meta name=\"HandheldFriendly\" content=\"true\">
+		<link rel=\"shortcut icon\" href=\"/{$GLOBALS['CONFIG']['SITE']}/images/favicon.ico\" />
+		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/main.css\" type=\"text/css\" />
+		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery/jquery-ui-1.10.3.custom.css\" />
+		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery/default.css\" />
+		<link href=\"https://fonts.googleapis.com/css?family=Cuprum\" rel=\"stylesheet\" type=\"text/css\" />
+		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-1.9.1.js\"></script>
+		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ui-1.10.3.custom.js\"></script>
+	</head>
+	<body>
+		<div style=\"padding: 20px;\">";
+		
+		return $top;
+	}
 	
 	private function getMainMenu()
 	{
@@ -336,6 +366,16 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 	  })();
 	</script>
 	<!-- End Piwik Code -->
+	</body>
+</html>";
+		
+		return $bottom;
+	}
+	
+	public function bottomSimple()
+	{
+		$bottom = "
+		</div>
 	</body>
 </html>";
 		

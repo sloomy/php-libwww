@@ -51,6 +51,11 @@ switch( $_SERVER["HTTP_HOST"] )
 	case 'local.bus-it.com':
 		$GLOBALS['CONFIG']['SITE'] = 'busit';
 		break;
+	case 'apps.bus-it.com':
+	case 'apps.bus-it.net':
+	case 'local.apps.bus-it.com':
+		$GLOBALS['CONFIG']['SITE'] = 'apps';
+		break;
 	default:
 		if( $GLOBALS['CONFIG']['DEBUG'] )
 			error_log("SENDING HEADER 500 : No site defined in config.inc");
