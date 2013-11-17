@@ -66,6 +66,8 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel/space/view') !== false )
 	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/view.js\"></script>";
 if( strstr($GLOBALS['CONFIG']['PAGE'], 'showcase') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'learn') !== false )
 	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/showcase.js\"></script>";
+if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
+	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/doc.js\"></script>";
 	
 	$top .= "
 	</head>
