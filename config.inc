@@ -27,7 +27,7 @@ $GLOBALS['CONFIG']['DEFAULT_LANGUAGE']  = 'EN';
 // =================================
 
 // SPECIAL CASE FOR BUSIT ALIAS :
-if( preg_match("/\\.bus-it\\.com$/i", $_SERVER['HTTP_HOST']) && !preg_match("/^(panel|local|developers|www)\\./i", $_SERVER['HTTP_HOST']) )
+if( preg_match("/\\.bus-it\\.com$/i", $_SERVER['HTTP_HOST']) && !preg_match("/^(apps|local|developers|www)\\./i", $_SERVER['HTTP_HOST']) )
 {
 	$GLOBALS['CONFIG']['SITE'] = 'busit';
 	$GLOBALS['CONFIG']['INSTANCE'] = true;
