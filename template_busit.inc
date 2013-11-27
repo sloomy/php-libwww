@@ -405,8 +405,8 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 							<input type=\"checkbox\" name=\"chbox\" />
 							<label for=\"remember\" style=\"display: inline-block; padding-left: 10px;\">{$GLOBALS['lang']['remember']}</label>
 						</fieldset>
-						<fieldset autofocus>
-							<input type=\"submit\" value=\"{$GLOBALS['lang']['login']}\" />
+						<fieldset>
+							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['login']}\" />
 						</fieldset>													
 					</form>
 					<div class=\"clearfix\">&nbsp;</div>
@@ -428,8 +428,8 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 							<input type=\"checkbox\" name=\"chbox\" />
 							<label for=\"remember\" style=\"display: inline-block; padding-left: 10px;\">{$GLOBALS['lang']['remember']}</label>
 						</fieldset>
-						<fieldset autofocus>
-							<input type=\"submit\" value=\"{$GLOBALS['lang']['login']}\" />
+						<fieldset>
+							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['login']}\" />
 						</fieldset>													
 					</form>
 					<div class=\"clearfix\">&nbsp;</div>
@@ -444,8 +444,8 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 							<input class=\"auto\" type=\"text\" value=\"{$GLOBALS['lang']['username']}\" name=\"username\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['username']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['username']}' : this.value; this.value=='{$GLOBALS['lang']['username']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
 							".(isset($_GET['erecovery'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['erecovery']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['recoverytips']}</a>")."
 						</fieldset>
-						<fieldset autofocus>
-							<input type=\"submit\" value=\"{$GLOBALS['lang']['save']}\" />
+						<fieldset>
+							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['save']}\" />
 						</fieldset>													
 					</form>
 					<div class=\"clearfix\">&nbsp;</div>
@@ -459,8 +459,8 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 						<fieldset>
 							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_EMAIL']?"{$_SESSION['JOIN_EMAIL']}":"{$GLOBALS['lang']['email']}")."\" name=\"email\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['email']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['email']}' : this.value; this.value=='{$GLOBALS['lang']['email']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
 						</fieldset>
-						<fieldset autofocus>	
-							<input type=\"submit\" value=\"{$GLOBALS['lang']['signup']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
+						<fieldset>	
+							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['signup']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
 						</fieldset>
 					</form>
 				</div>
@@ -480,8 +480,8 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 						<fieldset>
 							<input class=\"auto\" type=\"password\" value=\"{$GLOBALS['lang']['password']}\" name=\"password\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['password']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['password']}' : this.value; this.value=='{$GLOBALS['lang']['password']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\"/>							
 						</fieldset>		
-						<fieldset autofocus>	
-							<input type=\"submit\" value=\"{$GLOBALS['lang']['signup']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
+						<fieldset>	
+							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['signup']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
 						</fieldset>
 					</form>
 				</div>
