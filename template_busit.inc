@@ -69,6 +69,8 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'showcase') !== false || strstr($GLOBALS[
 	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/showcase.js\"></script>";
 if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/doc.js\"></script>";
+if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
+	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/store.js\"></script>";
 	
 	$top .= "
 	</head>
@@ -84,6 +86,13 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
 	<div id=\"wrapper\" ".((strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false)?"style=\"background-color: #e5e5e5;\"":"").">
+		<div id=\"loading\">
+			<div class=\"bubblingG\">
+				<span id=\"bubblingG_1\"></span>
+				<span id=\"bubblingG_2\"></span>
+				<span id=\"bubblingG_3\"></span>
+			</div>
+		</div>
 		<div class=\"header\">
 			<div class=\"content\">";
 		
@@ -110,7 +119,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 		$top .= "
 			</div>
 		</div>
-		<div class=\"core\">";
+		<div class=\"core\" id=\"core\">";
 	
 		$logged = $GLOBALS['security']->hasAccess('/panel');
 
@@ -266,7 +275,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 
 					if( is_array($menu_item['sub']) )
 					{
-						$menu .= "<li id=\"".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\" class=\"sub ".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\"><a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" title=\"\" {$active}>".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a>
+						$menu .= "<li id=\"".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\" class=\"sub ".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\"><a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}>".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a>
 							<ul>";
 								
 						foreach( $menu_item['sub'] as $menu_subitem )
@@ -275,7 +284,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 								$subactive = "class=\"active\"";
 						
 							$menu .= "
-								<li class=\"{$menu_subitem['text']}\"><a id=\"link-{$menu_subitem['text']}\" href=\"{$menu_subitem['link']}\" title=\"\" {$subactive}>".($GLOBALS['lang'][$menu_subitem['text']]?"{$GLOBALS['lang'][$menu_subitem['text']]}":"{$menu_subitem['text']}")."</a></li>";
+								<li class=\"{$menu_subitem['text']}\"><a id=\"link-{$menu_subitem['text']}\" href=\"{$menu_subitem['link']}\"  onclick=\"{$menu_subitem['onclick']}\" title=\"\" {$subactive}>".($GLOBALS['lang'][$menu_subitem['text']]?"{$GLOBALS['lang'][$menu_subitem['text']]}":"{$menu_subitem['text']}")."</a></li>";
 						}
 									
 						$menu .= "
@@ -285,7 +294,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 					else
 					{
 						$menu .= "
-									<li id=\"".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\" class=\"{$menu_item['text']}\"><a {$a} href=\"{$menu_item['link']}\">".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a></li>
+									<li id=\"".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\" class=\"{$menu_item['text']}\"><a {$a} id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\">".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a></li>
 						";
 					}
 				}
@@ -294,7 +303,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			{
 				$menu .= "
-									<li id=\"search-li\" class=\"search\"><input class=\"auto\" type=\"text\" id=\"search\" value=\"{$GLOBALS['lang']['search']}\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['search']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['search']}' : this.value; this.value=='{$GLOBALS['lang']['search']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" /></li>";
+									<li id=\"search-li\" class=\"search\"><form id=\"searchform\"><input type=\"submit\" style=\"display: none;\" /><input class=\"auto\" type=\"text\" id=\"search\" value=\"{$GLOBALS['lang']['search']}\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['search']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['search']}' : this.value; this.value=='{$GLOBALS['lang']['search']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" /></form></li>";
 			}
 
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
@@ -389,7 +398,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 			$_SESSION['ANTISPAM'] = md5(time().'busit');
 
 		$objects = "
-			<div id=\"login\">
+			<div id=\"login\" class=\"floatingdialog\">
 				<div class=\"form-small\">
 					<h3 class=\"center\">{$GLOBALS['lang']['login']}</h3>
 					<form action=\"/login_action\" method=\"post\" class=\"center\">
@@ -412,7 +421,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 					<div class=\"clearfix\">&nbsp;</div>
 				</div>
 			</div>
-			<div id=\"login-base\" style=\"display: none;\">
+			<div id=\"login-base\" style=\"display: none;\" class=\"floatingdialog\">
 				<div class=\"form-small\">
 					<h3 class=\"center\">{$GLOBALS['lang']['login']}</h3>
 					<form action=\"/login_action\" method=\"post\" class=\"center\">
@@ -435,7 +444,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 					<div class=\"clearfix\">&nbsp;</div>
 				</div>
 			</div>
-			<div id=\"recovery\" style=\"display: none;\">
+			<div id=\"recovery\" style=\"display: none;\" class=\"floatingdialog\">
 				<div class=\"form-small\">
 					<h3 class=\"center\">{$GLOBALS['lang']['recovery']}</h3>
 					<form action=\"/recovery_action\" method=\"post\" class=\"center\">
@@ -451,7 +460,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 					<div class=\"clearfix\">&nbsp;</div>
 				</div>
 			</div>
-			<div id=\"signup\">
+			<div id=\"signup\" class=\"floatingdialog\">
 				<div class=\"form-small\">		
 					<h3 class=\"center\">{$GLOBALS['lang']['signup']}</h3>
 					<form action=\"/signup_action\" method=\"post\" id=\"valid\" class=\"center\">
@@ -465,7 +474,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 					</form>
 				</div>
 			</div>
-			<div id=\"register\">
+			<div id=\"register\" class=\"floatingdialog\">
 				<div class=\"form-small\">		
 					<h3 class=\"center\">{$GLOBALS['lang']['signup']}</h3>
 					<p style=\"text-align: center;\">{$GLOBALS['lang']['signup_explain']}</p>
