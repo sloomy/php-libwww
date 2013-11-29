@@ -1,7 +1,7 @@
 [EN]
 TITLE = "Bus IT - Inter-objects communication"
 DESCRIPTION = "Connect your objects, your services and enjoy a more intelligent world."
-COPYRIGHT = "&copy; 2013 <a href='https://www.bus-it.com'>Bus IT</a>"
+COPYRIGHT = "&copy; 2014 <a href='https://www.bus-it.com'>Bus IT</a>"
 ABOUT = "About"
 HELP = "Help"
 CONTACT = "Contact"
@@ -32,7 +32,7 @@ left = "Credits left:"
 
 TITLE = "Bus IT - Communication inter-objets"
 DESCRIPTION = "Connectez vos objets, vos services, et profitez d'un monde plus intelligent."
-COPYRIGHT = "&copy; 2013 <a href='https://www.bus-it.com'>Bus IT</a>"
+COPYRIGHT = "&copy; 2014 <a href='https://www.bus-it.com'>Bus IT</a>"
 ABOUT = "A propos"
 HELP = "Aide"
 CONTACT = "Contact"

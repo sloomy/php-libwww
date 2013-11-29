@@ -52,6 +52,7 @@ class template_busit extends template
 		<link href=\"https://fonts.googleapis.com/css?family=Cuprum\" rel=\"stylesheet\" type=\"text/css\" />
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-1.9.1.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ui-1.10.3.custom.js\"></script>
+		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-chartjs.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ui-touch-punch.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-raty.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-jsplumb.js\"></script>
@@ -192,7 +193,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 							{
 								$menu .= "
 									<li class=\"{$menu_item['text']}\">
-										<a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a>
+										<a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a>
 										<ul>";
 									foreach( $menu_item['sub'] as $menu_subitem )
 									{
@@ -200,7 +201,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 											$subactive = "class=\"active\"";
 						
 										$menu .= "
-												<li class=\"{$menu_subitem['text']}\"><a id=\"link-{$menu_subitem['text']}\" href=\"{$menu_subitem['link']}\" title=\"\" {$subactive}>{$GLOBALS['lang'][$menu_subitem['text']]}</a></li>";
+												<li class=\"{$menu_subitem['text']}\"><a id=\"link-{$menu_subitem['text']}\" href=\"{$menu_subitem['link']}\" onclick=\"{$menu_subitem['onclick']}\" title=\"\" {$subactive}>{$GLOBALS['lang'][$menu_subitem['text']]}</a></li>";
 									}
 									
 									$menu .= "
@@ -210,7 +211,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 							else
 							{
 								$menu .= "
-							<li class=\"{$menu_item['text']}\"><a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a></li>";
+							<li class=\"{$menu_item['text']}\"><a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a></li>";
 							}
 						}
 					}
@@ -303,7 +304,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			{
 				$menu .= "
-									<li id=\"search-li\" class=\"search\"><form id=\"searchform\"><input type=\"submit\" style=\"display: none;\" /><input class=\"auto\" type=\"text\" id=\"search\" value=\"{$GLOBALS['lang']['search']}\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['search']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['search']}' : this.value; this.value=='{$GLOBALS['lang']['search']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" /></form></li>";
+									<li id=\"search-li\" class=\"search\"><form id=\"searchform\"><input type=\"submit\" style=\"display: none;\" /><input class=\"auto\" style=\"width: 220px; font-size: 15px;\" type=\"text\" id=\"search\" value=\"{$GLOBALS['lang']['search']}\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['search']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['search']}' : this.value; this.value=='{$GLOBALS['lang']['search']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" /></form></li>";
 			}
 
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
@@ -361,7 +362,6 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			</div>
 		</div>
 	</div>
-	<!-- Piwik -->
 	<script type=\"text/javascript\">
 	  var _paq = _paq || [];
 	  _paq.push([\"trackPageView\"]);
@@ -375,7 +375,6 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 		g.defer=true; g.async=true; g.src=u+\"piwik.js\"; s.parentNode.insertBefore(g,s);
 	  })();
 	</script>
-	<!-- End Piwik Code -->
 	</body>
 </html>";
 		
@@ -497,6 +496,17 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			</div>
 		";
 		
+		if( $_SESSION['FORM']['OPEN'] )
+		{
+			$objects .= "<script type=\"text/javascript\">
+							$(document).ready(function() {
+								$(\"#{$_SESSION['FORM']['OPEN']}\").dialog(\"open\");
+									$(\".ui-dialog-titlebar\").hide();
+							});
+						</script>";
+			unset($_SESSION['FORM']['OPEN']);
+		}
+		
 		if( $_SESSION['MESSAGE'] )
 		{
 			$objects .= "<div id=\"message\">
@@ -532,7 +542,19 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 								$(\"#login\").html($('#recovery').html());
 						</script>";
 		}
-				
+
+		if( $_SESSION['REGISTER']['STATUS'] === true )
+		{
+			$objects .= "<script type=\"text/javascript\">
+							$(document).ready(function() {
+								$(\"#register\").dialog(\"open\");
+								$(\".ui-dialog-titlebar\").hide();
+							});
+						</script>";	
+						
+			$_SESSION['REGISTER'] = false;
+		}
+		
 		if( $_SESSION['MESSAGE'] )
 		{
 			$objects .= "<script type=\"text/javascript\">
@@ -544,18 +566,6 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			
 			// we displayed it, clear it
 			$_SESSION['MESSAGE'] = false;
-		}
-		
-		if( $_SESSION['REGISTER']['STATUS'] === true )
-		{
-			$objects .= "<script type=\"text/javascript\">
-							$(document).ready(function() {
-								$(\"#register\").dialog(\"open\");
-								$(\".ui-dialog-titlebar\").hide();
-							});
-						</script>";	
-						
-			$_SESSION['REGISTER'] = false;
 		}
 		
 		return $objects;
