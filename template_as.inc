@@ -73,8 +73,6 @@ class template_as extends template
 		<meta itemprop=\"image\" href=\"https://www.anotherservice.com/{$GLOBALS['CONFIG']['SITE']}/images/favicon.png\" />
 		<link href=\"/{$GLOBALS['CONFIG']['SITE']}/css/style.css\" rel=\"stylesheet\" type=\"text/css\" />
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/footer.js\"></script>
-		<script type=\"text/javascript\">var APP_SITE = '{$GLOBALS['CONFIG']['SITE']}';</script>
-		<link href=\"https://fonts.googleapis.com/css?family=Cuprum\" rel=\"stylesheet\" type=\"text/css\" />
 		<meta name=\"google-site-verification\" content=\"Njm4b4GjVy2lmchM0ePmNBiAlyRToGDgS_pWsNmlZ9U\" />
 	</head>
 	<body>
