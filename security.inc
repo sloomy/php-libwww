@@ -33,7 +33,7 @@ abstract class security
 	{
 		if( !is_array($grant) )
 			$grant = array($grant);
-		
+
 		foreach( $grant as $g )
 			if( !self::hasGrant($g) )
 				$_SESSION['SECURITY'][$GLOBALS['CONFIG']['SITE']]['__GRANTS'][] = $g;
