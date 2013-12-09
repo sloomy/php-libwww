@@ -13,6 +13,14 @@ abstract class template
 		echo $this->bottom();
 		exit;
 	}
+
+	public final function outputSimple($content)
+	{
+		echo $this->topSimple();
+		echo $content;
+		echo $this->bottomSimple();
+		exit;
+	}
 	
 	public final static function redirect($link)
 	{

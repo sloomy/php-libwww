@@ -108,6 +108,7 @@ class security_as extends security
 		security::clearGrant();
 		
 		$grants = api::send('self/token/grant/list');
+
 		foreach( $grants as $g )
 			security::setGrant($g['name']);	
 	}

@@ -2,13 +2,13 @@
 
 [FR]
 TITLE = "Another Service - Cloud et hébergement applicatif"
-DESCRIPTION = "Services IT et hébergement cloud PHP, Java, Ruby, Python, MySQL, PostgreSQL, Mongo, CouchDB..."
+DESCRIPTION = "Services d'hébergement et fournisseur PaaS/IaaS haute disponibilité."
 WEBSITE = "Retour au portail"
 MONIT = "Supervision"
 ISSUES = "Maintenances"
-COPYRIGHT = "Copyright &copy; 2013 Another Service. Tous droits réservés."
+COPYRIGHT = "Copyright &copy; 2014 Another Service. Tous droits réservés."
 ABOUT = "A propos"
-ABOUT_TEXT = "<a href='http://www.anotherservice.com'>Another Service</a> propose un service d'hébergement applicatif sur Internet à destination des professionnels sur une infrastructure cloud française robuste et extensible."
+ABOUT_TEXT = "<a href='http://www.anotherservice.com'>Another Service</a> est un fournisseur d'hébergement spécialisé dans les applications critiques et les environnements de développement."
 SOCIAL = "Social"
 INFO = "Informations"
 INFO_1 = "<a href='/about'>A propos</a>"

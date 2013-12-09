@@ -18,20 +18,21 @@ class api
 		$request = array( 'http' => array( 'user_agent' => 'PHP/5.x (Olympe) API/1.0', 'method' => 'POST', 'timeout' => 10.0 ));
 
 		if( is_array($file) )
-			$request['http']['content'] = self::buildMultipartQuery($params, $file);
-		else
-			$request['http']['content'] = http_build_query(array('json'=>json_encode($params)));
-			
-		$request['http']['header']  = 'Content-Length: ' . strlen($request['http']['content']) . "\r\n";
-		
-		if( is_array($file) )
 			$request['http']['header'] .= 'Content-Type: multipart/form-data, boundary=' . $boundary . "\r\n";
 		else
 			$request['http']['header'] .= 'Content-Type: application/x-www-form-urlencoded' . "\r\n";
+			
+		if( is_array($file) )
+			$request['http']['content'] = self::buildMultipartQuery($params, $file, $boundary);
+		else
+			$request['http']['content'] = http_build_query($params);
+		
+		$request['http']['header']  .= 'Content-Length: ' . mb_strlen($request['http']['content'], '8bit') . "\r\n";
 
 		try
 		{
 			$fh = fopen($GLOBALS['CONFIG']['API_HOST'].'/'.$action, 'r', false, stream_context_create( $request ));
+
 			if( $fh === false )
 				throw new SiteException("Internal communication error", 500, "No answer from /{$action}");
 
@@ -52,19 +53,25 @@ class api
 		}
 	}
 	
-	public static function buildMultipartQuery($params, $file)
+	public static function buildMultipartQuery($params, $file, $boundary)
 	{
-		$boundary = "trlalaaaaaaaaaaaaaaaaalalalaalalaaaaaaaaaaa";
-		$content = '--' . $boundary . "\n";
+		$content = "";
 		
 		foreach( $params as $key => $value )
-			$content .= 'content-disposition: form-data; name="' . $key . '"' . "\n\n" . $value . "\n" . '--' . $boundary . "\n";
+		{
+			$content .= "\r\n--{$boundary}\r\n" .
+						"Content-Disposition: form-data; name=\"{$key}\"\r\n" . 
+						"\r\n" . 
+						$value;
+		}
 		
-		$content .= 'content-disposition: form-data; name="file"; filename="' . $file['name'] . '"' . "\n";
-		$content .= 'Content-Type: ' . $file['type'] . "\n";
-		$content .= 'Content-Transfer-Encoding: binary' . "\n\n";
-		$content .= $file['binary'];
-		$content .= "\n" . '--' . $boundary . "\n";
+		$content .= "\r\n--{$boundary}\r\n" .
+					"Content-Disposition: form-data; name=\"upload\"; filename=\"{$file['name']}\"\r\n" .
+					"Content-Type: {$file['type']}\r\n" . 
+					"\r\n" .
+					$file['binary'];
+					
+		$content .= "\r\n--{$boundary}--";
 
 		return $content;
 	}

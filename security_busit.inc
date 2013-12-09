@@ -15,23 +15,27 @@ class access_busit
 		$a['/admin/index'] = array('ACCESS', 'USER_SELECT');
 		$a['/admin/group'] = array('ACCESS', 'GROUP_SELECT');
 		$a['/admin/group/index'] = array('ACCESS', 'GROUP_SELECT');
+
+		$a['/developers/panel'] = array('ACCESS', 'DEVELOPER_ACCESS');
+		$a['/developers/panel/connector'] = array('ACCESS', 'SELF_CONNECTOR_SELECT');
+		$a['/developers/panel/connector/add'] = array('ACCESS', 'SELF_CONNECTOR_INSERT');
+				
+		$a['/panel'] = array('SELF_ACCESS');
+		$a['/panel/index'] = array('SELF_ACCESS');
+		$a['/panel/instance'] = array('SELF_ACCESS');
+		$a['/panel/instance/add'] = array('SELF_ACCESS');
+		$a['/panel/instance/setup'] = array('SELF_ACCESS');
+		$a['/panel/instance/send_action'] = array('SELF_ACCESS');
+		$a['/panel/settings'] = array('SELF_ACCESS');
+		$a['/panel/showcase/install'] = array('SELF_ACCESS');
+		$a['/panel/overview'] = array('SELF_ACCESS');
+		$a['/panel/log'] = array('SELF_ACCESS');
+		$a['/panel/quota'] = array('SELF_ACCESS');
+		$a['/panel/quota/view'] = array('SELF_ACCESS');
+		$a['/panel/quota/buy'] = array('SELF_ACCESS');
+		$a['/panel/quota/buy'] = array('SELF_ACCESS');
 		
-		$a['/panel'] = array('ACCESS');
-		$a['/panel/index'] = array('ACCESS');
-		$a['/panel/instance'] = array('ACCESS');
-		$a['/panel/instance/add'] = array('ACCESS');
-		$a['/panel/instance/setup'] = array('ACCESS');
-		$a['/panel/instance/send_action'] = array('ACCESS');
-		$a['/panel/settings'] = array('ACCESS');
-		$a['/panel/showcase/install'] = array('ACCESS');
-		$a['/panel/overview'] = array('ACCESS');
-		$a['/panel/log'] = array('ACCESS');
-		$a['/panel/quota'] = array('ACCESS');
-		$a['/panel/quota/view'] = array('ACCESS');
-		$a['/panel/quota/buy'] = array('ACCESS');
-		$a['/panel/quota/buy'] = array('ACCESS');
-		
-		$a['/logout'] = array('ACCESS');
+		$a['/logout'] = array('SELF_ACCESS');
 		
 		if( !is_array($page) )
 			$page = array($page);
@@ -59,7 +63,7 @@ class security_busit extends security
 		if( !preg_match("/^[a-fA-F0-9]{32}$/", $pass) )
 		{
 			// this is a password so get a list of tokens
-			$tokens = api::send('self/token/list', array('auth'=>'', 'user'=>$user, 'pass'=>$pass));
+			$tokens = api::send('system/token/list', array('auth'=>'', 'user'=>$user, 'pass'=>$pass));
 			
 			if( count($tokens) < 1 )
 				throw new SiteException("Forbidden", 403, "No available token");
@@ -68,7 +72,7 @@ class security_busit extends security
 			{
 				// redirect to the login page
 				foreach( $tokens as $t )
-					$_SESSION['LOGIN_TOKENS'][] = array('token'=>$t['token'], 'name'=>$t['name']);
+					$_SESSION['LOGIN_TOKENS'][] = array('token'=>$t['token_value'], 'name'=>$t['name']);
 				$_SESSION['LOGIN_USER'] = $user;
 
 				template::redirect($GLOBALS['CONFIG']['LOGIN_PAGE']);
@@ -76,7 +80,7 @@ class security_busit extends security
 			else
 			{
 				// force login with the first token
-				$pass = $tokens[0]['token'];
+				$pass = $tokens[0]['token_value'];
 			}
 		}
 		
@@ -99,7 +103,11 @@ class security_busit extends security
 	public function directLogin($auth)
 	{
 		security::set('API_AUTH', $auth);
-		security::set('USER', preg_replace("/:.*$/s", "", $auth));
+		
+		$expl = explode(':', $auth);
+		security::set('USER', $expl[0]);
+		security::set('TOKEN', $expl[1]);
+		
 		$this->loadGrants();
 	}
 	
@@ -107,17 +115,17 @@ class security_busit extends security
 	{
 		security::clearGrant();
 		
-		$grants = api::send('self/token/grant/list');
+		$grants = api::send('self/system/grant/token/list', array('token'=>security::get('TOKEN')));
 		foreach( $grants as $g )
-			security::setGrant($g['name']);	
+			security::setGrant($g['grant_name']);	
 	}
 	
 	public function logout()
 	{
 		parent::logout();
 		
-		if( isset($_COOKIE['SYSPIE']) )
-			setcookie('SYSPIE', '', time()-60*60*24*30, '/');
+		if( isset($_COOKIE['BUSITPIE']) )
+			setcookie('BUSITPIE', '', time()-60*60*24*30, '/');
 	}
 	
 	private function save($auth=null)
@@ -129,15 +137,15 @@ class security_busit extends security
 		for( $i = 0; $i < strlen($auth); $i++ )
 			$crypt .= base_convert(ord($auth[$i]), 10, 36);
 		
-		setcookie('SYSPIE', base64_encode($crypt), mktime(0,0,0,12,31,2030), '/');
+		setcookie('BUSITPIE', base64_encode($crypt), mktime(0,0,0,12,31,2030), '/');
 	}
 	
 	private function load()
 	{
-		if( !isset($_COOKIE['SYSPIE']) )
+		if( !isset($_COOKIE['BUSITPIE']) )
 			return null;
 		
-		$crypt = base64_decode($_COOKIE['SYSPIE']);
+		$crypt = base64_decode($_COOKIE['BUSITPIE']);
 		$auth = '';
 		for( $i = 0; $i < strlen($crypt); $i += 2 )
 			$auth .= chr(base_convert(substr($crypt,$i,2), 36, 10));
