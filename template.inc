@@ -36,8 +36,8 @@ abstract class template
 			$extra = ltrim($link, '/\\');
 			
 			$protocol = 'http';
-			//if( 1 /*isset($_SERVER['HTTP_X_SSL_CIPHER']) && $_SERVER['HTTP_X_SSL_CIPHER'] != "" && $_SERVER['HTTP_X_SSL_CIPHER'] != 'off'*/ )
-			//	$protocol .= 's';
+			if( $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' )
+				$protocol .= 's';
 
 			header("Location: {$protocol}://{$host}{$uri}/{$extra}");
 			exit;

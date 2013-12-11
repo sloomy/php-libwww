@@ -90,6 +90,7 @@ class template_as extends template
 			$top .= "
 						</ul>
 					</div>
+					<div class=\"clearfix\"></div>
 				</div>
 			</div>
 ";
