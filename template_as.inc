@@ -76,7 +76,7 @@ class template_as extends template
 		<meta name=\"google-site-verification\" content=\"Njm4b4GjVy2lmchM0ePmNBiAlyRToGDgS_pWsNmlZ9U\" />
 	</head>
 	<body>
-		<div id=\"wrapper\">
+		<div id=\"wrapper\" style=\"".(strstr($GLOBALS['CONFIG']['PAGE'], 'status') !== false?"background-color: #7bbb51; background-image: url('/{$GLOBALS['CONFIG']['SITE']}/images/dotgrid-black.png');":"")."\">
 			<div id=\"header\">
 				<div class=\"container\">
 					<div class=\"logo\">
