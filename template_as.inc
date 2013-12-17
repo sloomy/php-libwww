@@ -76,6 +76,16 @@ class template_as extends template
 		<meta name=\"google-site-verification\" content=\"Njm4b4GjVy2lmchM0ePmNBiAlyRToGDgS_pWsNmlZ9U\" />
 	</head>
 	<body>
+	<div id=\"fb-root\"></div>
+	<script>
+		(function(d, s, id){
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = \"//connect.facebook.net/en_US/all.js#xfbml=1&appId=233857746673934\";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 		<div id=\"wrapper\" style=\"".(strstr($GLOBALS['CONFIG']['PAGE'], 'status') !== false?"background-color: #7bbb51; background-image: url('/{$GLOBALS['CONFIG']['SITE']}/images/dotgrid-black.png');":"")."\">
 			<div id=\"header\">
 				<div class=\"container\">
@@ -258,18 +268,15 @@ if( $_SESSION['MESSAGE'] )
 				</div>
 			</div>
 		</div>
-	<!-- Piwik --> 
-	<script type=\"text/javascript\">
-	var pkBaseURL = ((\"https:\" == document.location.protocol) ? \"https://stats.anotherservice.com/\" : \"http://stats.anotherservice.com/\");
-	document.write(unescape(\"%3Cscript src='\" + pkBaseURL + \"piwik.js' type='text/javascript'%3E%3C/script%3E\"));
-	</script><script type=\"text/javascript\">
-	try {
-	var piwikTracker = Piwik.getTracker(pkBaseURL + \"piwik.php\", 3);
-	piwikTracker.trackPageView();
-	piwikTracker.enableLinkTracking();
-	} catch( err ) {}
-	</script><noscript><p><img src=\"http://stats.anotherservice.com/piwik.php?idsite=1\" style=\"border:0\" alt=\"\" /></p></noscript>
-	<!-- End Piwik Tracking Code -->
+		<script type=\"text/javascript\">
+			(function() {
+				var u=((\"https:\" == document.location.protocol) ? \"https\" : \"http\") + \"://stats.anotherservice.com/\";
+				_paq.push([\"setTrackerUrl\", u+\"piwik.php\"]);
+				_paq.push([\"setSiteId\", \"3\"]);
+				var d=document, g=d.createElement(\"script\"), s=d.getElementsByTagName(\"script\")[0]; g.type=\"text/javascript\";
+				g.defer=true; g.async=true; g.src=u+\"piwik.js\"; s.parentNode.insertBefore(g,s);
+			})();
+		</script>
 	</body>
 </html>";
 		
