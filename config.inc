@@ -36,9 +36,10 @@ else
 
 switch( $_SERVER["HTTP_HOST"] )
 {
-	case 'hosting.olympe.in':
-	case 'hosting.dev.olympe.in':
-	case 'local.hosting.olympe.in':
+	case 'www.olympe.in':
+	case 'www.dev.olympe.in':
+	case 'v7.olympe.in':
+	case 'local.olympe.in':
 		$GLOBALS['CONFIG']['SITE'] = 'on';
 		break;
 	case 'www.anotherservice.com':
@@ -49,6 +50,7 @@ switch( $_SERVER["HTTP_HOST"] )
 	case 'www.bus-it.com':
 	case 'www.bus-it.net':
 	case 'local.bus-it.com':
+	case 'www.dev.bus-it.com':
 		$GLOBALS['CONFIG']['SITE'] = 'busit';
 		break;
 	case 'apps.bus-it.com':

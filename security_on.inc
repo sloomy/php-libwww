@@ -10,32 +10,22 @@ class access_on
 			$page = rtrim($page, "/");
 		
 		$a = array();
-		$a['/'] = array('ACCESS');
-		$a['/index'] = array('ACCESS');
-		$a['/logout'] = array('ACCESS');
 		
 		$a['/admin'] = array('ACCESS', 'USER_SELECT');
 		$a['/admin/index'] = array('ACCESS', 'USER_SELECT');
 		$a['/admin/group'] = array('ACCESS', 'GROUP_SELECT');
 		$a['/admin/group/index'] = array('ACCESS', 'GROUP_SELECT');
-		$a['/admin/user'] = array('ACCESS', 'USER_SELECT');
-		$a['/admin/stat'] = array('ACCESS', 'USER_SELECT');
-		$a['/admin/site'] = array('ACCESS', 'SITE_SELECT');
-		$a['/admin/domain'] = array('ACCESS', 'DOMAIN_SELECT');
 		
 		$a['/panel'] = array('ACCESS');
 		$a['/panel/index'] = array('ACCESS');
+		$a['/panel/domain'] = array('ACCESS');
+		$a['/panel/domain/add'] = array('ACCESS');
 		$a['/panel/profile'] = array('ACCESS');
-		$a['/panel/cloud'] = array('ACCESS');
-		$a['/panel/cron'] = array('ACCESS');
-		$a['/panel/site'] = array('SELF_SITE_SELECT');
-		$a['/panel/domain'] = array('SELF_DOMAIN_SELECT');
-		$a['/panel/mail'] = array('SELF_ACCOUNT_SELECT','SELF_DOMAIN_SELECT');
-		$a['/panel/db'] = array('SELF_DATABASE_SELECT');
-		$a['/panel/stat'] = array('SELF_SITE_SELECT');
-		$a['/panel/app'] = array('SELF_APP_SELECT');
-		$a['/panel/quota'] = array('SELF_QUOTA_SELECT');
-		$a['/panel/alert'] = array('SELF_SITE_SELECT');
+		$a['/panel/service'] = array('ACCESS');
+		$a['/panel/service/add'] = array('ACCESS');
+		$a['/panel/user'] = array('ACCESS');
+		$a['/panel/user/add'] = array('ACCESS');
+		$a['/logout'] = array('ACCESS');
 		
 		if( !is_array($page) )
 			$page = array($page);
@@ -97,7 +87,7 @@ class security_on extends security
 			template::redirect($r);
 		}
 		else
-			template::redirect($GLOBALS['CONFIG']['DEFAULT_PAGE']);
+			template::redirect($GLOBALS['CONFIG']['PANEL_PAGE']);
 	}
 	
 	public function directLogin($auth)
@@ -112,6 +102,7 @@ class security_on extends security
 		security::clearGrant();
 		
 		$grants = api::send('self/token/grant/list');
+
 		foreach( $grants as $g )
 			security::setGrant($g['name']);	
 	}
