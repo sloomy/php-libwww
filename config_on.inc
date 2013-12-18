@@ -4,11 +4,13 @@ $GLOBALS['CONFIG']['DEBUG'] 		= true;
 $GLOBALS['CONFIG']['THROW_ERRORS'] 	= (E_ALL | E_STRICT) & ~E_NOTICE;
 
 if( $_SERVER["HTTP_HOST"] == 'localhost' || $_SERVER["HTTP_HOST"] == '127.0.0.1' || $_SERVER["HTTP_HOST"] == 'local.olympe.in' )
-	$conf = parse_ini_file('../hosting.ini', true);
+	$conf = parse_ini_file('../www.ini', true);
 elseif( $_SERVER["HTTP_HOST"] == 'hosting.dev.olympe.in' )
 	$conf = parse_ini_file('/dns/in/olympe/etc/settings/hosting.dev.ini', true);
-else
+elseif( $_SERVER["HTTP_HOST"] == 'hosting.olympe.in' )
 	$conf = parse_ini_file('/dns/in/olympe/etc/settings/hosting.ini', true);
+else
+	$conf = parse_ini_file('/dns/in/olympe/etc/settings/www.ini', true);
 
 $GLOBALS['CONFIG']['API_HOST'] 		= 'https://' . $conf['Main']['API_HOST'];
 $GLOBALS['CONFIG']['API_USERNAME']	= $conf['Main']['API_USERNAME'];
@@ -39,7 +41,7 @@ $GLOBALS['CONFIG']['MAIL_TEMPLATE'] = "
                   <table id=\"templateContent\" style=\"border-spacing: 0; border-collapse: collapse; font-family: proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; height: 100%; width: 100%; background: #ffffff; margin: 0; padding: 0; border: 0;\">
                     <tr style=\"vertical-align: top; padding: 0;\">
                       <td style=\"vertical-align: top; text-align: left; padding: 0;\" align=\"left\" valign=\"top\">
-                        <h1 id=\"logo\" style=\"color: #de5711; display: block; font-family: hybrea, proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; font-size: 32px; font-weight: 200; text-align: left; margin: 0 0 40px;\" align=\"left\"><img src=\"https://www.olympe.in/on/images/logo-dark.png\" alt=\"Bus IT\" width=\"140\" height=\"42\" style=\"outline: none; text-decoration: none; border: 0;\" /></h1>
+                        <h1 id=\"logo\" style=\"color: #de5711; display: block; font-family: hybrea, proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; font-size: 32px; font-weight: 200; text-align: left; margin: 0 0 40px;\" align=\"left\"><img src=\"https://www.olympe.in/on/images/logo-dark.png\" alt=\"Olympe\" width=\"140\" height=\"42\" style=\"outline: none; text-decoration: none; border: 0;\" /></h1>
 						{CONTENT}
 					   <p style=\"margin: 20px 0;\">
                           The Olympe Team<br />
