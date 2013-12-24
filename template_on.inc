@@ -86,7 +86,7 @@ class template_on extends template
 		$top .= "
 			</div>
 		</div>
-		<div class=\"core\" id=\"core\">";
+		<div class=\"core\" id=\"core\" style=\"".(strstr($GLOBALS['CONFIG']['PAGE'], 'status')!==false?"background-color: #f0f0f0;":"")."\">";
 	
 		$logged = $GLOBALS['security']->hasAccess('/panel');
 
