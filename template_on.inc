@@ -426,7 +426,7 @@ class template_on extends template
 		
 		if( $_SESSION['CHANGEPASS']['TOKEN'] && $_SESSION['CHANGEPASS']['USER'] )
 		{
-			$object .= "
+			$objects .= "
 						<script type=\"text/javascript\">
 							$(document).ready(function() {
 								$(\"#changepass\").dialog(\"open\");
