@@ -31,6 +31,7 @@ signup_explain = "Merci de votre inscription sur notre plateforme, veuillez choi
 changepass = "Modification de mot de passe"
 changepass_explain = "Merci de renseigner votre nouveau mot de passe."
 changetip = "Nouveau mot de passe"
+confirm = "Confirmation"
 confirmtip = "Confirmation du mot de passe"
 echangepassword = "Les mots de passe ne correspondent pas."
 change = "Modifier"
