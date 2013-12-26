@@ -401,11 +401,6 @@ class template_on extends template
 					</form>
 				</div>
 			</div>
-		";
-		
-		if( $_SESSION['CHANGEPASS'] && $_SESSION['CHANGEPASS']['TOKEN'] && $_SESSION['CHANGEPASS']['USER'] )
-		{
-			$object .= "
 			<div id=\"changepass\" class=\"floatingdialog\">
 				<div class=\"form-small\">		
 					<h3 class=\"center\">{$GLOBALS['lang']['changepass']}</h3>
@@ -427,6 +422,17 @@ class template_on extends template
 					</form>
 				</div>
 			</div>
+		";
+		
+		if( $_SESSION['CHANGEPASS']['TOKEN'] && $_SESSION['CHANGEPASS']['USER'] )
+		{
+			$object .= "
+						<script type=\"text/javascript\">
+							$(document).ready(function() {
+								$(\"#changepass\").dialog(\"open\");
+								$(\".ui-dialog-titlebar\").hide();
+							});
+						</script>
 			";
 		}
 		
@@ -435,7 +441,7 @@ class template_on extends template
 			$objects .= "<script type=\"text/javascript\">
 							$(document).ready(function() {
 								$(\"#{$_SESSION['FORM']['OPEN']}\").dialog(\"open\");
-									$(\".ui-dialog-titlebar\").hide();
+								$(\".ui-dialog-titlebar\").hide();
 							});
 						</script>";
 			unset($_SESSION['FORM']['OPEN']);
