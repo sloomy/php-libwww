@@ -403,6 +403,33 @@ class template_on extends template
 			</div>
 		";
 		
+		if( $_SESSION['CHANGEPASS'] && $_SESSION['CHANGEPASS']['TOKEN'] && $_SESSION['CHANGEPASS']['USER'] )
+		{
+			$object .= "
+			<div id=\"changepass\" class=\"floatingdialog\">
+				<div class=\"form-small\">		
+					<h3 class=\"center\">{$GLOBALS['lang']['changepass']}</h3>
+					<p style=\"text-align: center;\">{$GLOBALS['lang']['changepass_explain']}</p>
+					<form action=\"/change_password_action\" method=\"post\" id=\"valid\" class=\"center\">
+						<input type=\"hidden\" name=\"user\" value=\"{$_SESSION['CHANGEPASS']['TOKEN']}\" />
+						<input type=\"hidden\" name=\"token\" value=\"{$_SESSION['CHANGEPASS']['USER']}\" />
+						<fieldset>
+							<input class=\"auto\" type=\"password\" value=\"{$GLOBALS['lang']['password']}\" name=\"password\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['password']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['password']}' : this.value; this.value=='{$GLOBALS['lang']['password']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\"/>							
+							".(isset($_GET['echangepassword'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['echangepassword']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['changetip']}</a>")."
+						</fieldset>
+						<fieldset>
+							<input class=\"auto\" type=\"password\" value=\"{$GLOBALS['lang']['password']}\" name=\"password\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['password']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['password']}' : this.value; this.value=='{$GLOBALS['lang']['password']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\"/>							
+							<span class=\"help-block\">{$GLOBALS['lang']['confirmtip']}</a>
+						</fieldset>					
+						<fieldset>	
+							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['change']}\" />
+						</fieldset>
+					</form>
+				</div>
+			</div>
+			";
+		}
+		
 		if( $_SESSION['FORM']['OPEN'] )
 		{
 			$objects .= "<script type=\"text/javascript\">
