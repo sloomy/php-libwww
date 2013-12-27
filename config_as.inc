@@ -13,6 +13,8 @@ else
 $GLOBALS['CONFIG']['API_HOST'] 		= 'https://' . $conf['Main']['API_HOST'];
 $GLOBALS['CONFIG']['API_USERNAME']	= $conf['Main']['API_USERNAME'];
 $GLOBALS['CONFIG']['API_PASSWORD']	= $conf['Main']['API_TOKEN'];
+$GLOBALS['CONFIG']['HOSTNAME']		= $conf['Main']['HOSTNAME'];
+$GLOBALS['CONFIG']['UPTIME_TOKEN']	= $conf['Main']['UPTIME_TOKEN'];
 
 if( $conf['Main']['DEBUG'] == 'inactive' )
 $GLOBALS['CONFIG']['DEBUG'] 		= false;
