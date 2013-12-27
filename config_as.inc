@@ -22,7 +22,7 @@ unset($conf);
 
 $GLOBALS['CONFIG']['DEFAULT_PAGE']		= '/default';
 $GLOBALS['CONFIG']['PANEL_PAGE']		= '/panel';
-$GLOBALS['CONFIG']['LOGIN_PAGE']		= '/login';
+$GLOBALS['CONFIG']['LOGIN_PAGE']		= '/?elogin';
 $GLOBALS['CONFIG']['DEFAULT_LANGUAGE']	= 'FR';
 
 $GLOBALS['CONFIG']['MAIL_TEMPLATE'] = "
