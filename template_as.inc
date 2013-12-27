@@ -406,6 +406,7 @@ class template_as extends template
 						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
 						<input type=\"hidden\" name=\"email\" value=\"{$_SESSION['REGISTER']['EMAIL']}\" />
 						<input type=\"hidden\" name=\"code\" value=\"{$_SESSION['REGISTER']['CODE']}\" />
+						<input type=\"hidden\" name=\"username\" value=\"{$_SESSION['REGISTER']['USER']}\" />
 						<fieldset>
 							<input disabled type=\"text\" value=\"{$_SESSION['REGISTER']['USER']}\" name=\"username\" />
 							".(isset($_GET['eregister'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['eregister']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['usertip']}</a>")."
