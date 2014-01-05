@@ -5,14 +5,20 @@ $GLOBALS['CONFIG']['THROW_ERRORS'] 	= (E_ALL | E_STRICT) & ~E_NOTICE;
 
 if( $_SERVER["HTTP_HOST"] == 'localhost' || $_SERVER["HTTP_HOST"] == '127.0.0.1' || $_SERVER["HTTP_HOST"] == 'local.sys.as' )
 	$conf = parse_ini_file('../www.ini', true);
-elseif( $_SERVER["HTTP_HOST"] == 'dev.anotherservice.com' || $_SERVER["HTTP_HOST"] == 'www.dev.anotherservice.com' )
-	$conf = parse_ini_file('/dns/com/anotherservice/etc/settings/www.dev.ini', true);
+elseif( $_SERVER["HTTP_HOST"] == 'dev.sys.as' || $_SERVER["HTTP_HOST"] == 'www.dev.sys.as' )
+	$conf = parse_ini_file('/dns/as/sys/etc/settings/www.dev.ini', true);
 else
-	$conf = parse_ini_file('/dns/com/anotherservice/etc/settings/www.ini', true);
+	$conf = parse_ini_file('/dns/as/sys/etc/settings/www.ini', true);
 	
-$GLOBALS['CONFIG']['API_HOST'] 		= 'https://' . $conf['Main']['API_HOST'];
-$GLOBALS['CONFIG']['API_USERNAME']	= $conf['Main']['API_USERNAME'];
-$GLOBALS['CONFIG']['API_PASSWORD']	= $conf['Main']['API_TOKEN'];
+$GLOBALS['CONFIG']['API_AS_HOST'] 		= 'https://' . $conf['Main']['API_AS_HOST'];
+$GLOBALS['CONFIG']['API_AS_USERNAME']	= $conf['Main']['API_AS_USERNAME'];
+$GLOBALS['CONFIG']['API_AS_PASSWORD']	= $conf['Main']['API_AS_TOKEN'];
+$GLOBALS['CONFIG']['API_ON_HOST'] 		= 'https://' . $conf['Main']['API_ON_HOST'];
+$GLOBALS['CONFIG']['API_ON_USERNAME']	= $conf['Main']['API_ON_USERNAME'];
+$GLOBALS['CONFIG']['API_ON_PASSWORD']	= $conf['Main']['API_ON_TOKEN'];
+$GLOBALS['CONFIG']['API_BI_HOST'] 		= 'https://' . $conf['Main']['API_BI_HOST'];
+$GLOBALS['CONFIG']['API_BI_USERNAME']	= $conf['Main']['API_BI_USERNAME'];
+$GLOBALS['CONFIG']['API_BI_PASSWORD']	= $conf['Main']['API_BI_TOKEN'];
 $GLOBALS['CONFIG']['HOSTNAME']		= $conf['Main']['HOSTNAME'];
 $GLOBALS['CONFIG']['UPTIME_TOKEN']	= $conf['Main']['UPTIME_TOKEN'];
 

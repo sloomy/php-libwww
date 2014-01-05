@@ -335,13 +335,12 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 		<div id=\"footer\" class=\"footer\">
 			<div class=\"content\">
 				<ul>
-						<li><a href=\"/about\">{$GLOBALS['lang']['ABOUT']}</a></li>
-						<li><a href=\"/about/contact\">{$GLOBALS['lang']['CONTACT']}</a></li>
-						<li><a href=\"/doc\">{$GLOBALS['lang']['HELP']}</a></li>
-						<li><a href=\"/developers\">{$GLOBALS['lang']['DEVELOPERS']}</a></li>
-						<li><a href=\"/about/legal\">{$GLOBALS['lang']['LEGAL']}</a></li>
-						<li><a href=\"/about/privacy\">{$GLOBALS['lang']['PRIVACY']}</a></li>
-					</ul>
+					<li><a href=\"/about\">{$GLOBALS['lang']['ABOUT']}</a></li>
+					<li><a href=\"/about/contact\">{$GLOBALS['lang']['CONTACT']}</a></li>
+					<li><a href=\"/doc\">{$GLOBALS['lang']['HELP']}</a></li>
+					<li><a href=\"/developers\">{$GLOBALS['lang']['DEVELOPERS']}</a></li>
+					<li><a href=\"/about/legal\">{$GLOBALS['lang']['LEGAL']}</a></li>
+					<li><a href=\"/about/privacy\">{$GLOBALS['lang']['PRIVACY']}</a></li>
 				</ul>
 				<p style=\"padding: 5px 0 0 0; font-size: 12px;\">
 	";

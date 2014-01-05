@@ -258,44 +258,24 @@ class template_sys extends template
 		$bottom .= "
 
 		<!-- Footer -->
-		<div id=\"footer\">
-			<div class=\"container\">
-				<div class=\"column1\">
-					<h1 class=\"footer\">{$GLOBALS['lang']['ABOUT']}</h1>
-					<p>{$GLOBALS['lang']['ABOUT_TEXT']}</p>
-				</div>
-				<div class=\"column2\">
-					<h1 class=\"footer\">{$GLOBALS['lang']['INFO']}</h1>
-					<ul class=\"simple\">
-						<li>{$GLOBALS['lang']['INFO_1']}</li>
-						<li>{$GLOBALS['lang']['INFO_2']}</li>
-						<li>{$GLOBALS['lang']['INFO_3']}</li>
-						<li>{$GLOBALS['lang']['INFO_4']}</li>
-					</ul>
-				</div>
-				<div class=\"column3\">
-					<h1 class=\"footer\">{$GLOBALS['lang']['RESOURCES']}</h1>
-					<ul class=\"simple\">
-						<li>{$GLOBALS['lang']['RES_1']}</li>
-						<li>{$GLOBALS['lang']['RES_2']}</li>
-						<li>{$GLOBALS['lang']['RES_3']}</li>
-						<li>{$GLOBALS['lang']['RES_4']}</li>
-					</ul>
-				</div>
-				<div class=\"column4\">
-					<h1 class=\"footer\">{$GLOBALS['lang']['SOCIAL']}</h1>
-					<ul id=\"social\">
-						<li id=\"facebook\"><a href=\"https://www.facebook.com/another.service\">Facebook</a></li>
-						<li id=\"twitter\"><a href=\"https://twitter.com/anotherservice\">Twitter</a></li>
-						<li id=\"linkedin\"><a href=\"http://www.linkedin.com/company/s-y-s-sas\">LinkedIn</a></li>
-					</ul>
-				</div>
-				<div class=\"clearfix\"></div>
-			</div>
-		</div>
-		<div id=\"copyright\">
-			<div class=\"container\">
-				{$GLOBALS['lang']['COPYRIGHT']}
+		<div id=\"footer\" class=\"footer\">
+			<div class=\"content\">
+				<ul>
+					<li><a href=\"/about\">{$GLOBALS['lang']['ABOUT']}</a></li>
+					<li><a href=\"/about/contact\">{$GLOBALS['lang']['CONTACT']}</a></li>
+					<li><a href=\"/about/press\">{$GLOBALS['lang']['PRESS']}</a></li>
+					<li><a href=\"/noc\">{$GLOBALS['lang']['INFRA']}</a></li>
+				</ul>
+				<p style=\"padding: 5px 0 0 0; font-size: 12px;\">
+	";
+	$request = str_replace(array('?lang='.translator::getLanguage(), '&lang='.translator::getLanguage()) , array('', ''), $_SERVER['REQUEST_URI']);
+
+	$bottom .= "	
+					".(translator::getLanguage()=='EN'?"<span style=\"color: #4d4d4d;\">":"<a href=\"{$request}".(strstr($request,'?')===false?"?":"&")."lang=EN\">")."English".(translator::getLanguage()=='EN'?"</span>":"</a>")."&nbsp;&nbsp;&nbsp;
+					".(translator::getLanguage()=='FR'?"<span style=\"color: #4d4d4d;\">":"<a href=\"{$request}".(strstr($request,'?')===false?"?":"&")."lang=FR\">")."Fran&ccedil;ais".(translator::getLanguage()=='FR'?"</span>":"</a>")."&nbsp;&nbsp;&nbsp;
+					".(translator::getLanguage()=='ES'?"<span style=\"color: #4d4d4d;\">":"<a href=\"{$request}".(strstr($request,'?')===false?"?":"&")."lang=ES\">")."Espa&ntilde;ol".(translator::getLanguage()=='ES'?"</span>":"</a>")."&nbsp;&nbsp;&nbsp;
+				</p>
+				<p>{$GLOBALS['lang']['COPYRIGHT']}</p>
 			</div>
 		</div>
 	</div>
@@ -307,7 +287,7 @@ class template_sys extends template
 	  (function() {
 		var u=((\"https:\" == document.location.protocol) ? \"https\" : \"http\") + \"://stats.anotherservice.com/\";
 		_paq.push([\"setTrackerUrl\", u+\"piwik.php\"]);
-		_paq.push([\"setSiteId\", \"3\"]);
+		_paq.push([\"setSiteId\", \"9\"]);
 		var d=document, g=d.createElement(\"script\"), s=d.getElementsByTagName(\"script\")[0]; g.type=\"text/javascript\";
 		g.defer=true; g.async=true; g.src=u+\"piwik.js\"; s.parentNode.insertBefore(g,s);
 	  })();
