@@ -459,11 +459,12 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
 						<fieldset>
 							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_CODE']?"{$_SESSION['JOIN_CODE']}":"{$GLOBALS['lang']['code']}")."\" name=\"code\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['code']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['code']}' : this.value; this.value=='{$GLOBALS['lang']['code']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
-						</fieldset>
+							".(isset($_GET['ecode'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['ecode']}</span>":"")."
+						</fieldset>						
 						<fieldset>
 							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_EMAIL']?"{$_SESSION['JOIN_EMAIL']}":"{$GLOBALS['lang']['email']}")."\" name=\"email\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['email']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['email']}' : this.value; this.value=='{$GLOBALS['lang']['email']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
 						</fieldset>
-						<fieldset>	
+						<fieldset>
 							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['signup']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
 						</fieldset>
 					</form>
@@ -477,6 +478,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
 						<input type=\"hidden\" name=\"email\" value=\"{$_SESSION['REGISTER']['EMAIL']}\" />
 						<input type=\"hidden\" name=\"id\" value=\"{$_SESSION['REGISTER']['ID']}\" />
+						<input type=\"hidden\" name=\"origin\" value=\"{$_SESSION['REGISTER']['ORIGIN']}\" />
 						<fieldset>
 							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_USER']?"{$_SESSION['JOIN_USER']}":"{$GLOBALS['lang']['username']}")."\" name=\"username\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['username']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['username']}' : this.value; this.value=='{$GLOBALS['lang']['username']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
 							".(isset($_GET['eregister'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['eregister']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['usertip']}</a>")."
@@ -538,7 +540,16 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 								$(\"#login\").html($('#recovery').html());
 						</script>";
 		}
-
+		if( isset($_GET['ecode']) )
+		{
+			$objects .= "<script type=\"text/javascript\">
+							$(document).ready(function() {
+								$(\"#signup\").dialog(\"open\");
+								$(\".ui-dialog-titlebar\").hide();
+							});
+						</script>";
+		}
+		
 		if( $_SESSION['REGISTER']['STATUS'] === true )
 		{
 			$objects .= "<script type=\"text/javascript\">
