@@ -458,6 +458,9 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 					<form action=\"/signup_action\" method=\"post\" id=\"valid\" class=\"center\">
 						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
 						<fieldset>
+							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_CODE']?"{$_SESSION['JOIN_CODE']}":"{$GLOBALS['lang']['code']}")."\" name=\"code\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['code']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['code']}' : this.value; this.value=='{$GLOBALS['lang']['code']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+						</fieldset>
+						<fieldset>
 							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_EMAIL']?"{$_SESSION['JOIN_EMAIL']}":"{$GLOBALS['lang']['email']}")."\" name=\"email\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['email']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['email']}' : this.value; this.value=='{$GLOBALS['lang']['email']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
 						</fieldset>
 						<fieldset>	
