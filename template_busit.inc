@@ -455,6 +455,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			<div id=\"signup\" class=\"floatingdialog\">
 				<div class=\"form-small\">		
 					<h3 class=\"center\">{$GLOBALS['lang']['signup']}</h3>
+					<p style=\"text-align: center;\">{$GLOBALS['lang']['signup_intro']}</p>
 					<form action=\"/signup_action\" method=\"post\" id=\"valid\" class=\"center\">
 						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
 						<fieldset>
