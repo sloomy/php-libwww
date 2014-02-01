@@ -53,7 +53,7 @@ class template_apps extends template
 	$top .= "
 	</head>
 	<body>
-		<div id=\"apps\" style=\"width: 1000px; margin: 0 auto;\">
+		<div id=\"apps\" style=\"width: 680px; margin: 0 auto;\">
 			";
 		
 		return $top;
