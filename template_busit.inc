@@ -57,7 +57,6 @@ class template_busit extends template
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-chartjs.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-raty.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-jsplumb.js\"></script>
-		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-sparkline.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-sceditor.bbcode.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-toggles.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/footer.js\"></script>
@@ -336,7 +335,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 				<ul>
 					<li><a href=\"/about\">{$GLOBALS['lang']['ABOUT']}</a></li>
 					<li><a href=\"/about/contact\">{$GLOBALS['lang']['CONTACT']}</a></li>
-					<li><a href=\"/doc\">{$GLOBALS['lang']['HELP']}</a></li>
+					<li><a href=\"/about/team\">{$GLOBALS['lang']['TEAM']}</a></li>
 					<li><a href=\"/developers\">{$GLOBALS['lang']['DEVELOPERS']}</a></li>
 					<li><a href=\"/about/legal\">{$GLOBALS['lang']['LEGAL']}</a></li>
 					<li><a href=\"/status\">{$GLOBALS['lang']['STATUS']}</a></li>
