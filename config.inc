@@ -47,6 +47,13 @@ switch( $_SERVER["HTTP_HOST"] )
 	case 'local.www.anotherservice.com':
 		$GLOBALS['CONFIG']['SITE'] = 'as';
 		break;
+	case 'www.sys.as':
+	case 'www.sys.sas':
+	case 'local.sys.as':
+	case 'www.sys.fr':
+	case 'www.sys.com':
+		$GLOBALS['CONFIG']['SITE'] = 'sys';
+		break;
 	case 'www.bus-it.com':
 	case 'www.bus-it.net':
 	case 'local.bus-it.com':
