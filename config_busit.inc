@@ -13,6 +13,7 @@ $GLOBALS['CONFIG']['API_USERNAME']	= $conf['Main']['API_USERNAME'];
 $GLOBALS['CONFIG']['API_PASSWORD']	= $conf['Main']['API_TOKEN'];
 $GLOBALS['CONFIG']['HOSTNAME']		= $conf['Main']['HOSTNAME'];
 $GLOBALS['CONFIG']['HOSTNAME_APPS']	= $conf['Main']['HOSTNAME_APPS'];
+$GLOBALS['CONFIG']['UPTIME_TOKEN']	= $conf['Main']['UPTIME_TOKEN'];
 $GLOBALS['CONFIG']['DEBUG'] 		= false;
 unset($conf);
 
