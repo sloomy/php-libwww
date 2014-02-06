@@ -64,6 +64,7 @@ class api
 		{
 			$content .= "\r\n--{$boundary}\r\n" .
 						"Content-Disposition: form-data; name=\"{$key}\"\r\n" . 
+						"Content-Transfer-Encoding: binary\r\n" .
 						"\r\n" . 
 						$value;
 		}
@@ -71,6 +72,7 @@ class api
 		$content .= "\r\n--{$boundary}\r\n" .
 					"Content-Disposition: form-data; name=\"upload\"; filename=\"{$file['name']}\"\r\n" .
 					"Content-Type: {$file['type']}\r\n" . 
+					"Content-Transfer-Encoding: binary\r\n" .
 					"\r\n" .
 					$file['binary'];
 					
