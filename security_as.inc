@@ -18,19 +18,13 @@ class access_as
 		
 		$a['/panel'] = array('ACCESS');
 		$a['/panel/index'] = array('ACCESS');
-		$a['/panel/instance'] = array('ACCESS');
-		$a['/panel/instance/add'] = array('ACCESS');
-		$a['/panel/instance/setup'] = array('ACCESS');
-		$a['/panel/instance/send_action'] = array('ACCESS');
-		$a['/panel/settings'] = array('ACCESS');
-		$a['/panel/showcase/install'] = array('ACCESS');
-		$a['/panel/overview'] = array('ACCESS');
-		$a['/panel/log'] = array('ACCESS');
-		$a['/panel/quota'] = array('ACCESS');
-		$a['/panel/quota/view'] = array('ACCESS');
-		$a['/panel/quota/buy'] = array('ACCESS');
-		$a['/panel/quota/buy'] = array('ACCESS');
-		
+		$a['/panel/domain'] = array('ACCESS');
+		$a['/panel/domain/add'] = array('ACCESS');
+		$a['/panel/profile'] = array('ACCESS');
+		$a['/panel/service'] = array('ACCESS');
+		$a['/panel/service/add'] = array('ACCESS');
+		$a['/panel/user'] = array('ACCESS');
+		$a['/panel/user/add'] = array('ACCESS');
 		$a['/logout'] = array('ACCESS');
 		
 		if( !is_array($page) )
@@ -108,6 +102,7 @@ class security_as extends security
 		security::clearGrant();
 		
 		$grants = api::send('self/token/grant/list');
+
 		foreach( $grants as $g )
 			security::setGrant($g['name']);	
 	}

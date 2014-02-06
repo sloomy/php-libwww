@@ -2,7 +2,7 @@
 
 class api
 {
-	public static function send($action='', $params=array(), $auth=null, $file=false)
+	public static function send($action='', $params=array(), $auth=null, $file=false, $url=false)
 	{
 		$boundary = "trlalaaaaaaaaaaaaaaaaalalalaalalaaaaaaaaaaa";
 		
@@ -31,8 +31,11 @@ class api
 
 		try
 		{
-			$fh = fopen($GLOBALS['CONFIG']['API_HOST'].'/'.$action, 'r', false, stream_context_create( $request ));
-
+			if( $url )
+				$fh = fopen($url.'/'.$action, 'r', false, stream_context_create( $request ));
+			else
+				$fh = fopen($GLOBALS['CONFIG']['API_HOST'].'/'.$action, 'r', false, stream_context_create( $request ));
+				
 			if( $fh === false )
 				throw new SiteException("Internal communication error", 500, "No answer from /{$action}");
 

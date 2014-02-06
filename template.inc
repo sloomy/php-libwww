@@ -13,6 +13,14 @@ abstract class template
 		echo $this->bottom();
 		exit;
 	}
+
+	public final function outputSimple($content)
+	{
+		echo $this->topSimple();
+		echo $content;
+		echo $this->bottomSimple();
+		exit;
+	}
 	
 	public final static function redirect($link)
 	{
@@ -28,8 +36,8 @@ abstract class template
 			$extra = ltrim($link, '/\\');
 			
 			$protocol = 'http';
-			//if( 1 /*isset($_SERVER['HTTP_X_SSL_CIPHER']) && $_SERVER['HTTP_X_SSL_CIPHER'] != "" && $_SERVER['HTTP_X_SSL_CIPHER'] != 'off'*/ )
-			//	$protocol .= 's';
+			if( $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' )
+				$protocol .= 's';
 
 			header("Location: {$protocol}://{$host}{$uri}/{$extra}");
 			exit;
