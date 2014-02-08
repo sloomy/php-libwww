@@ -8,7 +8,7 @@ if( $_SERVER["HTTP_HOST"] == 'localhost' || $_SERVER["HTTP_HOST"] == '127.0.0.1'
 else
 	$conf = parse_ini_file('/dns/com/bus-it/etc/settings/www.ini', true);
 	
-$GLOBALS['CONFIG']['API_HOST'] 		= 'http://' . $conf['Main']['API_HOST'];
+$GLOBALS['CONFIG']['API_HOST'] 		= 'https://' . $conf['Main']['API_HOST'];
 $GLOBALS['CONFIG']['API_USERNAME']	= $conf['Main']['API_USERNAME'];
 $GLOBALS['CONFIG']['API_PASSWORD']	= $conf['Main']['API_TOKEN'];
 $GLOBALS['CONFIG']['HOSTNAME']		= $conf['Main']['HOSTNAME'];
