@@ -23,6 +23,9 @@ class resizer
 		else
 			return;
 		
+		imageAlphaBlending($src_img, true);
+		imageSaveAlpha($src_img, true);
+		
 		$iw = imageSX($src_img);
 		$ih = imageSY($src_img);
 		if ($iw > $ih )
@@ -48,12 +51,19 @@ class resizer
 		}
 		
 		$this->final = imagecreatetruecolor($thumb_w, $thumb_h);
+		imageAlphaBlending($this->final, true);
+		imageSaveAlpha($this->final, true);
+		$trans_colour = imagecolorallocatealpha($this->final, 0, 0, 0, 127);
+		imagefill($this->final, 0, 0, $trans_colour);
 		
 		if( !imagecopyresampled($this->final, $src_img, 0, 0, 0, 0, $thumb_w, $thumb_h, $iw, $ih) )
 		{
 			imagedestroy($this->final);
 			$this->final == null;
 		}
+		
+		imageAlphaBlending($this->final, true);
+		imageSaveAlpha($this->final, true);		
 		
 		imagedestroy($src_img);
 	}
