@@ -90,7 +90,13 @@ class template_apps extends template
 		<link rel=\"stylesheet\" href=\"/busit/css/main.css\" type=\"text/css\" />
 		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-1.9.1.js\"></script>
 		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-ui-1.10.3.custom.js\"></script>
-		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-ui-touch-punch.js\"></script>";
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-ui-touch-punch.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-ui-timepicker.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-chartjs.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-raty.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-jsplumb.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-sceditor.bbcode.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-toggles.js\"></script>";
 	$top .= "
 	</head>
 	<body>
