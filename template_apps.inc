@@ -69,6 +69,45 @@ class template_apps extends template
 		
 		return $bottom;
 	}
+	
+	public function topSimple()
+	{
+		$GLOBALS['lang']->import($GLOBALS['CONFIG']['CLASSPATH'] . '/template_busit.lang');
+		
+		$top = "
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:v=\"urn:schemas-microsoft-com:vml\">
+	<head>
+		<title>{$GLOBALS['lang']['TITLE']}</title>
+		<meta name=\"description\" content=\"{$GLOBALS['lang']['DESCRIPTION']}\" />
+		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
+		<meta http-equiv=\"Cache-control\" content=\"no-cache\">
+		<meta http-equiv=\"Expires\" content=\"-1\">
+		<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no\">
+		<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">
+		<meta name=\"HandheldFriendly\" content=\"true\">
+		<link rel=\"shortcut icon\" href=\"/busit/images/favicon.ico\" />
+		<link rel=\"stylesheet\" href=\"/busit/css/main.css\" type=\"text/css\" />
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-1.9.1.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-ui-1.10.3.custom.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-ui-touch-punch.js\"></script>";
+	$top .= "
+	</head>
+	<body>
+			";
+		
+		return $top;
+	}
+	
+	public function bottomSimple()
+	{
+		$bottom = "";
+		$bottom .= "	
+	</body>
+</html>";
+		
+		return $bottom;
+	}
 }
 
 ?>
