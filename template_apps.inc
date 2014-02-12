@@ -45,6 +45,7 @@ class template_apps extends template
 		<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no\">
 		<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">
 		<meta name=\"HandheldFriendly\" content=\"true\">
+		<meta name=\"google-site-verification\" content=\"0XKifQ42rWCTlPU-3fLlDjqnHqJl40o01bY2-S9D56Y\" />
 		<link rel=\"shortcut icon\" href=\"/busit/images/favicon.ico\" />
 		<link rel=\"stylesheet\" href=\"/busit/css/main.css\" type=\"text/css\" />
 		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-1.9.1.js\"></script>
@@ -86,6 +87,7 @@ class template_apps extends template
 		<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no\">
 		<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">
 		<meta name=\"HandheldFriendly\" content=\"true\">
+		<meta name=\"google-site-verification\" content=\"0XKifQ42rWCTlPU-3fLlDjqnHqJl40o01bY2-S9D56Y\" />
 		<link rel=\"shortcut icon\" href=\"/busit/images/favicon.ico\" />
 		<link rel=\"stylesheet\" href=\"/busit/css/main.css\" type=\"text/css\" />
 		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-1.9.1.js\"></script>
