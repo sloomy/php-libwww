@@ -195,7 +195,8 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 										<ul>";
 									foreach( $menu_item['sub'] as $menu_subitem )
 									{
-										if( preg_match('!^'.rtrim($menu_subitem['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+										if( strpos(rtrim($GLOBALS['CONFIG']['PAGE'], '/'), rtrim($menu_subitem['link'], '/')) === 0 )
+										//if( preg_match('!^'.rtrim($menu_subitem['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
 											$subactive = "class=\"active\"";
 						
 										$menu .= "
