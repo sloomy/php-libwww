@@ -2,6 +2,11 @@
 
 class template_as extends template
 {
+	public function __construct()
+	{
+		$GLOBALS['lang']->import($GLOBALS['CONFIG']['CLASSPATH'] . '/template_as.lang');
+	}
+	
 	public function error($e)
 	{
 		$e = $e.'';
@@ -31,8 +36,6 @@ class template_as extends template
 	
 	public function top()
 	{
-		$GLOBALS['lang']->import($GLOBALS['CONFIG']['CLASSPATH'] . '/template_as.lang');
-		
 		$top = "
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' xmlns:v=\"urn:schemas-microsoft-com:vml\">
