@@ -2,6 +2,7 @@
 TITLE = "Bus IT - Inter-objects communication"
 DESCRIPTION = "Connect your objects, your services and enjoy a more intelligent world."
 COPYRIGHT = "&copy; 2014 <a href='https://www.bus-it.com'>Bus IT</a>"
+SYS = "<a style='font-weight: bold;' href='http://www.sys.as'>SYS Network</a>"
 ABOUT = "About"
 TEAM = "Team"
 CONTACT = "Contact"
