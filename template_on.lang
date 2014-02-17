@@ -5,6 +5,7 @@
 TITLE = "Olympe - Hébergement gratuit et sans publicité - Cloud computing gratuit"
 DESCRIPTION = "Service d'hébergement gratuit et sans publicité et plateforme de cloud computing."
 COPYRIGHT = "&copy; 2014 Olympe"
+SYS = "<a style='font-weight: bold;' href='http://www.sys.as'>Réseau SYS</a>"
 ABOUT = "A propos"
 HELP = "Aide"
 CONTACT = "Contact"
