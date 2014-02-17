@@ -300,7 +300,7 @@ class template_as extends template
 		</div>
 		<div id=\"copyright\">
 			<div class=\"container\">
-				<p>{$GLOBALS['lang']['COPYRIGHT']} | {$GLOBALS['lang']['SYS']}</p>
+				{$GLOBALS['lang']['COPYRIGHT']} | {$GLOBALS['lang']['SYS']}
 			</div>
 		</div>
 	</div>
