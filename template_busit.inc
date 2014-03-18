@@ -338,7 +338,12 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 		$bottom .= $this->getObjects();
 		
 		$bottom .= "
-
+		
+		<div class=\"debug-fixed\" onclick=\"$('#bug').dialog('open'); return false;\">
+			<div class=\"container\">
+				{$GLOBALS['lang']['DEBUG']}
+			</div>
+		</div>
 		<div id=\"footer\" class=\"footer\">
 			<div class=\"content\">
 				<ul>
@@ -519,6 +524,30 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['change']}\" />
 						</fieldset>
 					</form>
+				</div>
+			</div>
+			<div id=\"bug\" class=\"floatingdialog\">
+				<br />
+				<h3 class=\"center\">{$GLOBALS['lang']['newbug']}</h3>
+				<p style=\"text-align: center;\">{$GLOBALS['lang']['newbug_text']}</p>
+				<div class=\"form-small\">
+					<form action=\"/bugreport_action\" method=\"post\" class=\"center\">
+						<fieldset>
+							<input class=\"auto\" type=\"text\"  style=\"width: 400px;\" value=\"{$GLOBALS['lang']['newbug_name']}\" name=\"name\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['newbug_name']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['newbug_name']}' : this.value; this.value=='{$GLOBALS['lang']['newbug_name']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+							<span class=\"help-block\">{$GLOBALS['lang']['newbug_name_help']}</span>
+						</fieldset>
+						<fieldset>
+							<input class=\"auto\" type=\"text\"  style=\"width: 400px;\" value=\"{$GLOBALS['lang']['newbug_desc']}\" name=\"desc\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['newbug_desc']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['newbug_desc']}' : this.value; this.value=='{$GLOBALS['lang']['newbug_desc']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+							<span class=\"help-block\">{$GLOBALS['lang']['newbug_desc_help']}</span>
+						</fieldset>
+						<fieldset>
+							<textarea class=\"auto\" style=\"width: 400px; height: 150px;\" name=\"content\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['newbug_content']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['newbug_content']}' : this.value; this.value=='{$GLOBALS['lang']['newbug_content']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\">{$GLOBALS['lang']['newbug_content']}</textarea>
+							<span class=\"help-block\">{$GLOBALS['lang']['newbug_content_help']}</span>
+						</fieldset>
+						<fieldset>	
+							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['newbug_submit']}\" />
+						</fieldset>
+					</form>							
 				</div>
 			</div>
 		";
