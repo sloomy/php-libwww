@@ -346,6 +346,25 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 		</div>
 		<div id=\"footer\" class=\"footer\">
 			<div class=\"content\">
+				<div class=\"social\">
+					<a class=\"link\" href=\"https://twitter.com/Bus_IT\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/twitter.png\" alt=\"Twitter\" />
+					</a>
+					<a class=\"link\" href=\"https://www.facebook.com/BusIT.fr\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/facebook.png\" alt=\"Facebook\" />
+					</a>
+					<a class=\"link\" href=\"https://google.com/+BusitFr\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/google.png\" alt=\"Google+\" />
+					</a>
+					<a class=\"link\" href=\"http://www.linkedin.com/company/2401897\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/linkedin.png\" alt=\"LinkedIn\" />
+					</a>
+					<a class=\"link\" href=\"http://www.linkedin.com/company/2401897\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/youtube.png\" alt=\"YouTube\" />
+					</a>
+					<div class=\"clear\"></div>
+				</div>
+				<br />
 				<ul>
 					<li><a href=\"/about\">{$GLOBALS['lang']['ABOUT']}</a></li>
 					<li><a href=\"/about/contact\">{$GLOBALS['lang']['CONTACT']}</a></li>
@@ -354,7 +373,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 					<li><a href=\"/about/legal\">{$GLOBALS['lang']['LEGAL']}</a></li>
 					<li><a href=\"/status\">{$GLOBALS['lang']['STATUS']}</a></li>
 				</ul>
-				<p style=\"padding: 5px 0 0 0; font-size: 12px;\">
+				<p style=\"margin: 10px 0 0 0; padding: 0; font-size: 12px;\">
 	";
 	$request = str_replace(array('?lang='.translator::getLanguage(), '&lang='.translator::getLanguage()) , array('', ''), $_SERVER['REQUEST_URI']);
 
