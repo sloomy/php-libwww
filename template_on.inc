@@ -2,6 +2,11 @@
 
 class template_on extends template
 {
+	public function __construct()
+	{
+		$GLOBALS['lang']->import($GLOBALS['CONFIG']['CLASSPATH'] . '/template_on.lang');
+	}
+	
 	public function error($e)
 	{
 		$e = $e.'';
@@ -30,9 +35,7 @@ class template_on extends template
 	}
 	
 	public function top()
-	{
-		$GLOBALS['lang']->import($GLOBALS['CONFIG']['CLASSPATH'] . '/template_on.lang');
-		
+	{		
 		$top = "
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' xmlns:v=\"urn:schemas-microsoft-com:vml\">
@@ -45,6 +48,7 @@ class template_on extends template
 		<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no\">
 		<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">
 		<meta name=\"HandheldFriendly\" content=\"true\">
+		<meta name=\"google-site-verification\" content=\"1OLIhe_7AmWyeXDOv31lFstjmkWSD36-EQ2EV8PiDsw\" /> 
 		<link rel=\"shortcut icon\" href=\"/{$GLOBALS['CONFIG']['SITE']}/images/favicon.ico\" />
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/main.css\" type=\"text/css\" />
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery/jquery-ui-1.10.3.custom.css\" />
@@ -114,7 +118,7 @@ class template_on extends template
 				if( ($menu_item['anonymous'] && !$logged) || (!$menu_item['anonymous'] && $a) )
 				{
 					$active = '';
-					if( preg_match('!^'.rtrim($menu_item['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+					if( strpos(rtrim($GLOBALS['CONFIG']['PAGE'], '/'), rtrim($menu_item['link'], '/')) === 0 ) 
 						$active = "class=\"active\"";
 					
 					if( !$logged && !$menu_item['anonymous'] )
@@ -129,7 +133,7 @@ class template_on extends template
 									<ul>";
 								foreach( $menu_item['sub'] as $menu_subitem )
 								{
-									if( preg_match('!^'.rtrim($menu_subitem['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+									if( strpos(rtrim($GLOBALS['CONFIG']['PAGE'], '/'), rtrim($menu_subitem['link'], '/')) === 0 ) 
 										$subactive = "class=\"active\"";
 					
 									$menu .= "
@@ -191,7 +195,7 @@ class template_on extends template
 				// check if the user has access to the target link
 				if( $GLOBALS['security']->hasAccess($menu_item['link']) )
 				{
-					if( preg_match('!^'.rtrim($menu_item['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+					if( strpos(rtrim($GLOBALS['CONFIG']['PAGE'], '/'), rtrim($menu_item['link'], '/')) === 0 ) 
 						$active = $menu_item['link'];
 				}
 			}
@@ -212,7 +216,7 @@ class template_on extends template
 								
 						foreach( $menu_item['sub'] as $menu_subitem )
 						{
-							if( preg_match('!^'.rtrim($menu_subitem['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+							if( strpos(rtrim($GLOBALS['CONFIG']['PAGE'], '/'), rtrim($menu_subitem['link'], '/')) === 0 ) 
 								$subactive = "active";
 						
 							$menu .= "
@@ -293,7 +297,7 @@ class template_on extends template
 					".(translator::getLanguage()=='FR'?"<span style=\"color: #4d4d4d;\">":"<a href=\"{$request}".(strstr($request,'?')===false?"?":"&")."lang=FR\">")."Fran&ccedil;ais".(translator::getLanguage()=='FR'?"</span>":"</a>")."&nbsp;&nbsp;&nbsp;
 					".(translator::getLanguage()=='ES'?"<span style=\"color: #4d4d4d;\">":"<a href=\"{$request}".(strstr($request,'?')===false?"?":"&")."lang=ES\">")."Espa&ntilde;ol".(translator::getLanguage()=='ES'?"</span>":"</a>")."&nbsp;&nbsp;&nbsp;
 				</p>
-				<p>{$GLOBALS['lang']['COPYRIGHT']}</p>
+				<p>{$GLOBALS['lang']['COPYRIGHT']} | {$GLOBALS['lang']['SYS']}</p> 
 			</div>
 		</div>
 	</div>
