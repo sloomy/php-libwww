@@ -2,11 +2,6 @@
 
 class template_on extends template
 {
-	public function __construct()
-	{
-		$GLOBALS['lang']->import($GLOBALS['CONFIG']['CLASSPATH'] . '/template_on.lang');
-	}
-	
 	public function error($e)
 	{
 		$e = $e.'';
@@ -36,6 +31,8 @@ class template_on extends template
 	
 	public function top()
 	{
+		$GLOBALS['lang']->import($GLOBALS['CONFIG']['CLASSPATH'] . '/template_on.lang');
+		
 		$top = "
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' xmlns:v=\"urn:schemas-microsoft-com:vml\">
@@ -48,7 +45,6 @@ class template_on extends template
 		<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no\">
 		<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">
 		<meta name=\"HandheldFriendly\" content=\"true\">
-		<meta name=\"google-site-verification\" content=\"1OLIhe_7AmWyeXDOv31lFstjmkWSD36-EQ2EV8PiDsw\" />
 		<link rel=\"shortcut icon\" href=\"/{$GLOBALS['CONFIG']['SITE']}/images/favicon.ico\" />
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/main.css\" type=\"text/css\" />
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery/jquery-ui-1.10.3.custom.css\" />
@@ -60,6 +56,7 @@ class template_on extends template
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ui-touch-punch.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-raty.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-jsplumb.js\"></script>
+		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-sparkline.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-sceditor.bbcode.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-toggles.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/footer.js\"></script>
@@ -117,8 +114,7 @@ class template_on extends template
 				if( ($menu_item['anonymous'] && !$logged) || (!$menu_item['anonymous'] && $a) )
 				{
 					$active = '';
-					if( strpos(rtrim($GLOBALS['CONFIG']['PAGE'], '/'), rtrim($menu_item['link'], '/')) === 0 )
-					//if( preg_match('!^'.rtrim($menu_item['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+					if( preg_match('!^'.rtrim($menu_item['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
 						$active = "class=\"active\"";
 					
 					if( !$logged && !$menu_item['anonymous'] )
@@ -133,8 +129,7 @@ class template_on extends template
 									<ul>";
 								foreach( $menu_item['sub'] as $menu_subitem )
 								{
-									if( strpos(rtrim($GLOBALS['CONFIG']['PAGE'], '/'), rtrim($menu_subitem['link'], '/')) === 0 )
-									//if( preg_match('!^'.rtrim($menu_subitem['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+									if( preg_match('!^'.rtrim($menu_subitem['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
 										$subactive = "class=\"active\"";
 					
 									$menu .= "
@@ -196,8 +191,7 @@ class template_on extends template
 				// check if the user has access to the target link
 				if( $GLOBALS['security']->hasAccess($menu_item['link']) )
 				{
-					if( strpos(rtrim($GLOBALS['CONFIG']['PAGE'], '/'), rtrim($menu_item['link'], '/')) === 0 )
-					//if( preg_match('!^'.rtrim($menu_item['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+					if( preg_match('!^'.rtrim($menu_item['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
 						$active = $menu_item['link'];
 				}
 			}
@@ -218,8 +212,7 @@ class template_on extends template
 								
 						foreach( $menu_item['sub'] as $menu_subitem )
 						{
-							if( strpos(rtrim($GLOBALS['CONFIG']['PAGE'], '/'), rtrim($menu_subitem['link'], '/')) === 0 )
-							//if( preg_match('!^'.rtrim($menu_subitem['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+							if( preg_match('!^'.rtrim($menu_subitem['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
 								$subactive = "active";
 						
 							$menu .= "
@@ -264,16 +257,34 @@ class template_on extends template
 
 		<div id=\"footer\" class=\"footer\">
 			<div class=\"content\">
+				<div class=\"social\">
+					<a class=\"link\" href=\"https://twitter.com/Olympe_fr\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/twitter.png\" alt=\"Twitter\" />
+					</a>
+					<a class=\"link\" href=\"https://www.facebook.com/olympe.fr\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/facebook.png\" alt=\"Facebook\" />
+					</a>
+					<a class=\"link\" href=\"https://google.com/+OlympeIn\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/google.png\" alt=\"Google+\" />
+					</a>
+					<a class=\"link\" href=\"https://www.linkedin.com/company/5121206\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/linkedin.png\" alt=\"LinkedIn\" />
+					</a>
+					<a class=\"link\" href=\"http://www.youtube.com/channel/UCn1nV97-5DHPIls0_uyP1ig\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/youtube.png\" alt=\"YouTube\" />
+					</a>
+					<div class=\"clear\"></div>
+				</div>
+				<br />
 				<ul>
-						<li><a href=\"/about\">{$GLOBALS['lang']['ABOUT']}</a></li>
-						<li><a href=\"/about/contact\">{$GLOBALS['lang']['CONTACT']}</a></li>
-						<li><a href=\"/about/team\">{$GLOBALS['lang']['TEAM']}</a></li>
-						<li><a href=\"/doc\">{$GLOBALS['lang']['HELP']}</a></li>
-						<li><a href=\"/developers\">{$GLOBALS['lang']['DEVELOPERS']}</a></li>
-						<li><a href=\"/status\">{$GLOBALS['lang']['STATUS']}</a></li>
-					</ul>
+					<li><a href=\"/about\">{$GLOBALS['lang']['ABOUT']}</a></li>
+					<li><a href=\"/about/contact\">{$GLOBALS['lang']['CONTACT']}</a></li>
+					<li><a href=\"/about/team\">{$GLOBALS['lang']['TEAM']}</a></li>
+					<li><a href=\"/doc\">{$GLOBALS['lang']['HELP']}</a></li>
+					<li><a href=\"/developers\">{$GLOBALS['lang']['DEVELOPERS']}</a></li>
+					<li><a href=\"/status\">{$GLOBALS['lang']['STATUS']}</a></li>
 				</ul>
-				<p style=\"padding: 5px 0 0 0; font-size: 12px;\">
+				<p style=\"margin: 10px 0 0 0; padding: 0; font-size: 12px;\">
 	";
 	$request = str_replace(array('?lang='.translator::getLanguage(), '&lang='.translator::getLanguage()) , array('', ''), $_SERVER['REQUEST_URI']);
 
@@ -282,7 +293,7 @@ class template_on extends template
 					".(translator::getLanguage()=='FR'?"<span style=\"color: #4d4d4d;\">":"<a href=\"{$request}".(strstr($request,'?')===false?"?":"&")."lang=FR\">")."Fran&ccedil;ais".(translator::getLanguage()=='FR'?"</span>":"</a>")."&nbsp;&nbsp;&nbsp;
 					".(translator::getLanguage()=='ES'?"<span style=\"color: #4d4d4d;\">":"<a href=\"{$request}".(strstr($request,'?')===false?"?":"&")."lang=ES\">")."Espa&ntilde;ol".(translator::getLanguage()=='ES'?"</span>":"</a>")."&nbsp;&nbsp;&nbsp;
 				</p>
-				<p>{$GLOBALS['lang']['COPYRIGHT']} | {$GLOBALS['lang']['SYS']}</p>
+				<p>{$GLOBALS['lang']['COPYRIGHT']}</p>
 			</div>
 		</div>
 	</div>
@@ -380,6 +391,7 @@ class template_on extends template
 						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
 						<fieldset>
 							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_EMAIL']?"{$_SESSION['JOIN_EMAIL']}":"{$GLOBALS['lang']['email']}")."\" name=\"email\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['email']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['email']}' : this.value; this.value=='{$GLOBALS['lang']['email']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+							".(isset($_GET['esignup'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['esignup']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['email_tip']}</a>")."
 						</fieldset>
 						<fieldset>	
 							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['signup']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
@@ -489,7 +501,7 @@ class template_on extends template
 								$(\"#login\").html($('#recovery').html());
 						</script>";
 		}
-
+		
 		if( $_SESSION['REGISTER']['STATUS'] === true )
 		{
 			$objects .= "<script type=\"text/javascript\">
