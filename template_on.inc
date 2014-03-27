@@ -31,7 +31,7 @@ class template_on extends template
 			$stack = preg_replace("/(\\{main\\}<\\/li>.)/s", "\$1</ol><ol style=\"border-left: 2px solid #E18B7C; margin-top: 10px; margin-bottom: 20px; padding-left: 20px; list-style: decimal inside;\">", $stack);
 		}
 		
-		$this->output($content);
+		$this->output();
 	}
 	
 	public function top()
