@@ -63,7 +63,12 @@ class template_on extends template
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-sceditor.bbcode.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-toggles.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/footer.js\"></script>
-		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/main.js\"></script>
+		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/main.js\"></script>";
+		
+if( strstr($GLOBALS['CONFIG']['PAGE'], 'directory') !== false )
+	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/directory.js\"></script>";
+
+$top .= "
 	</head>
 	<body>
 	<div id=\"fb-root\"></div>
@@ -234,6 +239,13 @@ class template_on extends template
 					}
 				}
 			}
+			
+			if( strstr($GLOBALS['CONFIG']['PAGE'], 'directory') !== false )
+			{
+				$menu .= "
+									<li id=\"search-li\" class=\"search\"><form id=\"searchform\"><input type=\"submit\" style=\"display: none;\" /><input class=\"auto\" style=\"width: 220px; font-size: 15px;\" type=\"text\" id=\"search\" value=\"{$GLOBALS['lang']['search']}\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['search']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['search']}' : this.value; this.value=='{$GLOBALS['lang']['search']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" /></form></li>";
+			}
+			
 
 			$menu .= "
 								</ul>
@@ -284,6 +296,7 @@ class template_on extends template
 					<li><a href=\"/about/contact\">{$GLOBALS['lang']['CONTACT']}</a></li>
 					<li><a href=\"/about/team\">{$GLOBALS['lang']['TEAM']}</a></li>
 					<li><a href=\"/doc\">{$GLOBALS['lang']['HELP']}</a></li>
+					<li><a href=\"/directory\">{$GLOBALS['lang']['DIRECTORY']}</a></li>
 					<li><a href=\"/developers\">{$GLOBALS['lang']['DEVELOPERS']}</a></li>
 					<li><a href=\"/status\">{$GLOBALS['lang']['STATUS']}</a></li>
 				</ul>

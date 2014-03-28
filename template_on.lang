@@ -10,6 +10,7 @@ CONTACT = "Contact"
 DEVELOPERS = "Developers"
 TEAM = "Team"
 STATUS = "Status"
+DIRECTORY = "Directory"
 DATEFORMAT = "M d, Y"
 
 username = "Username"
@@ -37,6 +38,7 @@ esignup = "The email format is invalid or this address is already used."
 email_tip = "Your email address"
 change = "Update"
 conditions = "I agree to the <a href='/on/documents/Olympe-CGS-FR.pdf'>Terms of Use</a>."
+search = "Search on Olympe"
 
 [FR]
 
@@ -50,6 +52,7 @@ CONTACT = "Contact"
 DEVELOPERS = "Développeurs"
 TEAM = "Equipe"
 STATUS = "Statut"
+DIRECTORY = "Annuaire"
 DATEFORMAT = "d M, Y"
 
 username = "Utilisateur"
@@ -77,3 +80,4 @@ esignup = "Le format de votre email est incorrect ou cette adresse est déjà ut
 email_tip = "Votre adresse email"
 change = "Modifier"
 conditions = "J'accepte les <a href='/on/documents/Olympe-CGS-FR.pdf'>conditions d'utilisation</a>."
+search = "Rechercher sur Olympe"
