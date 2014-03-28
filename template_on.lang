@@ -36,6 +36,7 @@ echangepassword = "The passwords does not match or are too short."
 esignup = "The email format is invalid or this address is already used."
 email_tip = "Your email address"
 change = "Update"
+conditions = "I agree to the <a href='/on/documents/Olympe-CGS-FR.pdf'>Terms of Use</a>."
 
 [FR]
 
@@ -75,3 +76,4 @@ echangepassword = "Les mots de passe ne correspondent pas ou sont trop courts."
 esignup = "Le format de votre email est incorrect ou cette adresse est déjà utilisée."
 email_tip = "Votre adresse email"
 change = "Modifier"
+conditions = "J'accepte les <a href='/on/documents/Olympe-CGS-FR.pdf'>conditions d'utilisation</a>."
