@@ -2,7 +2,7 @@
 
 class api
 {
-	public static function send($action='', $params=array(), $auth=null, $file=false)
+	public static function send($action='', $params=array(), $auth=null, $file=false, $url=false)
 	{
 		$boundary = "trlalaaaaaaaaaaaaaaaaalalalaalalaaaaaaaaaaa";
 		
@@ -15,7 +15,7 @@ class api
 		
 		$params['nohttperrorheader'] = true;
 
-		$request = array( 'http' => array( 'user_agent' => 'PHP/5.x (Olympe) API/1.0', 'method' => 'POST', 'timeout' => 10.0 ));
+		$request = array( 'http' => array( 'user_agent' => 'PHP/5.x (SYS) API/1.0', 'method' => 'POST', 'timeout' => 10.0 ));
 
 		if( is_array($file) )
 			$request['http']['header'] .= 'Content-Type: multipart/form-data, boundary=' . $boundary . "\r\n";
@@ -31,8 +31,11 @@ class api
 
 		try
 		{
-			$fh = fopen($GLOBALS['CONFIG']['API_HOST'].'/'.$action, 'r', false, stream_context_create( $request ));
-
+			if( $url )
+				$fh = fopen($url.'/'.$action, 'r', false, stream_context_create( $request ));
+			else
+				$fh = fopen($GLOBALS['CONFIG']['API_HOST'].'/'.$action, 'r', false, stream_context_create( $request ));
+				
 			if( $fh === false )
 				throw new SiteException("Internal communication error", 500, "No answer from /{$action}");
 
@@ -61,6 +64,7 @@ class api
 		{
 			$content .= "\r\n--{$boundary}\r\n" .
 						"Content-Disposition: form-data; name=\"{$key}\"\r\n" . 
+						"Content-Transfer-Encoding: binary\r\n" .
 						"\r\n" . 
 						$value;
 		}
@@ -68,6 +72,7 @@ class api
 		$content .= "\r\n--{$boundary}\r\n" .
 					"Content-Disposition: form-data; name=\"upload\"; filename=\"{$file['name']}\"\r\n" .
 					"Content-Type: {$file['type']}\r\n" . 
+					"Content-Transfer-Encoding: binary\r\n" .
 					"\r\n" .
 					$file['binary'];
 					

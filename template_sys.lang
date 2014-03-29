@@ -1,0 +1,23 @@
+[EN]
+TITLE = "SYS - Network for IT innovation"
+DESCRIPTION = "Information technology, infrastructure and interoperability"
+WEBSITE = "Back to the website"
+MONIT = "Monitoring"
+ISSUES = "Maintenances"
+COPYRIGHT = "&copy; 2014 SYS"
+ABOUT = "About"
+CONTACT = "Contact"
+PRESS = "Press"
+INFRA = "Infrastructure"
+
+[FR]
+TITLE = "SYS - Réseau pour l'innovation numérique"
+DESCRIPTION = "Technologies de l'information, infrastructure et interopérabilité"
+WEBSITE = "Retour au portail"
+MONIT = "Supervision"
+ISSUES = "Maintenances"
+COPYRIGHT = "&copy; 2014 SYS"
+ABOUT = "A propos"
+CONTACT = "Contact"
+PRESS = "Presse"
+INFRA = "Infrastructure"
