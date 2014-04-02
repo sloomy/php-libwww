@@ -39,6 +39,9 @@ email_tip = "Your email address"
 change = "Update"
 conditions = "I agree to the <a href='/on/documents/Olympe-CGS-FR.pdf'>Terms of Use</a>."
 search = "Search on Olympe"
+cookie = "The <a href='/on/documents/Olympe-CGS-FR.pdf'>Terms of Use</a> of the paltform has been updated. Please read it and agree to these new agreement before continue."
+cookie_accept = "I agree to the termes"
+cookie_title = "New Terms of Use"
 
 [FR]
 
@@ -81,3 +84,6 @@ email_tip = "Votre adresse email"
 change = "Modifier"
 conditions = "J'accepte les <a href='/on/documents/Olympe-CGS-FR.pdf'>conditions d'utilisation</a>."
 search = "Rechercher sur Olympe"
+cookie = "Les <a href='/on/documents/Olympe-CGS-FR.pdf'>Conditions Générales d'Utilisation</a> de la plateforme ont été modifiées. Merci de bien vouloir les accepter avant de continuer"
+cookie_accept = "J'accepte les conditions"
+cookie_title = "Nouvelles conditions générales"
