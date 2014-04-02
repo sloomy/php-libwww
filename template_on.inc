@@ -462,6 +462,15 @@ $top .= "
 						</fieldset>
 					</form>
 				</div>
+				<div id=\"cookie\" style=\"display: none; text-align: center;\">
+					<br />
+					<h3>{$GLOBALS['lang']['cookie_title']}</h3>
+					<p style=\"text-align: center;\">{$GLOBALS['lang']['cookie']}</p>
+					<a class=\"button classic\" href=\"/cookie_action\" style=\"width: 180px; height: 22px; margin: 0 auto;\">
+						<span style=\"display: block; padding-top: 3px;\">{$GLOBALS['lang']['cookie_accept']}</span>
+					</a>
+					<br />
+				</div>
 			</div>
 		";
 		
@@ -548,6 +557,16 @@ $top .= "
 			
 			// we displayed it, clear it
 			$_SESSION['MESSAGE'] = false;
+		}
+
+		if( !$_COOKIE['OLYMPE_CGU_201404'] )
+		{
+			$objects .= "<script type=\"text/javascript\">
+							$(document).ready(function() {
+								$(\"#cookie\").dialog(\"open\");
+								$(\".ui-dialog-titlebar\").hide();
+							});
+						</script>";
 		}
 		
 		return $objects;
