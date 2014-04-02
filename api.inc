@@ -27,8 +27,9 @@ class api
 		else
 			$request['http']['content'] = http_build_query($params);
 		
-		$request['http']['header']  .= 'Content-Length: ' . mb_strlen($request['http']['content'], '8bit') . "\r\n";
-
+		$request['http']['header'] .= 'Content-Length: ' . mb_strlen($request['http']['content'], '8bit') . "\r\n";
+		$request['http']['header'] .= 'Original-Ip: ' . $_SERVER['REMOTE_ADDR'] . "\r\n";
+		
 		try
 		{
 			if( $url )

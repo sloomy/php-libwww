@@ -67,7 +67,9 @@ class template_on extends template
 		
 if( strstr($GLOBALS['CONFIG']['PAGE'], 'directory') !== false )
 	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/directory.js\"></script>";
-
+if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
+	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/doc.js\"></script>";
+	
 $top .= "
 	</head>
 	<body>
@@ -540,6 +542,7 @@ $top .= "
 							$(document).ready(function() {
 								$(\"#message\").dialog(\"open\");
 								$(\".ui-dialog-titlebar\").hide();
+								setTimeout(\"$('#message').dialog('close')\", 3000);
 							});
 						</script>";
 			
