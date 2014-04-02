@@ -24,6 +24,7 @@ class access_on
 		$a['/panel/quotas'] = array('ACCESS');
 		$a['/panel/messages'] = array('ACCESS');
 		$a['/panel/settings'] = array('ACCESS');
+		$a['/panel/settings/tokens'] = array('ACCESS');
 		$a['/logout'] = array('ACCESS');
 		
 		if( !is_array($page) )
