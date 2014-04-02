@@ -559,7 +559,7 @@ $top .= "
 			$_SESSION['MESSAGE'] = false;
 		}
 
-		if( !$_COOKIE['OLYMPE_CGU_201404'] )
+		if( !$_COOKIE['OLYMPE_CGU_201404']  && $GLOBALS['security']->hasAccess('/panel') )
 		{
 			$objects .= "<script type=\"text/javascript\">
 							$(document).ready(function() {
