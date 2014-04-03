@@ -23,6 +23,7 @@ class access_on
 		$a['/panel/services'] = array('ACCESS');
 		$a['/panel/quotas'] = array('ACCESS');
 		$a['/panel/messages'] = array('ACCESS');
+		$a['/panel/messages/detail'] = array('ACCESS');
 		$a['/panel/settings'] = array('ACCESS');
 		$a['/panel/settings/tokens'] = array('ACCESS');
 		$a['/logout'] = array('ACCESS');
