@@ -326,7 +326,7 @@ class template_as extends template
 	private function getObjects()
 	{
 		if( !isset($_SESSION['ANTISPAM']) )
-			$_SESSION['ANTISPAM'] = md5(time().'olympe');
+			$_SESSION['ANTISPAM'] = md5(time().'anotherservice');
 
 		$objects = "
 			<div id=\"login\" class=\"floatingdialog\">
