@@ -68,7 +68,7 @@ class bbcode
 		{
 			$replace = array(
 				'<strong>$1</strong>',
-				'<em>$1</em>',
+				'<i>$1</i>',
 				'<span style="text-decoration:underline;">$1</span>',
 				'<span style="text-decoration:line-through;">$1</span>',
 				'<span style="color:$1;">$2</span>',
@@ -78,7 +78,7 @@ class bbcode
 				'<br />',
 				'<div class="forum_code">$1<br />&nbsp;</div>',
 				'<div class="forum_quote">$1<br />&nbsp;</div>',
-				'<img src="$1" alt="" style="float:left; max-width: 670px;" />',
+				'<img src="$1" alt="" />',
 				'<a href="$1$3$4">$2$3$4</a>'
 				);
 		}
@@ -86,7 +86,7 @@ class bbcode
 		{
 			$replace = array(
 				'$1<strong>$2</strong>$3',
-				'$1<em>$2</em>$3',
+				'$1<i>$2</i>$3',
 				'$1<span style="text-decoration:underline;">$2</span>$3',
 				'$1<span style="text-decoration:line-through;">$2</span>$3',
 				'$1<span style="margin-right:25px;"> </span>$2',

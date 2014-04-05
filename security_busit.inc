@@ -21,19 +21,16 @@ class access_busit
 		$a['/developers/panel/connector/add'] = array('ACCESS', 'SELF_CONNECTOR_INSERT');
 				
 		$a['/panel'] = array('SELF_ACCESS');
+		$a['/panel/credits'] = array('SELF_ACCESS');
 		$a['/panel/index'] = array('SELF_ACCESS');
+		$a['/panel/grant'] = array('SELF_ACCESS');
+		$a['/panel/identity'] = array('SELF_ACCESS');
 		$a['/panel/instance'] = array('SELF_ACCESS');
-		$a['/panel/instance/add'] = array('SELF_ACCESS');
-		$a['/panel/instance/setup'] = array('SELF_ACCESS');
-		$a['/panel/instance/send_action'] = array('SELF_ACCESS');
+		$a['/panel/instance/grant'] = array('SELF_ACCESS');
+		$a['/panel/org'] = array('SELF_ACCESS');	
 		$a['/panel/settings'] = array('SELF_ACCESS');
-		$a['/panel/showcase/install'] = array('SELF_ACCESS');
-		$a['/panel/overview'] = array('SELF_ACCESS');
-		$a['/panel/log'] = array('SELF_ACCESS');
-		$a['/panel/quota'] = array('SELF_ACCESS');
-		$a['/panel/quota/view'] = array('SELF_ACCESS');
-		$a['/panel/quota/buy'] = array('SELF_ACCESS');
-		$a['/panel/quota/buy'] = array('SELF_ACCESS');
+		$a['/panel/share'] = array('SELF_ACCESS');
+		$a['/panel/stats'] = array('SELF_ACCESS');
 		
 		$a['/logout'] = array('SELF_ACCESS');
 		

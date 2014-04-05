@@ -56,7 +56,7 @@ $GLOBALS['CONFIG']['MAIL_TEMPLATE'] = "
                     <tr style=\"vertical-align: top; padding: 0;\">
                       <td valign=\"top\" style=\"vertical-align: top; text-align: left; padding: 0;\" align=\"left\">
                         <p style=\"margin: 20px 0;\">
-                          Bus IT is a simple platform that allows you to interconnect physical devices and web services. You are able to build intelligent paths and usefull interconnections.
+                          Bus IT is a simple platform that allows you to interconnect physical devices and web services. You are able to build intelligent paths and useful interconnections.
                         </p>
 
                         <p style=\"margin: 20px 0;\">

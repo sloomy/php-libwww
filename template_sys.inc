@@ -2,6 +2,11 @@
 
 class template_sys extends template
 {
+	public function __construct()
+	{
+		$GLOBALS['lang']->import($GLOBALS['CONFIG']['CLASSPATH'] . '/template_sys.lang');
+	}
+	
 	public function error($e)
 	{
 		$e = $e.'';
@@ -31,8 +36,6 @@ class template_sys extends template
 	
 	public function top()
 	{
-		$GLOBALS['lang']->import($GLOBALS['CONFIG']['CLASSPATH'] . '/template_sys.lang');
-		
 		$top = "
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' xmlns:v=\"urn:schemas-microsoft-com:vml\">
@@ -111,7 +114,8 @@ class template_sys extends template
 				if( ($menu_item['anonymous'] && !$logged) || (!$menu_item['anonymous'] && $a) )
 				{
 					$active = '';
-					if( preg_match('!^'.rtrim($menu_item['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+					if( strpos(rtrim($GLOBALS['CONFIG']['PAGE'], '/'), rtrim($menu_item['link'], '/')) === 0 )
+					//if( preg_match('!^'.rtrim($menu_item['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
 						$active = "class=\"active\"";
 					
 					if( !$logged && !$menu_item['anonymous'] )
@@ -137,7 +141,8 @@ class template_sys extends template
 				if( ($menu_item['anonymous'] && !$logged) || (!$menu_item['anonymous'] && $a) )
 				{
 					$active = '';
-					if( preg_match('!^'.rtrim($menu_item['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+					if( strpos(rtrim($GLOBALS['CONFIG']['PAGE'], '/'), rtrim($menu_item['link'], '/')) === 0 )
+					//if( preg_match('!^'.rtrim($menu_item['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
 						$active = "class=\"active\"";
 					
 					if( !$logged && !$menu_item['anonymous'] )
@@ -192,7 +197,8 @@ class template_sys extends template
 				// check if the user has access to the target link
 				if( $GLOBALS['security']->hasAccess($menu_item['link']) )
 				{
-					if( preg_match('!^'.rtrim($menu_item['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+					if( strpos(rtrim($GLOBALS['CONFIG']['PAGE'], '/'), rtrim($menu_item['link'], '/')) === 0 )
+					//if( preg_match('!^'.rtrim($menu_item['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
 						$active = $menu_item['link'];
 				}
 			}
@@ -213,7 +219,8 @@ class template_sys extends template
 								
 						foreach( $menu_item['sub'] as $menu_subitem )
 						{
-							if( preg_match('!^'.rtrim($menu_subitem['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+							if( strpos(rtrim($GLOBALS['CONFIG']['PAGE'], '/'), rtrim($menu_subitem['link'], '/')) === 0 )
+							//if( preg_match('!^'.rtrim($menu_subitem['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
 								$subactive = "active";
 						
 							$menu .= "
@@ -286,7 +293,7 @@ class template_sys extends template
 	  (function() {
 		var u=((\"https:\" == document.location.protocol) ? \"https\" : \"http\") + \"://stats.anotherservice.com/\";
 		_paq.push([\"setTrackerUrl\", u+\"piwik.php\"]);
-		_paq.push([\"setSiteId\", \"9\"]);
+		_paq.push([\"setSiteId\", \"17\"]);
 		var d=document, g=d.createElement(\"script\"), s=d.getElementsByTagName(\"script\")[0]; g.type=\"text/javascript\";
 		g.defer=true; g.async=true; g.src=u+\"piwik.js\"; s.parentNode.insertBefore(g,s);
 	  })();

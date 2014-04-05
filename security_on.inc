@@ -13,18 +13,22 @@ class access_on
 		
 		$a['/admin'] = array('ACCESS', 'USER_SELECT');
 		$a['/admin/index'] = array('ACCESS', 'USER_SELECT');
-		$a['/admin/group'] = array('ACCESS', 'GROUP_SELECT');
-		$a['/admin/group/index'] = array('ACCESS', 'GROUP_SELECT');
+		$a['/admin/stats'] = array('ACCESS', 'USER_SELECT');
+		$a['/admin/messages'] = array('ACCESS', 'MESSAGE_SELECT');
+		$a['/admin/quotas'] = array('ACCESS', 'QUOTA_SELECT');
 		
 		$a['/panel'] = array('ACCESS');
 		$a['/panel/index'] = array('ACCESS');
-		$a['/panel/domain'] = array('ACCESS');
-		$a['/panel/domain/add'] = array('ACCESS');
-		$a['/panel/profile'] = array('ACCESS');
-		$a['/panel/service'] = array('ACCESS');
-		$a['/panel/service/add'] = array('ACCESS');
-		$a['/panel/user'] = array('ACCESS');
-		$a['/panel/user/add'] = array('ACCESS');
+		$a['/panel/sites'] = array('ACCESS');
+		$a['/panel/databases'] = array('ACCESS');
+		$a['/panel/domains'] = array('ACCESS');
+		$a['/panel/users'] = array('ACCESS');
+		$a['/panel/services'] = array('ACCESS');
+		$a['/panel/quotas'] = array('ACCESS');
+		$a['/panel/messages'] = array('ACCESS');
+		$a['/panel/messages/detail'] = array('ACCESS');
+		$a['/panel/settings'] = array('ACCESS');
+		$a['/panel/settings/tokens'] = array('ACCESS');
 		$a['/logout'] = array('ACCESS');
 		
 		if( !is_array($page) )
