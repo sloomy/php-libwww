@@ -13,6 +13,9 @@ class access_on
 		
 		$a['/admin'] = array('ACCESS', 'USER_SELECT');
 		$a['/admin/index'] = array('ACCESS', 'USER_SELECT');
+		$a['/admin/stats'] = array('ACCESS', 'USER_SELECT');
+		$a['/admin/messages'] = array('ACCESS', 'MESSAGE_SELECT');
+		$a['/admin/quotas'] = array('ACCESS', 'QUOTA_SELECT');
 		
 		$a['/panel'] = array('ACCESS');
 		$a['/panel/index'] = array('ACCESS');
