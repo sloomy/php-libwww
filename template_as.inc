@@ -531,6 +531,7 @@ class template_as extends template
 							$(document).ready(function() {
 								$(\"#message\").dialog(\"open\");
 								$(\".ui-dialog-titlebar\").hide();
+								setTimeout(\"$('#message').dialog('close')\", 3000);
 							});
 						</script>";
 			
