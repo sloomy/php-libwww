@@ -10,14 +10,14 @@ elseif( $_SERVER["HTTP_HOST"] == 'dev.anotherservice.com' || $_SERVER["HTTP_HOST
 else
 	$conf = parse_ini_file('/dns/com/anotherservice/etc/settings/www.ini', true);
 	
-$GLOBALS['CONFIG']['API_HOST'] 		= 'https://' . $conf['Main']['API_HOST'];
-$GLOBALS['CONFIG']['API_USERNAME']	= $conf['Main']['API_USERNAME'];
-$GLOBALS['CONFIG']['API_PASSWORD']	= $conf['Main']['API_TOKEN'];
-$GLOBALS['CONFIG']['HOSTNAME']		= $conf['Main']['HOSTNAME'];
-$GLOBALS['CONFIG']['UPTIME_TOKEN']	= $conf['Main']['UPTIME_TOKEN'];
-
-if( $conf['Main']['DEBUG'] == 'inactive' )
-$GLOBALS['CONFIG']['DEBUG'] 		= false;
+$GLOBALS['CONFIG']['API_HOST'] 		 = 'https://' . $conf['Main']['API_HOST'];
+$GLOBALS['CONFIG']['API_USERNAME']	 = $conf['Main']['API_USERNAME'];
+$GLOBALS['CONFIG']['API_PASSWORD']	 = $conf['Main']['API_TOKEN'];
+$GLOBALS['CONFIG']['HOSTNAME']		 = $conf['Main']['HOSTNAME'];
+$GLOBALS['CONFIG']['UPTIME_TOKEN']	 = $conf['Main']['UPTIME_TOKEN'];
+$GLOBALS['CONFIG']['DOMAIN_GENERIC'] = $conf['Main']['DOMAIN_GENERIC'];
+$GLOBALS['CONFIG']['REDMINE_TOKEN']	 = $conf['Main']['REDMINE_TOKEN'];
+$GLOBALS['CONFIG']['DEBUG'] 		 = false;
 unset($conf);
 
 $GLOBALS['CONFIG']['DEFAULT_PAGE']		= '/default';

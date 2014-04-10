@@ -25,6 +25,7 @@ class access_on
 		$a['/panel/users'] = array('ACCESS');
 		$a['/panel/services'] = array('ACCESS');
 		$a['/panel/quotas'] = array('ACCESS');
+		$a['/panel/backups'] = array('ACCESS');
 		$a['/panel/messages'] = array('ACCESS');
 		$a['/panel/messages/detail'] = array('ACCESS');
 		$a['/panel/settings'] = array('ACCESS');
