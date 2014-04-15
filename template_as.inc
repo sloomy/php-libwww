@@ -63,7 +63,11 @@ class template_as extends template
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-sceditor.bbcode.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-toggles.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/footer.js\"></script>
-		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/main.js\"></script>
+		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/main.js\"></script>";
+if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
+	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/doc.js\"></script>";
+
+$top .= "
 	</head>
 	<body>
 	<div id=\"fb-root\"></div>
@@ -326,7 +330,7 @@ class template_as extends template
 	private function getObjects()
 	{
 		if( !isset($_SESSION['ANTISPAM']) )
-			$_SESSION['ANTISPAM'] = md5(time().'olympe');
+			$_SESSION['ANTISPAM'] = md5(time().'anotherservice');
 
 		$objects = "
 			<div id=\"login\" class=\"floatingdialog\">
@@ -398,6 +402,11 @@ class template_as extends template
 						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
 						<fieldset>
 							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_EMAIL']?"{$_SESSION['JOIN_EMAIL']}":"{$GLOBALS['lang']['email']}")."\" name=\"email\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['email']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['email']}' : this.value; this.value=='{$GLOBALS['lang']['email']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+							".(isset($_GET['esignup'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['esignup']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['email_tip']}</a>")."
+						</fieldset>
+						<fieldset>
+							<input type=\"checkbox\" name=\"conditions\" value=\"1\" />
+							{$GLOBALS['lang']['conditions']}
 						</fieldset>
 						<fieldset>	
 							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['signup']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
@@ -413,9 +422,8 @@ class template_as extends template
 						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
 						<input type=\"hidden\" name=\"email\" value=\"{$_SESSION['REGISTER']['EMAIL']}\" />
 						<input type=\"hidden\" name=\"code\" value=\"{$_SESSION['REGISTER']['CODE']}\" />
-						<input type=\"hidden\" name=\"username\" value=\"{$_SESSION['REGISTER']['USER']}\" />
 						<fieldset>
-							<input disabled type=\"text\" value=\"{$_SESSION['REGISTER']['USER']}\" name=\"username\" />
+							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_USER']?"{$_SESSION['JOIN_USER']}":"{$GLOBALS['lang']['username']}")."\" name=\"username\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['username']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['username']}' : this.value; this.value=='{$GLOBALS['lang']['username']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
 							".(isset($_GET['eregister'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['eregister']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['usertip']}</a>")."
 						</fieldset>
 						<fieldset>
@@ -527,6 +535,7 @@ class template_as extends template
 							$(document).ready(function() {
 								$(\"#message\").dialog(\"open\");
 								$(\".ui-dialog-titlebar\").hide();
+								setTimeout(\"$('#message').dialog('close')\", 3000);
 							});
 						</script>";
 			
