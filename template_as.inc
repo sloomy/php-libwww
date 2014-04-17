@@ -356,6 +356,26 @@ $top .= "
 					<div class=\"clearfix\">&nbsp;</div>
 				</div>
 			</div>
+			<div id=\"logindemo\" class=\"floatingdialog\">
+				<br />
+				<div class=\"form-small\">
+					<h3 class=\"center\">{$GLOBALS['lang']['login']}</h3>
+					<form action=\"/login_action\" method=\"post\" class=\"center\">
+						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
+						<fieldset>
+							<input type=\"text\" value=\"demo\" name=\"username\" readonly=\"true\" />
+						</fieldset>
+						<fieldset>
+							<input type=\"password\" value=\"demo\" name=\"password\" readonly=\"true\" />
+							".(isset($_GET['elogin'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['auth']}</span>":"")."
+						</fieldset>
+						<fieldset>
+							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['login']}\" />
+						</fieldset>													
+					</form>
+					<div class=\"clearfix\">&nbsp;</div>
+				</div>
+			</div>
 			<div id=\"login-base\" style=\"display: none;\" class=\"floatingdialog\">
 				<div class=\"form-small\">
 					<h3 class=\"center\">{$GLOBALS['lang']['login']}</h3>
