@@ -275,10 +275,10 @@ $top .= "
 		<div id=\"footer\" class=\"footer\">
 			<div class=\"content\">
 				<div class=\"social\">
-					<a class=\"link\" href=\"https://twitter.com/Olympe_fr\">
+					<a class=\"link\" href=\"https://twitter.com/OlympeNet\">
 						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/twitter.png\" alt=\"Twitter\" />
 					</a>
-					<a class=\"link\" href=\"https://www.facebook.com/olympe.fr\">
+					<a class=\"link\" href=\"https://www.facebook.com/olympe.org\">
 						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/facebook.png\" alt=\"Facebook\" />
 					</a>
 					<a class=\"link\" href=\"https://google.com/+OlympeIn\">
