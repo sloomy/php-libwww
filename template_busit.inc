@@ -90,6 +90,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 	</script>
 	<div id=\"wrapper\" ".((strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false)?"style=\"background-color: #e5e5e5;\"":"").">
 		<div id=\"loading\"></div>
+		<div id=\"overlay\"></div>
 		<div class=\"header\">
 			<div class=\"content\">";
 		
@@ -119,11 +120,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 		<div class=\"core\" id=\"core\" style=\"".(strstr($GLOBALS['CONFIG']['PAGE'], 'status')!==false?"background-color: #f0f0f0;":"")."\">";
 	
 		$logged = $GLOBALS['security']->hasAccess('/panel');
-
-		if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'admin') !== false  )
-		{
-			$top .= $this->getSubMenu();
-		}
+		$top .= $this->getSubMenu();
 		
 		return $top;
 	}
@@ -338,28 +335,22 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 		$bottom .= $this->getObjects();
 		
 		$bottom .= "
-		
-		<div class=\"debug-fixed\" onclick=\"$('#bug').dialog('open'); return false;\">
-			<div class=\"container\">
-				{$GLOBALS['lang']['DEBUG']}
-			</div>
-		</div>
 		<div id=\"footer\" class=\"footer\">
 			<div class=\"content\">
 				<div class=\"social\">
 					<a class=\"link\" href=\"https://twitter.com/Bus_IT\">
 						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/twitter.png\" alt=\"Twitter\" />
 					</a>
-					<a class=\"link\" href=\"https://www.facebook.com/BusIT.fr\">
+					<a class=\"link\" href=\"https://www.facebook.com/busit.net\">
 						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/facebook.png\" alt=\"Facebook\" />
 					</a>
 					<a class=\"link\" href=\"https://google.com/+BusitFr\">
 						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/google.png\" alt=\"Google+\" />
 					</a>
-					<a class=\"link\" href=\"http://www.linkedin.com/company/2401897\">
+					<a class=\"link\" href=\"https://www.linkedin.com/company/5121205\">
 						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/linkedin.png\" alt=\"LinkedIn\" />
 					</a>
-					<a class=\"link\" href=\"http://www.linkedin.com/company/2401897\">
+					<a class=\"link\" href=\"http://www.youtube.com/channel/UCvB9PQcyRzdf8n4AewdE_oA\">
 						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/social/youtube.png\" alt=\"YouTube\" />
 					</a>
 					<div class=\"clear\"></div>
@@ -369,6 +360,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 					<li><a href=\"/about\">{$GLOBALS['lang']['ABOUT']}</a></li>
 					<li><a href=\"/about/contact\">{$GLOBALS['lang']['CONTACT']}</a></li>
 					<li><a href=\"/about/team\">{$GLOBALS['lang']['TEAM']}</a></li>
+					<li><a href=\"/doc\">{$GLOBALS['lang']['HELP']}</a></li>
 					<li><a href=\"/developers\">{$GLOBALS['lang']['DEVELOPERS']}</a></li>
 					<li><a href=\"/about/legal\">{$GLOBALS['lang']['LEGAL']}</a></li>
 					<li><a href=\"/status\">{$GLOBALS['lang']['STATUS']}</a></li>
@@ -488,11 +480,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 					<h3 class=\"center\">{$GLOBALS['lang']['signup']}</h3>
 					<p style=\"text-align: center;\">{$GLOBALS['lang']['signup_intro']}</p>
 					<form action=\"/signup_action\" method=\"post\" id=\"valid\" class=\"center\">
-						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
-						<fieldset>
-							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_CODE']?"{$_SESSION['JOIN_CODE']}":"{$GLOBALS['lang']['code']}")."\" name=\"code\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['code']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['code']}' : this.value; this.value=='{$GLOBALS['lang']['code']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
-							".(isset($_GET['ecode'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['ecode']}</span>":"")."
-						</fieldset>						
+						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />				
 						<fieldset>
 							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_EMAIL']?"{$_SESSION['JOIN_EMAIL']}":"{$GLOBALS['lang']['email']}")."\" name=\"email\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['email']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['email']}' : this.value; this.value=='{$GLOBALS['lang']['email']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
 						</fieldset>
@@ -512,11 +500,11 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 						<input type=\"hidden\" name=\"id\" value=\"{$_SESSION['REGISTER']['ID']}\" />
 						<input type=\"hidden\" name=\"origin\" value=\"{$_SESSION['REGISTER']['ORIGIN']}\" />
 						<fieldset>
-							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_USER']?"{$_SESSION['JOIN_USER']}":"{$GLOBALS['lang']['username']}")."\" name=\"username\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['username']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['username']}' : this.value; this.value=='{$GLOBALS['lang']['username']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+							<input class=\"auto\" style=\"width: 240px;\" type=\"text\" value=\"".($_SESSION['JOIN_USER']?"{$_SESSION['JOIN_USER']}":"{$GLOBALS['lang']['username']}")."\" name=\"username\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['username']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['username']}' : this.value; this.value=='{$GLOBALS['lang']['username']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
 							".(isset($_GET['eregister'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['eregister']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['usertip']}</a>")."
 						</fieldset>
 						<fieldset>
-							<input class=\"auto\" type=\"password\" value=\"{$GLOBALS['lang']['password']}\" name=\"password\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['password']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['password']}' : this.value; this.value=='{$GLOBALS['lang']['password']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\"/>							
+							<input class=\"auto\" style=\"width: 240px;\" type=\"password\" value=\"{$GLOBALS['lang']['password']}\" name=\"password\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['password']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['password']}' : this.value; this.value=='{$GLOBALS['lang']['password']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\"/>							
 						</fieldset>		
 						<fieldset>	
 							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['signup']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
@@ -587,7 +575,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			$objects .= "<script type=\"text/javascript\">
 							$(document).ready(function() {
 								$(\"#{$_SESSION['FORM']['OPEN']}\").dialog(\"open\");
-									$(\".ui-dialog-titlebar\").hide();
+								$(\".ui-dialog-titlebar\").hide();
 							});
 						</script>";
 			unset($_SESSION['FORM']['OPEN']);
@@ -656,6 +644,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 							$(document).ready(function() {
 								$(\"#message\").dialog(\"open\");
 								$(\".ui-dialog-titlebar\").hide();
+								setTimeout(\"$('#message').dialog('close')\", 3000);
 							});
 						</script>";
 			
