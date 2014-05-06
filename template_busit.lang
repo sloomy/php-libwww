@@ -51,6 +51,7 @@ newbug_desc_help = "Short description of the report"
 newbug_content = "Content"
 newbug_content_help = "Explain here the bug."
 newbug_submit = "Send"
+conditions = "I agree to the <a href='/about/legal'>terms of use</a>."
 
 [FR]
 TITLE = "Bus IT - Communication inter-objets"
@@ -105,3 +106,4 @@ newbug_desc_help = "Courte description du rapport"
 newbug_content = "Contenu"
 newbug_content_help = "Expliquez ici les détails du bug"
 newbug_submit = "Envoyer"
+conditions = "J'accepte les <a href='/about/legal'>conditions d'utilisation</a>."
