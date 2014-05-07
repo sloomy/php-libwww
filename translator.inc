@@ -17,6 +17,8 @@ class translator implements ArrayAccess
 		{
 			if( substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) == 'fr' )
 				self::setLanguage('FR');
+			else if( substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) == 'es' )
+				self::setLanguage('ES');
 			else
 				self::setLanguage($GLOBALS['CONFIG']['DEFAULT_LANGUAGE']);
 		}
