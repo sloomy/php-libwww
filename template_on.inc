@@ -323,7 +323,7 @@ $top .= "
 	  (function() {
 		var u=((\"https:\" == document.location.protocol) ? \"https\" : \"http\") + \"://stats.anotherservice.com/\";
 		_paq.push([\"setTrackerUrl\", u+\"piwik.php\"]);
-		_paq.push([\"setSiteId\", \"5\"]);
+		_paq.push([\"setSiteId\", \"67\"]);
 		var d=document, g=d.createElement(\"script\"), s=d.getElementsByTagName(\"script\")[0]; g.type=\"text/javascript\";
 		g.defer=true; g.async=true; g.src=u+\"piwik.js\"; s.parentNode.insertBefore(g,s);
 	  })();
