@@ -25,8 +25,13 @@ $GLOBALS['CONFIG']['DEFAULT_LANGUAGE']  = 'EN';
 // =================================
 // DETECT CURRENT SITE
 // =================================
+$domain = explode ( '.', $_SERVER["HTTP_HOST"] );
+$tld = array_pop( $domain );
+$host = array_pop( $domain ) . '.' . $tld;
+$sub = array_shift( $domain );
 
 // SPECIAL CASE FOR BUSIT ALIAS :
+
 if( preg_match("/\\.bus-it\\.com$/i", $_SERVER['HTTP_HOST']) && !preg_match("/^(apps|local|developers|www)\\./i", $_SERVER['HTTP_HOST']) )
 {
 	$GLOBALS['CONFIG']['SITE'] = 'busit';
@@ -34,35 +39,27 @@ if( preg_match("/\\.bus-it\\.com$/i", $_SERVER['HTTP_HOST']) && !preg_match("/^(
 }
 else
 
-switch( $_SERVER["HTTP_HOST"] )
+switch( $host )
 {
-	case 'www.olympe.in':
-	case 'www.dev.olympe.in':
-	case 'v7.olympe.in':
-	case 'local.olympe.in':
+	case 'olympe.in':
 		$GLOBALS['CONFIG']['SITE'] = 'on';
 		break;
-	case 'www.anotherservice.com':
-	case 'www.dev.anotherservice.com':
-	case 'local.www.anotherservice.com':
+	case 'anotherservice.com':
+	case 'another.io':
 		$GLOBALS['CONFIG']['SITE'] = 'as';
 		break;
-	case 'www.sys.as':
-	case 'www.sys.sas':
-	case 'local.sys.as':
-	case 'www.sys.fr':
-	case 'www.sys.com':
+	case 'sys.as':
+	case 'sys.sas':
+	case 'sys.fr':
+	case 'sys.com':
 		$GLOBALS['CONFIG']['SITE'] = 'sys';
 		break;
-	case 'www.bus-it.com':
-	case 'www.bus-it.net':
-	case 'local.bus-it.com':
-	case 'www.dev.bus-it.com':
+	case 'bus-it.com':
+	case 'bus-it.net':
 		$GLOBALS['CONFIG']['SITE'] = 'busit';
 		break;
 	case 'apps.bus-it.com':
 	case 'apps.bus-it.net':
-	case 'local.apps.bus-it.com':
 		$GLOBALS['CONFIG']['SITE'] = 'apps';
 		break;
 	default:
