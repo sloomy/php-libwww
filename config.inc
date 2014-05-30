@@ -60,6 +60,10 @@ switch( $host )
 		    $GLOBALS['CONFIG']['SITE'] = 'apps';
         else
             $GLOBALS['CONFIG']['SITE'] = 'busit';
+        if( !preg_match("/^(apps|local|developers|www)/i", $sub) )
+        {
+            $GLOBALS['CONFIG']['INSTANCE'] = true;
+        }
 		break;
 	default:
 		if( $GLOBALS['CONFIG']['DEBUG'] )
