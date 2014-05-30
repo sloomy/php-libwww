@@ -30,15 +30,6 @@ $tld = array_pop( $domain );
 $host = array_pop( $domain ) . '.' . $tld;
 $sub = array_shift( $domain );
 
-// SPECIAL CASE FOR BUSIT ALIAS :
-
-if( preg_match("/\\.bus-it\\.com$/i", $_SERVER['HTTP_HOST']) && !preg_match("/^(apps|local|developers|www)\\./i", $_SERVER['HTTP_HOST']) )
-{
-	$GLOBALS['CONFIG']['SITE'] = 'busit';
-	$GLOBALS['CONFIG']['INSTANCE'] = true;
-}
-else
-
 switch( $host )
 {
 	case 'olympe.in':
