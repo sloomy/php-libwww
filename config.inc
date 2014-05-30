@@ -56,11 +56,10 @@ switch( $host )
 		break;
 	case 'bus-it.com':
 	case 'bus-it.net':
-		$GLOBALS['CONFIG']['SITE'] = 'busit';
-		break;
-	case 'apps.bus-it.com':
-	case 'apps.bus-it.net':
-		$GLOBALS['CONFIG']['SITE'] = 'apps';
+        if ($sub == 'apps')
+		    $GLOBALS['CONFIG']['SITE'] = 'apps';
+        else
+            $GLOBALS['CONFIG']['SITE'] = 'busit';
 		break;
 	default:
 		if( $GLOBALS['CONFIG']['DEBUG'] )
