@@ -353,7 +353,7 @@ $top .= "
 							".(isset($_GET['elogin'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['auth']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['register']}</span>")."
 						</fieldset>						
 						<fieldset>
-							<input type=\"checkbox\" name=\"remember\" value=\"remember" />
+							<input type=\"checkbox\" name=\"remember\" value=\"remember\" />
 							<label for=\"remember\" style=\"display: inline-block; padding-left: 10px;\">{$GLOBALS['lang']['remember']}</label>
 						</fieldset>
 						<fieldset>
@@ -376,7 +376,7 @@ $top .= "
 							".(isset($_GET['elogin'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['auth']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['register']}</span>")."
 						</fieldset>						
 						<fieldset>
-							<input type=\"checkbox\" name=\"remember\" value=\"remember" />
+							<input type=\"checkbox\" name=\"remember\" value=\"remember\" />
 							<label for=\"remember\" style=\"display: inline-block; padding-left: 10px;\">{$GLOBALS['lang']['remember']}</label>
 						</fieldset>
 						<fieldset>
