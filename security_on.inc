@@ -13,6 +13,7 @@ class access_on
 		
 		$a['/admin'] = array('ACCESS', 'USER_SELECT');
 		$a['/admin/users'] = array('ACCESS', 'USER_SELECT');
+		$a['/admin/users/detail'] = array('ACCESS', 'USER_SELECT');
 		$a['/admin/groups'] = array('ACCESS', 'USER_SELECT');
 		$a['/admin/blog'] = array('ACCESS', 'USER_SELECT');
 		$a['/admin/logs'] = array('ACCESS', 'USER_SELECT');
@@ -20,6 +21,7 @@ class access_on
 		$a['/admin/grants'] = array('ACCESS', 'USER_SELECT');
 		$a['/admin/stats'] = array('ACCESS', 'USER_SELECT');
 		$a['/admin/messages'] = array('ACCESS', 'MESSAGE_SELECT');
+		$a['/admin/messages/detail'] = array('ACCESS', 'MESSAGE_SELECT');
 		$a['/admin/quotas'] = array('ACCESS', 'QUOTA_SELECT');
 		
 		$a['/panel'] = array('ACCESS');
