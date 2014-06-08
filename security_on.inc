@@ -123,8 +123,8 @@ class security_on extends security
 	{
 		parent::logout();
 		
-		if( isset($_COOKIE['SYSPIE']) )
-			setcookie('SYSPIE', '', time()-60*60*24*30, '/');
+		if( isset($_COOKIE['OLYMPEPIE']) )
+			setcookie('OLYMPEPIE', '', time()-60*60*24*30, '/');
 	}
 	
 	private function save($auth=null)
@@ -136,15 +136,15 @@ class security_on extends security
 		for( $i = 0; $i < strlen($auth); $i++ )
 			$crypt .= base_convert(ord($auth[$i]), 10, 36);
 		
-		setcookie('SYSPIE', base64_encode($crypt), mktime(0,0,0,12,31,2030), '/');
+		setcookie('OLYMPEPIE', base64_encode($crypt), mktime(0,0,0,12,31,2030), '/');
 	}
 	
 	private function load()
 	{
-		if( !isset($_COOKIE['SYSPIE']) )
+		if( !isset($_COOKIE['OLYMPEPIE']) )
 			return null;
 		
-		$crypt = base64_decode($_COOKIE['SYSPIE']);
+		$crypt = base64_decode($_COOKIE['OLYMPEPIE']);
 		$auth = '';
 		for( $i = 0; $i < strlen($crypt); $i += 2 )
 			$auth .= chr(base_convert(substr($crypt,$i,2), 36, 10));
