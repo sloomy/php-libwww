@@ -43,12 +43,6 @@ class template_busit extends template
 		<title>{$GLOBALS['lang']['TITLE']}</title>
 		<meta name=\"description\" content=\"{$GLOBALS['lang']['DESCRIPTION']}\" />
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
-		<meta http-equiv=\"Cache-control\" content=\"no-cache\">
-		<meta http-equiv=\"Expires\" content=\"-1\">
-		<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no\">
-		<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">
-		<meta name=\"HandheldFriendly\" content=\"true\">
-		<meta name=\"google-site-verification\" content=\"0XKifQ42rWCTlPU-3fLlDjqnHqJl40o01bY2-S9D56Y\" />
 		<link rel=\"shortcut icon\" href=\"/{$GLOBALS['CONFIG']['SITE']}/images/favicon.ico\" />
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/main.css\" type=\"text/css\" />
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery-1.10.4/jquery-ui-1.10.4.custom.min.css\" />
@@ -92,7 +86,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 	<div id=\"wrapper\" ".((strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false)?"style=\"background-color: #e5e5e5;\"":"").">
 		<div id=\"loading\"></div>
 		<div id=\"overlay\"></div>
-		<div class=\"header\">
+		<header>
 			<div class=\"content\">";
 		
 		if( strstr($GLOBALS['CONFIG']['PAGE'], 'default') === false )
@@ -117,7 +111,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			
 		$top .= "
 			</div>
-		</div>
+		</header>
 		<div class=\"core\" id=\"core\" style=\"".(strstr($GLOBALS['CONFIG']['PAGE'], 'status')!==false?"background-color: #f0f0f0;":"")."\">";
 	
 		$logged = $GLOBALS['security']->hasAccess('/panel');
@@ -166,8 +160,9 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			{
 				$menu_data = include_once($menu_file);
 				$menu = "
-				<div class=\"menu\">
-						<ul>";
+				<nav id=\"navigation\">
+					<span class=\"nav-mobile\" id=\"nav-mobile\"><a href=\"#\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/nav.png\" /></a></span>
+					<ul>";
 
 				$logged = $GLOBALS['security']->hasAccess('/panel');
 				foreach( $menu_data as $menu_item )
@@ -208,15 +203,15 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 							else
 							{
 								$menu .= "
-							<li class=\"{$menu_item['text']}\"><a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a></li>";
+						<li class=\"{$menu_item['text']}\"><a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a></li>";
 							}
 						}
 					}
 				}
 				
 				$menu .= "
-						</ul>
-					</div>
+					</ul>
+				</nav>
 				";
 				
 				return $menu;
