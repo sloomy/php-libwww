@@ -155,8 +155,8 @@ $top .= "
 			{
 				$menu_data = include_once($menu_file);
 				$menu = "
+				<span class=\"nav-mobile\" id=\"nav-mobile\"><a href=\"#\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/nav.png\" /></a></span>
 				<nav id=\"navigation\">
-					<span class=\"nav-mobile\" id=\"nav-mobile\"><a href=\"#\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/nav.png\" /></a></span>
 					<ul>";
 
 				$logged = $GLOBALS['security']->hasAccess('/panel');
