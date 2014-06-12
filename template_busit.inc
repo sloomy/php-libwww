@@ -70,7 +70,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/store.js\"></script>";
 	
-	$top .= "
+$top .= "
 	</head>
 	<body>
 	<div id=\"fb-root\"></div>
@@ -85,33 +85,28 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 	</script>
 	<div id=\"wrapper\" ".((strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false)?"style=\"background-color: #e5e5e5;\"":"").">
 		<div id=\"loading\"></div>
-		<div id=\"overlay\"></div>
+		<div id=\"overlay\"></div>";
+	
+if( strstr($GLOBALS['CONFIG']['PAGE'], 'default') === false )
+{
+	$top .= "
 		<header>
-			<div class=\"content\">";
-		
-		if( strstr($GLOBALS['CONFIG']['PAGE'], 'default') === false )
-		{
-			$top .="
+			<div class=\"content\">
 				<div class=\"logo\">
 					<a href=\"/\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/logo.png\" alt=\"logo\" /></a>
 				</div>
-			";
-		}
-		else
-		{
-			$top .= "
-				<div class=\"logo-big\">
-					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/logo-big.png\" alt=\"logo\" />
-				</div>
-			";
-		}
-		
+	";
+	
 	if( !$GLOBALS['CONFIG']['INSTANCE'] )	
 		$top .= $this->getMainMenu();
 			
-		$top .= "
+	$top .= "
 			</div>
 		</header>
+	";
+}
+
+$top .= "
 		<div class=\"core\" id=\"core\" style=\"".(strstr($GLOBALS['CONFIG']['PAGE'], 'status')!==false?"background-color: #f0f0f0;":"")."\">";
 	
 		$logged = $GLOBALS['security']->hasAccess('/panel');
@@ -304,7 +299,6 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
 			{
 				$quota = api::send('self/system/quota/user/select');
-				$quota = $quota[0];
 				$menu .= "
 									<li style=\"float: right;\"><a href=\"/panel/credits\" id=\"credits\">{$GLOBALS['lang']['left']} {$quota['quota_used']} BIC</a></li>";
 			}
@@ -409,17 +403,17 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			$_SESSION['ANTISPAM'] = md5(time().'busit');
 
 		$objects = "
-			<div id=\"login\" class=\"floatingdialog\">
+			<div id=\"login\" class=\"floatingdialog\" autocomplete=\"off\">
 				<div class=\"form-small\">
 					<h3 class=\"center\">{$GLOBALS['lang']['login']}</h3>
 					<form action=\"/login_action\" method=\"post\" class=\"center\">
 						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
 						<fieldset>
-							<input class=\"auto\" type=\"text\" value=\"{$GLOBALS['lang']['username']}\" name=\"username\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['username']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['username']}' : this.value; this.value=='{$GLOBALS['lang']['username']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+							<input class=\"auto\" type=\"text\" placeholder=\"{$GLOBALS['lang']['username']}\" name=\"username\" />
 						</fieldset>
 						<fieldset>
-							<input class=\"auto\" type=\"password\" value=\"{$GLOBALS['lang']['password']}\" name=\"password\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['password']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['password']}' : this.value; this.value=='{$GLOBALS['lang']['password']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\"/>
-							".(isset($_GET['elogin'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['auth']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['register']}</span>")."
+							<input class=\"auto\" type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\" />
+							".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'login'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"")."
 						</fieldset>						
 						<fieldset>
 							<input type=\"checkbox\" name=\"chbox\" />
@@ -429,20 +423,19 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['login']}\" />
 						</fieldset>													
 					</form>
-					<div class=\"clearfix\">&nbsp;</div>
 				</div>
 			</div>
-			<div id=\"login-base\" style=\"display: none;\" class=\"floatingdialog\">
+			<div id=\"login-base\" class=\"floatingdialog\" autocomplete=\"off\">
 				<div class=\"form-small\">
 					<h3 class=\"center\">{$GLOBALS['lang']['login']}</h3>
 					<form action=\"/login_action\" method=\"post\" class=\"center\">
 						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
 						<fieldset>
-							<input class=\"auto\" type=\"text\" value=\"{$GLOBALS['lang']['username']}\" name=\"username\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['username']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['username']}' : this.value; this.value=='{$GLOBALS['lang']['username']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+							<input class=\"auto\" type=\"text\" placeholder=\"{$GLOBALS['lang']['username']}\" name=\"username\" />
 						</fieldset>
 						<fieldset>
-							<input class=\"auto\" type=\"password\" value=\"{$GLOBALS['lang']['password']}\" name=\"password\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['password']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['password']}' : this.value; this.value=='{$GLOBALS['lang']['password']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\"/>
-							".(isset($_GET['elogin'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['auth']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['register']}</span>")."
+							<input class=\"auto\" type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\" />
+							".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'login'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"")."
 						</fieldset>						
 						<fieldset>
 							<input type=\"checkbox\" name=\"chbox\" />
@@ -452,32 +445,31 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['login']}\" />
 						</fieldset>													
 					</form>
-					<div class=\"clearfix\">&nbsp;</div>
 				</div>
 			</div>
-			<div id=\"recovery\" style=\"display: none;\" class=\"floatingdialog\">
+			<div id=\"recovery\" class=\"floatingdialog\" autocomplete=\"off\">
 				<div class=\"form-small\">
 					<h3 class=\"center\">{$GLOBALS['lang']['recovery']}</h3>
 					<form action=\"/recovery_action\" method=\"post\" class=\"center\">
 						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
 						<fieldset>
-							<input class=\"auto\" type=\"text\" value=\"{$GLOBALS['lang']['username']}\" name=\"username\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['username']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['username']}' : this.value; this.value=='{$GLOBALS['lang']['username']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
-							".(isset($_GET['erecovery'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['erecovery']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['recoverytips']}</a>")."
+							<input class=\"auto\" type=\"text\" placeholder=\"{$GLOBALS['lang']['username']}\" name=\"username\" />
+							".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'recovery'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['recoverytips']}</a>")."
 						</fieldset>
 						<fieldset>
 							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['save']}\" />
 						</fieldset>													
 					</form>
-					<div class=\"clearfix\">&nbsp;</div>
 				</div>
 			</div>
-			<div id=\"signup\" class=\"floatingdialog\">
+			<div id=\"signup\" class=\"floatingdialog\" autocomplete=\"off\">
 				<div class=\"form-small\">		
 					<h3 class=\"center\">{$GLOBALS['lang']['signup']}</h3>
 					<form action=\"/signup_action\" method=\"post\" id=\"valid\" class=\"center\">
 						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />				
 						<fieldset>
-							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_EMAIL']?"{$_SESSION['JOIN_EMAIL']}":"{$GLOBALS['lang']['email']}")."\" name=\"email\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['email']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['email']}' : this.value; this.value=='{$GLOBALS['lang']['email']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+							<input class=\"auto\" type=\"text\" placeholder=\"".($_SESSION['JOIN_EMAIL']?"{$_SESSION['JOIN_EMAIL']}":"{$GLOBALS['lang']['email']}")."\" name=\"email\" />
+							".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'signup'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"")."
 						</fieldset>
 						<fieldset>
 							<input type=\"checkbox\" name=\"conditions\" value=\"1\" />
@@ -489,7 +481,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 					</form>
 				</div>
 			</div>
-			<div id=\"register\" class=\"floatingdialog\">
+			<div id=\"register\" class=\"floatingdialog\" autocomplete=\"off\">
 				<div class=\"form-small\">		
 					<h3 class=\"center\">{$GLOBALS['lang']['signup']}</h3>
 					<p style=\"text-align: center;\">{$GLOBALS['lang']['signup_explain']}</p>
@@ -519,11 +511,11 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 						<input type=\"hidden\" name=\"token\" value=\"{$_SESSION['CHANGEPASS']['TOKEN']}\" />
 						<input type=\"hidden\" name=\"user\" value=\"{$_SESSION['CHANGEPASS']['USER']}\" />
 						<fieldset>
-							<input class=\"auto\" type=\"password\" value=\"{$GLOBALS['lang']['password']}\" name=\"password\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['password']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['password']}' : this.value; this.value=='{$GLOBALS['lang']['password']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\"/>							
+							<input class=\"auto\" type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\"  />							
 							".(isset($_GET['echangepassword'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['echangepassword']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['changetip']}</a>")."
 						</fieldset>
 						<fieldset>
-							<input class=\"auto\" type=\"password\" value=\"{$GLOBALS['lang']['confirm']}\" name=\"confirm\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['confirm']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['confirm']}' : this.value; this.value=='{$GLOBALS['lang']['confirm']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\"/>							
+							<input class=\"auto\" type=\"password\" placeholder=\"{$GLOBALS['lang']['confirm']}\" name=\"confirm\" />							
 							<span class=\"help-block\">{$GLOBALS['lang']['confirmtip']}</a>
 						</fieldset>					
 						<fieldset>	
@@ -556,7 +548,23 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 					</form>							
 				</div>
 			</div>
+			<script type=\"text/javascript\">
+				$(document).ready(function()
+				{
 		";
+		if( $_SESSION['ERROR']['HANDLER'] == 'signup' )
+			$objects .= " $(\"#signup\").dialog(\"open\");\n";
+		if( $_SESSION['ERROR']['HANDLER'] == 'login' )	
+			$objects .= " $(\"#login\").dialog(\"open\");\n";	
+		if( $_SESSION['ERROR']['HANDLER'] == 'recovery' )	
+			$objects .= "$(\"#login\").html($('#recovery').html()); $(\"#login\").dialog(\"open\");\n";
+			
+		$objects .= "	
+				});
+			</script>
+		";
+
+		unset($_SESSION['ERROR']);
 
 		if( $_SESSION['CHANGEPASS']['TOKEN'] && $_SESSION['CHANGEPASS']['USER'] )
 		{
@@ -588,42 +596,6 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			</div>
 			";
 		 }
-
-		if( isset($_GET['elogin']) )
-		{
-			$objects .= "<script type=\"text/javascript\">
-							$(document).ready(function() {
-								$(\"#login\").dialog(\"open\");
-								$(\".ui-dialog-titlebar\").hide();
-							});
-							function recovery()
-							{
-								$(\"#login\").html($('#recovery').html());
-							}
-							
-							function norecovery()
-							{
-								$(\"#login\").html($('#login-base').html());
-							}
-						</script>
-			";
-		}
-
-		if( isset($_GET['erecovery']) )
-		{
-			$objects .= "<script type=\"text/javascript\">
-								$(\"#login\").html($('#recovery').html());
-						</script>";
-		}
-		if( isset($_GET['ecode']) )
-		{
-			$objects .= "<script type=\"text/javascript\">
-							$(document).ready(function() {
-								$(\"#signup\").dialog(\"open\");
-								$(\".ui-dialog-titlebar\").hide();
-							});
-						</script>";
-		}
 		
 		if( $_SESSION['REGISTER']['STATUS'] === true )
 		{
