@@ -443,7 +443,7 @@ $top .= "
 						<fieldset>
 							<input type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\" />
 							".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'login'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"")."
-						</fieldset>						
+						</fieldset>
 						<fieldset>
 							<input type=\"checkbox\" name=\"chbox\" />
 							<label for=\"remember\" style=\"display: inline-block; padding-left: 10px;\">{$GLOBALS['lang']['remember']}</label>
@@ -502,7 +502,7 @@ $top .= "
 							".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'register'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['usertip']}</a>")."
 						</fieldset>
 						<fieldset>
-							<input style=\"width: 240px;\" type=\"password\" value=\"{$GLOBALS['lang']['password']}\" name=\"password\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['password']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['password']}' : this.value; this.value=='{$GLOBALS['lang']['password']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\"/>							
+							<input style=\"width: 240px;\" type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\" />
 						</fieldset>
 						<fieldset>	
 							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['signup']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
@@ -567,7 +567,9 @@ $top .= "
 		if( $_SESSION['ERROR']['HANDLER'] == 'signup' )
 			$objects .= " $(\"#signup\").dialog(\"open\");\n";
 		if( $_SESSION['ERROR']['HANDLER'] == 'register' )	
-			$objects .= " $(\"#register\").dialog(\"open\");\n";	
+			$objects .= " $(\"#register\").dialog(\"open\");\n";
+		if( $_SESSION['REGISTER']['STATUS'] === true )
+			$objects .= " $(\"#register\").dialog(\"open\");\n";
 		if( $_SESSION['ERROR']['HANDLER'] == 'login' )	
 			$objects .= " $(\"#login\").dialog(\"open\");\n";
 		if( $_SESSION['ERROR']['HANDLER'] == 'recovery' )	
@@ -587,6 +589,7 @@ $top .= "
 		unset($_SESSION['ERROR']);
 		unset($_SESSION['MESSAGE']);
 		unset($_SESSION['FORM']['OPEN']);
+		unset($_SESSION['REGISTER']['STATUS']);
 		
 		return $objects;
 	
