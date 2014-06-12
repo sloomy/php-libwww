@@ -235,7 +235,14 @@ $top .= "
 		{
 			$menu_data = include_once($menu_file);
 			$menu = "
-					<div class=\"menu-fixed\">
+					<div class=\"menu-fixed\" style=\"display: none;\" id=\"menu-fixed-nav\">
+						<div class=\"container\">
+							<ul id=\"menu\">
+								
+							</ul>
+						</div>
+					</div>
+					<div class=\"menu-fixed\" id=\"menu-fixed\">
 						<div class=\"container\">
 							<ul id=\"menu\">
 			";
