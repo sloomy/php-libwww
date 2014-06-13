@@ -51,7 +51,7 @@ $GLOBALS['CONFIG']['MAIL_TEMPLATE'] = "
                         <h1 id=\"logo\" style=\"color: #2b6fab; display: block; font-family: hybrea, proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; font-size: 32px; font-weight: 200; text-align: left; margin: 0 0 40px;\" align=\"left\"><img src=\"https://www.bus-it.com/busit/images/logo-dark.png\" alt=\"Bus IT\" width=\"140\" height=\"42\" style=\"outline: none; text-decoration: none; border: 0;\" /></h1>
 						{CONTENT}
 					   <p style=\"margin: 20px 0;\">
-                          The Bus IT Team<br />
+                          Bus IT<br />
                           <a href=\"https://www.bus-it.com\" style=\"color: #2b6fab;\">https://www.bus-it.com</a>
                         </p>
                       </td>
@@ -65,11 +65,7 @@ $GLOBALS['CONFIG']['MAIL_TEMPLATE'] = "
                     <tr style=\"vertical-align: top; padding: 0;\">
                       <td valign=\"top\" style=\"vertical-align: top; text-align: left; padding: 0;\" align=\"left\">
                         <p style=\"margin: 20px 0;\">
-                          Bus IT is a simple platform that allows you to interconnect physical devices and web services. You are able to build intelligent paths and useful interconnections.
-                        </p>
-
-                        <p style=\"margin: 20px 0;\">
-                          To learn more about Bus IT and all it's features, check out the documentation: <a href=\"https://www.bus-it.com/doc\" style=\"color: #666666;\">https://www.bus-it.com/doc</a>
+                          Copyright &copy; 2014 Bus IT - <a href=\"https://twitter.com/Bus_IT\" style=\"color: #666666;\">Twitter</a> - <a href=\"https://facebook.com/busit.net\" style=\"color: #666666;\">Facebook</a>
                         </p>
                       </td>
                     </tr>

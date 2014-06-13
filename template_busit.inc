@@ -236,12 +236,61 @@ $top .= "
 		{
 			$menu_data = include_once($menu_file);
 			$menu = "
-					<div class=\"menu-fixed\" style=\"display: none;\" id=\"menu-fixed-nav\">
-						<div class=\"container\">
-							<ul id=\"menu\">
+					<div class=\"menu-fixed-mob\" id=\"menu-fixed-mob\">
+						<a style=\"float: left;\" href=\"#\" id=\"submenu-mobile\">{$GLOBALS['lang']['MENUMOB']}</a>
+						<ul style=\"display: none;\" id=\"submenu-nav-mob\">";
+		
+			foreach( $menu_data as $menu_item )
+			{
+				if( $GLOBALS['security']->hasAccess($menu_item['link']) )
+				{
+					if( is_array($menu_item['sub']) )
+					{
+						$menu .= "<li class=\"sub ".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\"><a href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}>".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a>
+							<ul>";
 								
+						foreach( $menu_item['sub'] as $menu_subitem )
+						{						
+							$menu .= "
+								<li class=\"{$menu_subitem['text']}\"><a href=\"{$menu_subitem['link']}\"  onclick=\"{$menu_subitem['onclick']}\" title=\"\">".($GLOBALS['lang'][$menu_subitem['text']]?"{$GLOBALS['lang'][$menu_subitem['text']]}":"{$menu_subitem['text']}")."</a></li>";
+						}
+									
+						$menu .= "
 							</ul>
-						</div>
+						</li>";
+					}
+					else
+					{
+						$menu .= "
+						<li class=\"{$menu_item['text']}\"><a href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\">".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a></li>
+					";
+					}
+				}
+			}
+			
+			$menu .= "						
+						</ul>	
+			";
+
+			if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
+			{
+				$menu .= "
+						<form style=\"float: right; margin-right: 10px;\" id=\"searchform\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px; font-size: 15px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
+			}
+
+			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
+			{
+				$quota = api::send('self/system/quota/user/select');
+				foreach( $quota as $q )
+				{
+					if( $q['quota_name'] == 'CREDITS' )
+						$quota = $q;
+				}
+				$menu .= "
+						<li style=\"float: right;\"><a href=\"/panel/credits\" id=\"credits\">{$GLOBALS['lang']['left']} {$quota['quota_used']} BIC</a></li>";
+			}
+			
+			$menu .= "
 					</div>
 					<div class=\"menu-fixed\" id=\"menu-fixed\">
 						<div class=\"container\">
@@ -301,12 +350,17 @@ $top .= "
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			{
 				$menu .= "
-									<li id=\"search-li\" class=\"search\"><form id=\"searchform\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 220px; font-size: 15px;\" type=\"text\" id=\"search\" value=\"{$GLOBALS['lang']['search']}\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['search']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['search']}' : this.value; this.value=='{$GLOBALS['lang']['search']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" /></form></li>";
+									<li id=\"search-li\" class=\"search\"><form id=\"searchform\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px; font-size: 15px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form></li>";
 			}
 
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
 			{
 				$quota = api::send('self/system/quota/user/select');
+				foreach( $quota as $q )
+				{
+					if( $q['quota_name'] == 'CREDITS' )
+						$quota = $q;
+				}
 				$menu .= "
 									<li style=\"float: right;\"><a href=\"/panel/credits\" id=\"credits\">{$GLOBALS['lang']['left']} {$quota['quota_used']} BIC</a></li>";
 			}
