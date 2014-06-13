@@ -70,6 +70,8 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/doc.js\"></script>";
 if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/store.js\"></script>";
+if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
+	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/panel.js\"></script>";
 	
 $top .= "
 	</head>
