@@ -87,10 +87,13 @@ $top .= "
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
 	<div id=\"wrapper\" style=\"";
-	if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false )
-		$top .= "background-color: #e5e5e5; ";
-	else if( $GLOBALS['CONFIG']['PAGE'] == '/panel' || strstr($GLOBALS['CONFIG']['PAGE'], 'panel/index') !== false )
-		$top .= "";
+	if( strstr($GLOBALS['CONFIG']['PAGE'], 'status') !== false )
+		$top .= "background-color: #f0f0f0; ";
+	else if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false )
+		$top .= "background-color: #f0f0f0; ";
+	else if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
+		$top .= "background-color: #f0f0f0;";
+	
 	$top .= "\">
 		<div id=\"loading\"></div>
 		<div id=\"overlay\"></div>";
@@ -118,9 +121,11 @@ $top .= "
 		<div class=\"core\" id=\"core\" style=\""; 
 if( strstr($GLOBALS['CONFIG']['PAGE'], 'status') !== false )
 	$top .= "background-color: #f0f0f0; ";
-	else if( $GLOBALS['CONFIG']['PAGE'] == '/panel' || strstr($GLOBALS['CONFIG']['PAGE'], 'panel/index') !== false )
-		$top .= "background: #f6f6f6 url('/{$GLOBALS['CONFIG']['SITE']}/images/dotgrid-black.png'); ";
-		
+else if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
+	$top .= "background-color: #f0f0f0;";
+else if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false )
+	$top .= "background-color: #f0f0f0;";
+
 $top .= "\">";
 	
 		$logged = $GLOBALS['security']->hasAccess('/panel');
@@ -289,7 +294,7 @@ $top .= "\">";
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			{
 				$menu .= "
-						<form style=\"float: right; margin-right: 10px;\" id=\"searchform\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px; font-size: 15px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
+						<form style=\"float: right; margin-right: 10px;\" id=\"searchform-mob\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px; font-size: 15px;\" type=\"text\" id=\"search-mob\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
 			}
 
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
@@ -304,7 +309,7 @@ $top .= "\">";
 							<img style=\"display: block; float: left; padding: 13px 0 0 10px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/arrow.png\" />
 							<img class=\"profile-image\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png":"/{$GLOBALS['CONFIG']['SITE']}/images/users/user.png")."\" alt=\"\" />
 						</a>
-						<div id=\"profile-menu-mob\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/loading_dark_small.gif\" alt=\"\" class=\"loader\" /></div>
+						<div id=\"profile-menu-mob\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/loading_dark_small.gif\" alt=\"\" class=\"loader\" style=\"margin-top: -20px;\" /></div>
 					</div>
 					";
 			}
@@ -381,7 +386,7 @@ $top .= "\">";
 							<img style=\"display: block; float: left; padding: 13px 0 0 10px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/arrow.png\" />
 							<img class=\"profile-image\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png":"/{$GLOBALS['CONFIG']['SITE']}/images/users/user.png")."\" alt=\"\" />
 						</a>
-						<div id=\"profile-menu\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/loading_dark_small.gif\" alt=\"\" class=\"loader\" /></div>
+						<div id=\"profile-menu\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/loading_dark_small.gif\" alt=\"\" class=\"loader\" style=\"margin-top: -20px;\" /></div>
 					</div>
 					";
 			}
@@ -408,7 +413,15 @@ $top .= "\">";
 		$bottom .= $this->getObjects();
 		
 		$bottom .= "
-		<div id=\"footer\" class=\"footer\">
+		<div id=\"footer\" class=\"footer\" style=\"";
+if( strstr($GLOBALS['CONFIG']['PAGE'], 'status') !== false )
+	$bottom .= "background-color: #ffffff; ";
+else if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false )
+	$bottom .= "background-color: #ffffff;";	
+else if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
+	$bottom .= "background-color: #ffffff;";
+
+$bottom .= "\">
 			<div class=\"content\">
 				<div class=\"social\">
 					<a class=\"link\" href=\"https://twitter.com/Bus_IT\">
@@ -442,7 +455,7 @@ $top .= "\">";
 	";
 	$request = str_replace(array('?lang='.translator::getLanguage(), '&lang='.translator::getLanguage()) , array('', ''), $_SERVER['REQUEST_URI']);
 
-	$bottom .= "	
+	$bottom .= "
 					".(translator::getLanguage()=='EN'?"<span style=\"color: #4d4d4d;\">":"<a href=\"{$request}".(strstr($request,'?')===false?"?":"&")."lang=EN\">")."English".(translator::getLanguage()=='EN'?"</span>":"</a>")."&nbsp;&nbsp;&nbsp;
 					".(translator::getLanguage()=='FR'?"<span style=\"color: #4d4d4d;\">":"<a href=\"{$request}".(strstr($request,'?')===false?"?":"&")."lang=FR\">")."Fran&ccedil;ais".(translator::getLanguage()=='FR'?"</span>":"</a>")."&nbsp;&nbsp;&nbsp;
 					".(translator::getLanguage()=='ES'?"<span style=\"color: #4d4d4d;\">":"<a href=\"{$request}".(strstr($request,'?')===false?"?":"&")."lang=ES\">")."Espa&ntilde;ol".(translator::getLanguage()=='ES'?"</span>":"</a>")."&nbsp;&nbsp;&nbsp;
