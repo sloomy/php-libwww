@@ -270,7 +270,7 @@ $top .= "
 				}
 			}
 			
-			$menu .= "						
+			$menu .= "
 						</ul>	
 			";
 
@@ -289,7 +289,10 @@ $top .= "
 						$quota = $q;
 				}
 				$menu .= "
-						<li style=\"float: right;\"><a href=\"/panel/credits\" id=\"credits\">{$GLOBALS['lang']['left']} {$quota['quota_used']} BIC</a></li>";
+						<li style=\"float: right;\">
+							<a href=\"#\" id=\"profile\">
+								<img src=\"\"
+								{$GLOBALS['lang']['left']} {$quota['quota_used']} BIC</a></li>";
 			}
 			
 			$menu .= "
