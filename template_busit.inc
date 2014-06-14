@@ -86,7 +86,12 @@ $top .= "
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
-	<div id=\"wrapper\" ".((strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false)?"style=\"background-color: #e5e5e5;\"":"").">
+	<div id=\"wrapper\" style=\"";
+	if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false )
+		$top .= "background-color: #e5e5e5; ";
+	else if( $GLOBALS['CONFIG']['PAGE'] == '/panel' || strstr($GLOBALS['CONFIG']['PAGE'], 'panel/index') !== false )
+		$top .= "";
+	$top .= "\">
 		<div id=\"loading\"></div>
 		<div id=\"overlay\"></div>";
 	
@@ -110,7 +115,13 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'default') === false )
 }
 
 $top .= "
-		<div class=\"core\" id=\"core\" style=\"".(strstr($GLOBALS['CONFIG']['PAGE'], 'status')!==false?"background-color: #f0f0f0;":"")."\">";
+		<div class=\"core\" id=\"core\" style=\""; 
+if( strstr($GLOBALS['CONFIG']['PAGE'], 'status') !== false )
+	$top .= "background-color: #f0f0f0; ";
+	else if( $GLOBALS['CONFIG']['PAGE'] == '/panel' || strstr($GLOBALS['CONFIG']['PAGE'], 'panel/index') !== false )
+		$top .= "background: #f6f6f6 url('/{$GLOBALS['CONFIG']['SITE']}/images/dotgrid-black.png'); ";
+		
+$top .= "\">";
 	
 		$logged = $GLOBALS['security']->hasAccess('/panel');
 		$top .= $this->getSubMenu();
@@ -221,6 +232,7 @@ $top .= "
 	
 	private function getSubMenu()
 	{
+				
 		$menu_file = null;
 		$path = $GLOBALS['CONFIG']['PATH'];
 		while( strlen($path) > strlen($GLOBALS['CONFIG']['ROOT'])-2 )
@@ -282,17 +294,19 @@ $top .= "
 
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
 			{
-				$quota = api::send('self/system/quota/user/select');
-				foreach( $quota as $q )
-				{
-					if( $q['quota_name'] == 'CREDITS' )
-						$quota = $q;
-				}
+				$self = api::send('self/system/user/select');
+				$self = $self[0];
+				
 				$menu .= "
-						<li style=\"float: right;\">
-							<a href=\"#\" id=\"profile\">
-								<img src=\"\"
-								{$GLOBALS['lang']['left']} {$quota['quota_used']} BIC</a></li>";
+					<div style=\"position: relative; float: right;\">
+						<a href=\"#\" id=\"profile\" onclick=\"loadProfileMob(); return false;\">
+							<span style=\"display: block; float: left; padding: 13px 0 0 0;\">{$self['user_name']}</span>
+							<img style=\"display: block; float: left; padding: 13px 0 0 10px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/arrow.png\" />
+							<img class=\"profile-image\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png":"/{$GLOBALS['CONFIG']['SITE']}/images/users/user.png")."\" alt=\"\" />
+						</a>
+						<div id=\"profile-menu-mob\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/loading_dark_small.gif\" alt=\"\" class=\"loader\" /></div>
+					</div>
+					";
 			}
 			
 			$menu .= "
@@ -360,14 +374,16 @@ $top .= "
 
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
 			{
-				$quota = api::send('self/system/quota/user/select');
-				foreach( $quota as $q )
-				{
-					if( $q['quota_name'] == 'CREDITS' )
-						$quota = $q;
-				}
 				$menu .= "
-									<li style=\"float: right;\"><a href=\"/panel/credits\" id=\"credits\">{$GLOBALS['lang']['left']} {$quota['quota_used']} BIC</a></li>";
+					<div style=\"position: relative; float: right;\">
+						<a href=\"#\" id=\"profile\" onclick=\"loadProfile(); return false;\">
+							<span style=\"display: block; float: left; padding: 13px 0 0 0;\">{$self['user_name']}</span>
+							<img style=\"display: block; float: left; padding: 13px 0 0 10px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/arrow.png\" />
+							<img class=\"profile-image\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png":"/{$GLOBALS['CONFIG']['SITE']}/images/users/user.png")."\" alt=\"\" />
+						</a>
+						<div id=\"profile-menu\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/loading_dark_small.gif\" alt=\"\" class=\"loader\" /></div>
+					</div>
+					";
 			}
 			
 			$menu .= "
