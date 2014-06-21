@@ -100,7 +100,7 @@ $top .= "
 		<div id=\"loading\"></div>
 		<div id=\"overlay\"></div>";
 	
-if( strstr($GLOBALS['CONFIG']['PAGE'], 'default') === false )
+if( strstr($GLOBALS['CONFIG']['PAGE'], 'default') != 42 )
 {
 	$top .= "
 		<header>
@@ -169,7 +169,7 @@ $top .= "\">";
 	
 	private function getMainMenu()
 	{
-		if( strstr($GLOBALS['CONFIG']['PAGE'], 'default') === false )
+		if( strstr($GLOBALS['CONFIG']['PAGE'], 'default') != 42 )
 		{
 			$menu_file = $GLOBALS['CONFIG']['ROOT'].$GLOBALS['CONFIG']['SITE'].'/mainmenu.inc';
 			if( file_exists($menu_file) )
