@@ -43,9 +43,11 @@ class template_busit extends template
 		<title>{$GLOBALS['lang']['TITLE']}</title>
 		<meta name=\"description\" content=\"{$GLOBALS['lang']['DESCRIPTION']}\" />
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
-		<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no\"> 
+		<meta http-equiv=\"cache-control\" content=\"no-cache, must-revalidate\" /> 
+		<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no\" /> 
 		<link rel=\"shortcut icon\" href=\"/{$GLOBALS['CONFIG']['SITE']}/images/favicon.ico\" />
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/main.css\" type=\"text/css\" />
+		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/font-awesome.css\" type=\"text/css\" />
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery-1.10.4/jquery-ui-1.10.4.custom.min.css\" />
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery-1.10.4/default.css\" />
 		<link href=\"https://fonts.googleapis.com/css?family=Cuprum\" rel=\"stylesheet\" type=\"text/css\" />
@@ -294,7 +296,12 @@ $top .= "\">";
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			{
 				$menu .= "
-						<form style=\"float: right; margin-right: 10px;\" id=\"searchform-mob\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px; font-size: 15px;\" type=\"text\" id=\"search-mob\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
+						<form style=\"float: right; margin-right: 10px;\" id=\"searchform-mob\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px;\" type=\"text\" id=\"search-mob\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
+			}
+			if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
+			{
+				$menu .= "
+						<form style=\"float: right; margin-right: 10px;\" id=\"searchform-mob\" target=\"/doc/search\" method=\"get\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px;\" type=\"text\" id=\"search-mob\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
 			}
 
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
@@ -374,9 +381,14 @@ $top .= "\">";
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			{
 				$menu .= "
-									<li id=\"search-li\" class=\"search\"><form id=\"searchform\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px; font-size: 15px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form></li>";
+									<li id=\"search-li\" class=\"search\"><form id=\"searchform\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form></li>";
 			}
-
+			if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
+			{
+				$menu .= "
+									<li id=\"search-li\" class=\"search\"><form id=\"searchform\" target=\"/doc/search\" method=\"get\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form></li>";
+			}
+			
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
 			{
 				$menu .= "
