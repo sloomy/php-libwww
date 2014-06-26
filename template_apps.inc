@@ -118,7 +118,6 @@ class template_apps extends template
 		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-jsplumb.js\"></script>
 		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-sceditor.bbcode.js\"></script>
 		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-toggles.js\"></script>
-	$top .= "
 	</head>
 	<body>
 			";
