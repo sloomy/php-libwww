@@ -95,7 +95,11 @@ $top .= "
 		$top .= "background-color: #f0f0f0; ";
 	else if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
 		$top .= "background-color: #f0f0f0;";
-	
+	else if( strstr($GLOBALS['CONFIG']['PAGE'], 'case') !== false )
+		$top .= "background-color: #f0f0f0;";
+	else if( strstr($GLOBALS['CONFIG']['PAGE'], 'companies') !== false )
+		$top .= "background-color: #f0f0f0;";
+		
 	$top .= "\">
 		<div id=\"loading\"></div>
 		<div id=\"overlay\"></div>";
@@ -127,7 +131,11 @@ else if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
 	$top .= "background-color: #f0f0f0;";
 else if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false )
 	$top .= "background-color: #f0f0f0;";
-
+else if( strstr($GLOBALS['CONFIG']['PAGE'], 'case') !== false )
+	$top .= "background-color: #f0f0f0;";
+else if( strstr($GLOBALS['CONFIG']['PAGE'], 'companies') !== false )
+	$top .= "background-color: #f0f0f0;";
+		
 $top .= "\">";
 	
 		$logged = $GLOBALS['security']->hasAccess('/panel');
@@ -434,7 +442,11 @@ else if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBAL
 	$bottom .= "background-color: #ffffff;";	
 else if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
 	$bottom .= "background-color: #ffffff;";
-
+else if( strstr($GLOBALS['CONFIG']['PAGE'], 'case') !== false )
+	$bottom .= "background-color: #ffffff;";
+else if( strstr($GLOBALS['CONFIG']['PAGE'], 'companies') !== false )
+	$bottom .= "background-color: #ffffff;";
+	
 $bottom .= "\">
 			<div class=\"content\">
 				<div class=\"social\">
