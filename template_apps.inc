@@ -51,13 +51,24 @@ class template_apps extends template
 		<meta name=\"google-site-verification\" content=\"0XKifQ42rWCTlPU-3fLlDjqnHqJl40o01bY2-S9D56Y\" />
 		<link rel=\"shortcut icon\" href=\"/busit/images/favicon.ico\" />
 		<link rel=\"stylesheet\" href=\"/busit/css/main.css\" type=\"text/css\" />
-		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-1.9.1.js\"></script>
-		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-ui-1.10.3.custom.js\"></script>
-		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-ui-touch-punch.js\"></script>";
+		<link rel=\"stylesheet\" href=\"/busit/css/font-awesome.css\" type=\"text/css\" />
+		<link rel=\"stylesheet\" href=\"/busit/css/jquery-1.10.4/jquery-ui-1.10.4.custom.min.css\" />
+		<link rel=\"stylesheet\" href=\"/busit/css/jquery-1.10.4/default.css\" />
+		<link href=\"https://fonts.googleapis.com/css?family=Cuprum\" rel=\"stylesheet\" type=\"text/css\" />
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-2.1.1.min.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-globalize.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-ui-1.10.4.custom.min.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-ui-touch-punch.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-ui-timepicker.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-chartjs.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-raty.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-jsplumb.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-sceditor.bbcode.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-toggles.js\"></script>";
 	$top .= "
 	</head>
 	<body>
-		<div id=\"apps\" style=\"width: 680px; margin: 0 auto;\">
+		<div id=\"apps\" style=\"width: 90%; margin: 0 auto;\">
 			";
 		
 		return $top;
@@ -93,15 +104,20 @@ class template_apps extends template
 		<meta name=\"google-site-verification\" content=\"0XKifQ42rWCTlPU-3fLlDjqnHqJl40o01bY2-S9D56Y\" />
 		<link rel=\"shortcut icon\" href=\"/busit/images/favicon.ico\" />
 		<link rel=\"stylesheet\" href=\"/busit/css/main.css\" type=\"text/css\" />
-		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-1.9.1.js\"></script>
-		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-ui-1.10.3.custom.js\"></script>
+		<link rel=\"stylesheet\" href=\"/busit/css/font-awesome.css\" type=\"text/css\" />
+		<link rel=\"stylesheet\" href=\"/busit/css/jquery-1.10.4/jquery-ui-1.10.4.custom.min.css\" />
+		<link rel=\"stylesheet\" href=\"/busit/css/jquery-1.10.4/default.css\" />
+		<link href=\"https://fonts.googleapis.com/css?family=Cuprum\" rel=\"stylesheet\" type=\"text/css\" />
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-2.1.1.min.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-globalize.js\"></script>
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-ui-1.10.4.custom.min.js\"></script>
 		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-ui-touch-punch.js\"></script>
 		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-ui-timepicker.js\"></script>
 		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-chartjs.js\"></script>
 		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-raty.js\"></script>
 		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-jsplumb.js\"></script>
 		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-sceditor.bbcode.js\"></script>
-		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-toggles.js\"></script>";
+		<script type=\"text/javascript\" src=\"/busit/js/jquery/jquery-toggles.js\"></script>
 	$top .= "
 	</head>
 	<body>
