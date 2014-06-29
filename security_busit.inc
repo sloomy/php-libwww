@@ -17,8 +17,11 @@ class access_busit
 		$a['/admin/group/index'] = array('ACCESS', 'GROUP_SELECT');
 
 		$a['/developers/panel'] = array('ACCESS', 'DEVELOPER_ACCESS');
+		$a['/developers/panel/stats'] = array('ACCESS', 'DEVELOPER_ACCESS');
+		$a['/developers/panel/credits'] = array('ACCESS', 'DEVELOPER_ACCESS');
 		$a['/developers/panel/connector'] = array('ACCESS', 'SELF_CONNECTOR_SELECT');
-		$a['/developers/panel/connector/add'] = array('ACCESS', 'SELF_CONNECTOR_INSERT');
+		$a['/developers/panel/connector/config'] = array('ACCESS', 'SELF_CONNECTOR_SELECT');
+		$a['/developers/panel/connector/config'] = array('ACCESS', 'SELF_CONNECTOR_SELECT');		
 				
 		$a['/panel'] = array('SELF_ACCESS');
 		$a['/panel/space/view'] = array('SELF_ACCESS');
