@@ -93,7 +93,7 @@ $top .= "
 		$top .= "background-color: #f0f0f0; ";
 	else if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false )
 		$top .= "background-color: #f0f0f0; ";
-	else if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
+	else if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'admin') !== false )
 		$top .= "background-color: #f0f0f0;";
 	else if( strstr($GLOBALS['CONFIG']['PAGE'], 'case') !== false )
 		$top .= "background-color: #f0f0f0;";
@@ -127,7 +127,7 @@ $top .= "
 		<div class=\"core\" id=\"core\" style=\""; 
 if( strstr($GLOBALS['CONFIG']['PAGE'], 'status') !== false )
 	$top .= "background-color: #f0f0f0; ";
-else if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
+else if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'admin') !== false )
 	$top .= "background-color: #f0f0f0;";
 else if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false )
 	$top .= "background-color: #f0f0f0;";
@@ -440,7 +440,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'status') !== false )
 	$bottom .= "background-color: #ffffff; ";
 else if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false )
 	$bottom .= "background-color: #ffffff;";	
-else if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
+else if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'admin') !== false )
 	$bottom .= "background-color: #ffffff;";
 else if( strstr($GLOBALS['CONFIG']['PAGE'], 'case') !== false )
 	$bottom .= "background-color: #ffffff;";
