@@ -4,8 +4,7 @@ $GLOBALS['CONFIG']['DEBUG'] 		= true;
 $GLOBALS['CONFIG']['THROW_ERRORS'] 	= (E_ALL | E_STRICT) & ~E_NOTICE;
 
 $domain = explode( '.', $_SERVER["HTTP_HOST"] );
-$dir = '/dns/' . array_pop( $domain ) . '/' . array_pop( $domain ) . '/etc/settings';
-$file = $dir . '/' . implode( '.', $domain ) . '.ini';
+$file = '/dns/' . array_pop( $domain ) . '/' . array_pop( $domain ) . '/etc/settings' . '/' . implode( '.', $domain ) . '.ini';
 if( file_exists( $file ) )
 {
     $conf = parse_ini_file( $file, true );
@@ -25,6 +24,8 @@ $GLOBALS['CONFIG']['HOSTNAME_APPS']	= $conf['Main']['HOSTNAME_APPS'];
 $GLOBALS['CONFIG']['UPTIME_TOKEN']	= $conf['Main']['UPTIME_TOKEN'];
 $GLOBALS['CONFIG']['DEBUG'] 		= false;
 unset($conf);
+unset($file);
+unset($domain);
 
 $GLOBALS['CONFIG']['DEFAULT_PAGE']		= '/default';
 $GLOBALS['CONFIG']['PANEL_PAGE']		= '/panel';
