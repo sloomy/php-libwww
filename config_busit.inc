@@ -29,7 +29,7 @@ unset($domain);
 
 $GLOBALS['CONFIG']['DEFAULT_PAGE']		= '/default';
 $GLOBALS['CONFIG']['PANEL_PAGE']		= '/panel';
-$GLOBALS['CONFIG']['LOGIN_PAGE']		= '/login_action';
+$GLOBALS['CONFIG']['LOGIN_PAGE']		= '/?elogin';
 $GLOBALS['CONFIG']['DEFAULT_LANGUAGE']	= 'EN';
 
 $GLOBALS['CONFIG']['MAIL_TEMPLATE'] = "
