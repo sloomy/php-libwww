@@ -171,7 +171,7 @@ $top .= "\">";
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-globalize.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ui-1.10.4.custom.min.js\"></script>
 	</head>
-	<body>
+	<body style=\"padding-top: 20px;\">
 		";
 		
 		return $top;
