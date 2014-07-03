@@ -39,6 +39,7 @@ class access_busit
 		$a['/panel/share'] = array('SELF_ACCESS');
 		$a['/panel/stats'] = array('SELF_ACCESS');
 		
+		$a['/auth'] = array('SELF_ACCESS');
 		$a['/logout'] = array('SELF_ACCESS');
 		
 		if( !is_array($page) )
