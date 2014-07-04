@@ -470,6 +470,7 @@ $bottom .= "\">
 				<br />
 				<ul>
 					<li><a href=\"/about\">{$GLOBALS['lang']['ABOUT']}</a></li>
+					<li><a href=\"/about/press\">{$GLOBALS['lang']['PRESS']}</a></li>
 					<li><a href=\"/about/contact\">{$GLOBALS['lang']['CONTACT']}</a></li>
 					<li><a href=\"/about/team\">{$GLOBALS['lang']['TEAM']}</a></li>
 					<li><a href=\"/doc\">{$GLOBALS['lang']['HELP']}</a></li>
@@ -488,6 +489,11 @@ $bottom .= "\">
 				</p>
 				<p>{$GLOBALS['lang']['COPYRIGHT']} | {$GLOBALS['lang']['SYS']}</p>
 			</div>
+		</div>
+	</div>
+	<div id=\"debug\" class=\"debug-fixed\" onclick=\"$('#bug').dialog('open'); return false;\">
+		<div class=\"container\">
+			{$GLOBALS['lang']['DEBUG']}
 		</div>
 	</div>
 	<script type=\"text/javascript\">
@@ -525,149 +531,134 @@ $bottom .= "\">
 
 		$objects = "
 			<div id=\"login\" class=\"floatingdialog\" autocomplete=\"off\">
-				<div class=\"form-small\">
-					<h3 class=\"center\">{$GLOBALS['lang']['login']}</h3>
-					<form action=\"/login_action\" method=\"post\" class=\"center\">
-						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
-						<fieldset>
-							<input type=\"text\" placeholder=\"{$GLOBALS['lang']['username']}\" name=\"username\" />
-						</fieldset>
-						<fieldset>
-							<input type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\" />
-							".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'login'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"")."
-						</fieldset>						
-						<fieldset>
-							<input type=\"checkbox\" name=\"chbox\" />
-							<label for=\"remember\" style=\"display: inline-block; padding-left: 10px;\">{$GLOBALS['lang']['remember']}</label>
-						</fieldset>
-						<fieldset>
-							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['login']}\" />
-						</fieldset>													
-					</form>
-				</div>
+				<h3 class=\"center\">{$GLOBALS['lang']['login']}</h3>
+				<form action=\"/login_action\" method=\"post\" class=\"center\">
+					<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
+					<fieldset>
+						<input type=\"text\" placeholder=\"{$GLOBALS['lang']['username']}\" name=\"username\" />
+					</fieldset>
+					<fieldset>
+						<input type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\" />
+						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'login'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"")."
+					</fieldset>						
+					<fieldset>
+						<input type=\"checkbox\" name=\"chbox\" />
+						<label for=\"remember\" style=\"display: inline-block; padding-left: 10px;\">{$GLOBALS['lang']['remember']}</label>
+					</fieldset>
+					<fieldset>
+						<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['login']}\" />
+					</fieldset>							
+				</form>
 			</div>
 			<div id=\"login-base\" class=\"floatingdialog\" autocomplete=\"off\">
-				<div class=\"form-small\">
-					<h3 class=\"center\">{$GLOBALS['lang']['login']}</h3>
-					<form action=\"/login_action\" method=\"post\" class=\"center\">
-						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
-						<fieldset>
-							<input type=\"text\" placeholder=\"{$GLOBALS['lang']['username']}\" name=\"username\" />
-						</fieldset>
-						<fieldset>
-							<input type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\" />
-							".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'login'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"")."
-						</fieldset>
-						<fieldset>
-							<input type=\"checkbox\" name=\"chbox\" />
-							<label for=\"remember\" style=\"display: inline-block; padding-left: 10px;\">{$GLOBALS['lang']['remember']}</label>
-						</fieldset>
-						<fieldset>
-							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['login']}\" />
-						</fieldset>													
-					</form>
-				</div>
+				<h3 class=\"center\">{$GLOBALS['lang']['login']}</h3>
+				<form action=\"/login_action\" method=\"post\" class=\"center\">
+					<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
+					<fieldset>
+						<input type=\"text\" placeholder=\"{$GLOBALS['lang']['username']}\" name=\"username\" />
+					</fieldset>
+					<fieldset>
+						<input type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\" />
+						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'login'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"")."
+					</fieldset>
+					<fieldset>
+						<input type=\"checkbox\" name=\"chbox\" />
+						<label for=\"remember\" style=\"display: inline-block; padding-left: 10px;\">{$GLOBALS['lang']['remember']}</label>
+					</fieldset>
+					<fieldset>
+						<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['login']}\" />
+					</fieldset>													
+				</form>
 			</div>
 			<div id=\"recovery\" class=\"floatingdialog\" autocomplete=\"off\">
-				<div class=\"form-small\">
-					<h3 class=\"center\">{$GLOBALS['lang']['recovery']}</h3>
-					<form action=\"/recovery_action\" method=\"post\" class=\"center\">
-						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
-						<fieldset>
-							<input type=\"text\" placeholder=\"{$GLOBALS['lang']['username']}\" name=\"username\" />
-							".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'recovery'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['recoverytips']}</a>")."
-						</fieldset>
-						<fieldset>
-							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['save']}\" />
-						</fieldset>													
-					</form>
-				</div>
+				<h3 class=\"center\">{$GLOBALS['lang']['recovery']}</h3>
+				<form action=\"/recovery_action\" method=\"post\" class=\"center\">
+					<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
+					<fieldset>
+						<input type=\"text\" placeholder=\"{$GLOBALS['lang']['username']}\" name=\"username\" />
+						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'recovery'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['recoverytips']}</span>")."
+					</fieldset>
+					<fieldset>
+						<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['save']}\" />
+					</fieldset>													
+				</form>
 			</div>
-			<div id=\"signup\" class=\"floatingdialog\" autocomplete=\"off\">
-				<div class=\"form-small\">		
-					<h3 class=\"center\">{$GLOBALS['lang']['signup']}</h3>
-					<form action=\"/signup_action\" method=\"post\" id=\"valid\" class=\"center\">
-						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />				
-						<fieldset>
-							<input type=\"text\" placeholder=\"{$GLOBALS['lang']['email']}\" name=\"email\" />
-							".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'signup'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"")."
-						</fieldset>
-						<fieldset>
-							<input type=\"checkbox\" name=\"conditions\" value=\"1\" />
-							{$GLOBALS['lang']['conditions']}
-						</fieldset>
-						<fieldset>
-							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['signup']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
-						</fieldset>
-					</form>
-				</div>
+			<div id=\"signup\" class=\"floatingdialog\" autocomplete=\"off\">	
+				<h3 class=\"center\">{$GLOBALS['lang']['signup']}</h3>
+				<form action=\"/signup_action\" method=\"post\" id=\"valid\" class=\"center\">
+					<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />				
+					<fieldset>
+						<input type=\"text\" placeholder=\"{$GLOBALS['lang']['email']}\" name=\"email\" />
+						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'signup'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"")."
+					</fieldset>
+					<fieldset>
+						<input type=\"checkbox\" name=\"conditions\" value=\"1\" />
+						{$GLOBALS['lang']['conditions']}
+					</fieldset>
+					<fieldset>
+						<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['signup']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
+					</fieldset>
+				</form>
 			</div>
 			<div id=\"register\" class=\"floatingdialog\" autocomplete=\"off\">
-				<div class=\"form-small\">		
-					<h3 class=\"center\">{$GLOBALS['lang']['signup']}</h3>
-					<p style=\"text-align: center;\">{$GLOBALS['lang']['signup_explain']}</p>
-					<form action=\"/confirm_action\" method=\"post\" id=\"valid\" class=\"center\">
-						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
-						<input type=\"hidden\" name=\"email\" value=\"{$_SESSION['REGISTER']['EMAIL']}\" />
-						<input type=\"hidden\" name=\"id\" value=\"{$_SESSION['REGISTER']['ID']}\" />
-						<input type=\"hidden\" name=\"origin\" value=\"{$_SESSION['REGISTER']['ORIGIN']}\" />
-						<fieldset>
-							<input style=\"width: 240px;\" type=\"text\" placeholder=\"{$GLOBALS['lang']['username']}\" name=\"username\" />
-							".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'register'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['usertip']}</a>")."
-						</fieldset>
-						<fieldset>
-							<input style=\"width: 240px;\" type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\" />
-						</fieldset>
-						<fieldset>	
-							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['signup']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
-						</fieldset>
-					</form>
-				</div>
+				<h3 class=\"center\">{$GLOBALS['lang']['signup']}</h3>
+				<p style=\"text-align: center;\">{$GLOBALS['lang']['signup_explain']}</p>
+				<form action=\"/confirm_action\" method=\"post\" id=\"valid\" class=\"center\">
+					<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
+					<input type=\"hidden\" name=\"email\" value=\"{$_SESSION['REGISTER']['EMAIL']}\" />
+					<input type=\"hidden\" name=\"id\" value=\"{$_SESSION['REGISTER']['ID']}\" />
+					<input type=\"hidden\" name=\"origin\" value=\"{$_SESSION['REGISTER']['ORIGIN']}\" />
+					<fieldset>
+						<input style=\"width: 240px;\" type=\"text\" placeholder=\"{$GLOBALS['lang']['username']}\" name=\"username\" />
+						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'register'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['usertip']}</span>")."
+					</fieldset>
+					<fieldset>
+						<input style=\"width: 240px;\" type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\" />
+					</fieldset>
+					<fieldset>	
+						<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['signup']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
+					</fieldset>
+				</form>
 			</div>
 			<div id=\"changepass\" class=\"floatingdialog\">
-				<div class=\"form-small\">		
-					<h3 class=\"center\">{$GLOBALS['lang']['changepass']}</h3>
-					<p style=\"text-align: center;\">{$GLOBALS['lang']['changepass_explain']}</p>
-					<form action=\"/change_password_action\" method=\"post\" id=\"valid\" class=\"center\">
-						<input type=\"hidden\" name=\"token\" value=\"{$_SESSION['CHANGEPASS']['TOKEN']}\" />
-						<input type=\"hidden\" name=\"user\" value=\"{$_SESSION['CHANGEPASS']['USER']}\" />
-						<fieldset>
-							<input type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\"  />							
-							".(isset($_GET['echangepassword'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['echangepassword']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['changetip']}</a>")."
-						</fieldset>
-						<fieldset>
-							<input type=\"password\" placeholder=\"{$GLOBALS['lang']['confirm']}\" name=\"confirm\" />							
-							<span class=\"help-block\">{$GLOBALS['lang']['confirmtip']}</a>
-						</fieldset>					
-						<fieldset>	
-							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['change']}\" />
-						</fieldset>
-					</form>
-				</div>
+				<h3 class=\"center\">{$GLOBALS['lang']['changepass']}</h3>
+				<p style=\"text-align: center;\">{$GLOBALS['lang']['changepass_explain']}</p>
+				<form action=\"/change_password_action\" method=\"post\" id=\"valid\" class=\"center\">
+					<input type=\"hidden\" name=\"token\" value=\"{$_SESSION['CHANGEPASS']['TOKEN']}\" />
+					<input type=\"hidden\" name=\"user\" value=\"{$_SESSION['CHANGEPASS']['USER']}\" />
+					<fieldset>
+						<input type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\"  />							
+						".(isset($_GET['echangepassword'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['echangepassword']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['changetip']}</span>")."
+					</fieldset>
+					<fieldset>
+						<input type=\"password\" placeholder=\"{$GLOBALS['lang']['confirm']}\" name=\"confirm\" />							
+						<span class=\"help-block\">{$GLOBALS['lang']['confirmtip']}</a>
+					</fieldset>					
+					<fieldset>	
+						<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['change']}\" />
+					</fieldset>
+				</form>
 			</div>
 			<div id=\"bug\" class=\"floatingdialog\">
 				<br />
 				<h3 class=\"center\">{$GLOBALS['lang']['newbug']}</h3>
-				<p style=\"text-align: center;\">{$GLOBALS['lang']['newbug_text']}</p>
-				<div class=\"form-small\">
-					<form action=\"/bugreport_action\" method=\"post\" class=\"center\">
-						<fieldset>
-							<input type=\"text\"  style=\"width: 400px;\" value=\"{$GLOBALS['lang']['newbug_name']}\" name=\"name\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['newbug_name']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['newbug_name']}' : this.value; this.value=='{$GLOBALS['lang']['newbug_name']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
-							<span class=\"help-block\">{$GLOBALS['lang']['newbug_name_help']}</span>
-						</fieldset>
-						<fieldset>
-							<input type=\"text\"  style=\"width: 400px;\" value=\"{$GLOBALS['lang']['newbug_desc']}\" name=\"desc\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['newbug_desc']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['newbug_desc']}' : this.value; this.value=='{$GLOBALS['lang']['newbug_desc']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
-							<span class=\"help-block\">{$GLOBALS['lang']['newbug_desc_help']}</span>
-						</fieldset>
-						<fieldset>
-							<textarea style=\"width: 400px; height: 150px;\" name=\"content\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['newbug_content']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['newbug_content']}' : this.value; this.value=='{$GLOBALS['lang']['newbug_content']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\">{$GLOBALS['lang']['newbug_content']}</textarea>
-							<span class=\"help-block\">{$GLOBALS['lang']['newbug_content_help']}</span>
-						</fieldset>
-						<fieldset>	
-							<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['newbug_submit']}\" />
-						</fieldset>
-					</form>							
-				</div>
+				<form action=\"/bugreport_action\" method=\"post\" class=\"center\">
+					<fieldset>
+						<input type=\"text\" class=\"large\" placeholder=\"{$GLOBALS['lang']['newbug_name']}\" name=\"email\" />
+						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'bugreport'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['newbug_name_help']}</span>")."
+					</fieldset>
+					<fieldset>
+						<input type=\"text\" class=\"large\" placeholder=\"{$GLOBALS['lang']['newbug_desc']}\" name=\"desc\" />
+						<span class=\"help-block\">{$GLOBALS['lang']['newbug_desc_help']}</span>
+					</fieldset>
+					<fieldset>
+						<textarea class=\"large\" style=\"height: 150px;\" name=\"content\" placeholder=\"{$GLOBALS['lang']['newbug_content']}\"></textarea>
+						<span class=\"help-block\">{$GLOBALS['lang']['newbug_content_help']}</span>
+					</fieldset>
+					<fieldset>	
+						<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['newbug_submit']}\" />
+					</fieldset>
+				</form>							
 			</div>
 			<div id=\"message\" class=\"floatingdialog\">
 				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/notifications/{$_SESSION['MESSAGE']['TYPE']}.png\" /><br />
@@ -686,6 +677,8 @@ $bottom .= "\">
 			$objects .= " $(\"#register\").dialog(\"open\");\n";
 		if( $_SESSION['ERROR']['HANDLER'] == 'login' )	
 			$objects .= " $(\"#login\").dialog(\"open\");\n";
+		if( $_SESSION['ERROR']['HANDLER'] == 'bugreport' )	
+			$objects .= " $(\"#bug\").dialog(\"open\");\n";
 		if( $_SESSION['ERROR']['HANDLER'] == 'recovery' )	
 			$objects .= "$(\"#login\").html($('#recovery').html()); $(\"#login\").dialog(\"open\");\n";
 		if( $_SESSION['CHANGEPASS']['TOKEN'] && $_SESSION['CHANGEPASS']['USER'] )
