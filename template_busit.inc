@@ -547,7 +547,7 @@ $bottom .= "\">
 					</fieldset>
 					<fieldset>
 						<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['login']}\" />
-					</fieldset>													
+					</fieldset>							
 				</form>
 			</div>
 			<div id=\"login-base\" class=\"floatingdialog\" autocomplete=\"off\">
