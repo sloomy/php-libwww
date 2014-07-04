@@ -100,6 +100,7 @@ class security_busit extends security
 		if( isset($_SESSION['LOGIN_REDIRECT']) )
 		{
 			$r = $_SESSION['LOGIN_REDIRECT'];
+			unset($_SESSION['LOGIN_REDIRECT']);
 			template::redirect($r);
 		}
 		else
