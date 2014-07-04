@@ -470,6 +470,7 @@ $bottom .= "\">
 				<br />
 				<ul>
 					<li><a href=\"/about\">{$GLOBALS['lang']['ABOUT']}</a></li>
+					<li><a href=\"/about/press\">{$GLOBALS['lang']['PRESS']}</a></li>
 					<li><a href=\"/about/contact\">{$GLOBALS['lang']['CONTACT']}</a></li>
 					<li><a href=\"/about/team\">{$GLOBALS['lang']['TEAM']}</a></li>
 					<li><a href=\"/doc\">{$GLOBALS['lang']['HELP']}</a></li>
