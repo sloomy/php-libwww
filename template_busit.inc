@@ -576,7 +576,7 @@ $bottom .= "\">
 					<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
 					<fieldset>
 						<input type=\"text\" placeholder=\"{$GLOBALS['lang']['username']}\" name=\"username\" />
-						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'recovery'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['recoverytips']}</a>")."
+						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'recovery'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['recoverytips']}</span>")."
 					</fieldset>
 					<fieldset>
 						<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['save']}\" />
@@ -610,7 +610,7 @@ $bottom .= "\">
 					<input type=\"hidden\" name=\"origin\" value=\"{$_SESSION['REGISTER']['ORIGIN']}\" />
 					<fieldset>
 						<input style=\"width: 240px;\" type=\"text\" placeholder=\"{$GLOBALS['lang']['username']}\" name=\"username\" />
-						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'register'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['usertip']}</a>")."
+						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'register'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['usertip']}</span>")."
 					</fieldset>
 					<fieldset>
 						<input style=\"width: 240px;\" type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\" />
@@ -628,7 +628,7 @@ $bottom .= "\">
 					<input type=\"hidden\" name=\"user\" value=\"{$_SESSION['CHANGEPASS']['USER']}\" />
 					<fieldset>
 						<input type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\"  />							
-						".(isset($_GET['echangepassword'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['echangepassword']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['changetip']}</a>")."
+						".(isset($_GET['echangepassword'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$GLOBALS['lang']['echangepassword']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['changetip']}</span>")."
 					</fieldset>
 					<fieldset>
 						<input type=\"password\" placeholder=\"{$GLOBALS['lang']['confirm']}\" name=\"confirm\" />							
@@ -645,7 +645,7 @@ $bottom .= "\">
 				<form action=\"/bugreport_action\" method=\"post\" class=\"center\">
 					<fieldset>
 						<input type=\"text\" class=\"large\" placeholder=\"{$GLOBALS['lang']['newbug_name']}\" name=\"email\" />
-						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'bugreport'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"{$GLOBALS['lang']['newbug_name_help']}")."
+						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'bugreport'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"<span class=\"help-block\">{$GLOBALS['lang']['newbug_name_help']}</span>")."
 					</fieldset>
 					<fieldset>
 						<input type=\"text\" class=\"large\" placeholder=\"{$GLOBALS['lang']['newbug_desc']}\" name=\"desc\" />
