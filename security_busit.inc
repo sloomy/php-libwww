@@ -23,9 +23,6 @@ class access_busit
 		$a['/developers/panel/connector/config'] = array('ACCESS', 'SELF_CONNECTOR_SELECT');
 		$a['/developers/panel/connector/config'] = array('ACCESS', 'SELF_CONNECTOR_SELECT');		
 		
-		$a['/auth'] = array('SELF_ACCESS');
-		$a['/auth/pay'] = array('SELF_ACCESS');
-		
 		$a['/panel'] = array('SELF_ACCESS');
 		$a['/panel/space/view'] = array('SELF_ACCESS');
 		$a['/panel/space/view'] = array('SELF_ACCESS');
