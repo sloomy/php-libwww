@@ -311,7 +311,7 @@ $top .= "\">";
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 			{
 				$menu .= "
-						<form style=\"float: right; margin-right: 10px;\" id=\"searchform-mob\" target=\"/doc/search\" method=\"get\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px;\" type=\"text\" id=\"search-mob\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
+						<form style=\"float: right; margin-right: 10px;\" id=\"searchform-mob\" action=\"/doc/search\" method=\"get\"><input type=\"submit\" style=\"display: none;\" /><input name=\"search\" style=\"width: 200px;\" type=\"text\" id=\"search-mob\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
 			}
 
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
@@ -396,7 +396,7 @@ $top .= "\">";
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 			{
 				$menu .= "
-									<li id=\"search-li\" class=\"search\"><form id=\"searchform\" target=\"/doc/search\" method=\"get\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form></li>";
+									<li id=\"search-li\" class=\"search\"><form id=\"searchform\" action=\"/doc/search\" method=\"get\"><input type=\"submit\" style=\"display: none;\" /><input name=\"search\"  style=\"width: 200px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form></li>";
 			}
 			
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
