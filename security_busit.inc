@@ -40,6 +40,9 @@ class access_busit
 		$a['/panel/share'] = array('SELF_ACCESS');
 		$a['/panel/stats'] = array('SELF_ACCESS');
 		
+		$a['/visualize'] = array('SUPERADMIN');
+		$a['/visualize/data'] = array('SUPERADMIN');
+		
 		$a['/logout'] = array('SELF_ACCESS');
 		
 		if( !is_array($page) )
@@ -99,6 +102,7 @@ class security_busit extends security
 		if( isset($_SESSION['LOGIN_REDIRECT']) )
 		{
 			$r = $_SESSION['LOGIN_REDIRECT'];
+			unset($_SESSION['LOGIN_REDIRECT']);
 			template::redirect($r);
 		}
 		else
