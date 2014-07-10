@@ -17,9 +17,12 @@ class access_busit
 		$a['/admin/group/index'] = array('ACCESS', 'GROUP_SELECT');
 
 		$a['/developers/panel'] = array('ACCESS', 'DEVELOPER_ACCESS');
+		$a['/developers/panel/stats'] = array('ACCESS', 'DEVELOPER_ACCESS');
+		$a['/developers/panel/credits'] = array('ACCESS', 'DEVELOPER_ACCESS');
 		$a['/developers/panel/connector'] = array('ACCESS', 'SELF_CONNECTOR_SELECT');
-		$a['/developers/panel/connector/add'] = array('ACCESS', 'SELF_CONNECTOR_INSERT');
-				
+		$a['/developers/panel/connector/config'] = array('ACCESS', 'SELF_CONNECTOR_SELECT');
+		$a['/developers/panel/connector/config'] = array('ACCESS', 'SELF_CONNECTOR_SELECT');		
+		
 		$a['/panel'] = array('SELF_ACCESS');
 		$a['/panel/space/view'] = array('SELF_ACCESS');
 		$a['/panel/space/view'] = array('SELF_ACCESS');
@@ -35,6 +38,9 @@ class access_busit
 		$a['/panel/settings'] = array('SELF_ACCESS');
 		$a['/panel/share'] = array('SELF_ACCESS');
 		$a['/panel/stats'] = array('SELF_ACCESS');
+		
+		$a['/visualize'] = array('SUPERADMIN');
+		$a['/visualize/data'] = array('SUPERADMIN');
 		
 		$a['/logout'] = array('SELF_ACCESS');
 		
@@ -95,6 +101,7 @@ class security_busit extends security
 		if( isset($_SESSION['LOGIN_REDIRECT']) )
 		{
 			$r = $_SESSION['LOGIN_REDIRECT'];
+			unset($_SESSION['LOGIN_REDIRECT']);
 			template::redirect($r);
 		}
 		else

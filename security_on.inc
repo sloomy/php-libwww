@@ -12,9 +12,16 @@ class access_on
 		$a = array();
 		
 		$a['/admin'] = array('ACCESS', 'USER_SELECT');
+		$a['/admin/users'] = array('ACCESS', 'USER_SELECT');
+		$a['/admin/users/detail'] = array('ACCESS', 'USER_SELECT');
+		$a['/admin/groups'] = array('ACCESS', 'USER_SELECT');
+		$a['/admin/blog'] = array('ACCESS', 'USER_SELECT');
+		$a['/admin/logs'] = array('ACCESS', 'USER_SELECT');
 		$a['/admin/index'] = array('ACCESS', 'USER_SELECT');
+		$a['/admin/grants'] = array('ACCESS', 'USER_SELECT');
 		$a['/admin/stats'] = array('ACCESS', 'USER_SELECT');
 		$a['/admin/messages'] = array('ACCESS', 'MESSAGE_SELECT');
+		$a['/admin/messages/detail'] = array('ACCESS', 'MESSAGE_SELECT');
 		$a['/admin/quotas'] = array('ACCESS', 'QUOTA_SELECT');
 		
 		$a['/panel'] = array('ACCESS');
@@ -116,8 +123,8 @@ class security_on extends security
 	{
 		parent::logout();
 		
-		if( isset($_COOKIE['SYSPIE']) )
-			setcookie('SYSPIE', '', time()-60*60*24*30, '/');
+		if( isset($_COOKIE['OLYMPEPIE']) )
+			setcookie('OLYMPEPIE', '', time()-60*60*24*30, '/');
 	}
 	
 	private function save($auth=null)
@@ -129,15 +136,15 @@ class security_on extends security
 		for( $i = 0; $i < strlen($auth); $i++ )
 			$crypt .= base_convert(ord($auth[$i]), 10, 36);
 		
-		setcookie('SYSPIE', base64_encode($crypt), mktime(0,0,0,12,31,2030), '/');
+		setcookie('OLYMPEPIE', base64_encode($crypt), mktime(0,0,0,12,31,2030), '/');
 	}
 	
 	private function load()
 	{
-		if( !isset($_COOKIE['SYSPIE']) )
+		if( !isset($_COOKIE['OLYMPEPIE']) )
 			return null;
 		
-		$crypt = base64_decode($_COOKIE['SYSPIE']);
+		$crypt = base64_decode($_COOKIE['OLYMPEPIE']);
 		$auth = '';
 		for( $i = 0; $i < strlen($crypt); $i += 2 )
 			$auth .= chr(base_convert(substr($crypt,$i,2), 36, 10));
