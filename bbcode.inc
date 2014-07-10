@@ -31,7 +31,7 @@ class bbcode
 		if( $mode == self::BBCODE )
 		{
 			$search = array(
-				'<', '>',
+				'/</', '/>/',
 				'/\[b\](.*?)\[\/b\]/is',                                
 				'/\[i\](.*?)\[\/i\]/is',                                
 				'/\[u\](.*?)\[\/u\]/is',
@@ -50,7 +50,7 @@ class bbcode
 		else if( $mode == self::WIKI )
 		{
 			$search = array(
-				'<', '>',
+				'/</', '/>/',
 				'/(^|\s)\*(\S|\S.*?\S)\*(\s|$)/is',                                
 				'/(^|\s)_(\S|\S.*?\S)_(\s|$)/is',                                
 				'/(^|\s)\+(\S|\S.*?\S)\+(\s|$)/is',
