@@ -24,6 +24,8 @@ $GLOBALS['CONFIG']['HOSTNAME']		= $conf['Main']['HOSTNAME'];
 $GLOBALS['CONFIG']['HOSTNAME_APPS']	= $conf['Main']['HOSTNAME_APPS'];
 $GLOBALS['CONFIG']['DEBUG'] 		= false;
 unset($conf);
+unset($file);
+unset($domain);
 
 $GLOBALS['CONFIG']['DEFAULT_PAGE']		= '/default';
 $GLOBALS['CONFIG']['PANEL_PAGE']		= '/panel';
