@@ -188,7 +188,7 @@ $top .= "\">";
 				$menu = "
 				<span class=\"nav-mobile\" id=\"nav-mobile\"><a href=\"#\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/nav.png\" /></a></span>
 				<nav id=\"navigation\">
-					<ul>";
+					<ul id=\"mainmenu\">";
 
 				$logged = $GLOBALS['security']->hasAccess('/panel');
 				foreach( $menu_data as $menu_item )
