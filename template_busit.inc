@@ -237,6 +237,55 @@ $top .= "\">";
 				
 				$menu .= "
 					</ul>
+					<ul id=\"mainmenu-mob\" style=\"display: none;\">";
+
+				$logged = $GLOBALS['security']->hasAccess('/panel');
+				foreach( $menu_data as $menu_item )
+				{
+					// check if the user has access to the target link
+					$a = $GLOBALS['security']->hasAccess($menu_item['link']);
+					if( ($menu_item['anonymous'] && !$logged) || (!$menu_item['anonymous'] && $a) )
+					{
+						$active = '';
+						if( strpos(rtrim($GLOBALS['CONFIG']['PAGE'], '/'), rtrim($menu_item['link'], '/')) === 0 )
+						//if( preg_match('!^'.rtrim($menu_item['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+							$active = "class=\"active\"";
+						
+						if( !$logged && !$menu_item['anonymous'] )
+							continue;
+						else
+						{
+							if( is_array($menu_item['sub']) )
+							{
+								$menu .= "
+									<li class=\"{$menu_item['text']}\">
+										".($menu_item['icon']?"<i class=\"fa fa-{$menu_item['icon']}-o fa-fw\"></i>":"")." <a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a>
+										<ul>";
+									foreach( $menu_item['sub'] as $menu_subitem )
+									{
+										if( strpos(rtrim($GLOBALS['CONFIG']['PAGE'], '/'), rtrim($menu_subitem['link'], '/')) === 0 )
+										//if( preg_match('!^'.rtrim($menu_subitem['link'], '/').'(/index)?$!', rtrim($GLOBALS['CONFIG']['PAGE'], '/')) )
+											$subactive = "class=\"active\"";
+						
+										$menu .= "
+												<li class=\"{$menu_subitem['text']}\">".($menu_subitem['icon']?"<i class=\"fa fa-{$menu_subitem['icon']}-o fa-fw\"></i>":"")." <a id=\"link-{$menu_subitem['text']}\" href=\"{$menu_subitem['link']}\" onclick=\"{$menu_subitem['onclick']}\" title=\"\" {$subactive}>{$GLOBALS['lang'][$menu_subitem['text']]}</a></li>";
+									}
+									
+									$menu .= "
+										</ul>
+									</li>";
+							}
+							else
+							{
+								$menu .= "
+						<li class=\"{$menu_item['text']}\">".($menu_item['icon']?"<i class=\"fa fa-{$menu_item['icon']}-o fa-fw\"></i>":"")." <a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a></li>";
+							}
+						}
+					}
+				}
+				
+				$menu .= "
+					</ul>
 				</nav>
 				";
 				
@@ -283,7 +332,7 @@ $top .= "\">";
 						foreach( $menu_item['sub'] as $menu_subitem )
 						{						
 							$menu .= "
-								<li class=\"{$menu_subitem['text']}\"><a href=\"{$menu_subitem['link']}\"  onclick=\"{$menu_subitem['onclick']}\" title=\"\">".($menu_subitem['icon']?"<i class=\"fa fa-{$menu_subitem['icon']}-o fa-fw\"></i>&nbsp;&nbsp;":"")." ".($GLOBALS['lang'][$menu_subitem['text']]?"{$GLOBALS['lang'][$menu_subitem['text']]}":"{$menu_subitem['text']}")."</a></li>";
+								<li class=\"{$menu_subitem['text']}\"><a href=\"{$menu_subitem['link']}\"  onclick=\"{$menu_subitem['onclick']}\" title=\"\">".($menu_subitem['icon']?"<i class=\"fa fa-{$menu_subitem['icon']} fa-fw\"></i>&nbsp;&nbsp;":"")." ".($GLOBALS['lang'][$menu_subitem['text']]?"{$GLOBALS['lang'][$menu_subitem['text']]}":"{$menu_subitem['text']}")."</a></li>";
 						}
 									
 						$menu .= "
@@ -293,7 +342,7 @@ $top .= "\">";
 					else
 					{
 						$menu .= "
-						<li class=\"{$menu_item['text']}\">".($menu_item['icon']?"<a href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\"><i class=\"fa fa-{$menu_item['icon']}-o fa-fw\"></i>&nbsp;&nbsp;":"")." ".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a></li>
+						<li class=\"{$menu_item['text']}\"><a href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\">".($menu_item['icon']?"<i class=\"fa fa-{$menu_item['icon']} fa-fw\"></i>&nbsp;&nbsp;":"")." ".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a></li>
 					";
 					}
 				}
@@ -330,7 +379,7 @@ $top .= "\">";
 				
 				$menu .= "
 					<div style=\"position: relative; float: right;\">
-						<a href=\"#\" id=\"profile\" onclick=\"loadProfileMob(); return false;\">
+						<a href=\"#\" id=\"profile-mob\">
 							<span style=\"display: block; float: left; padding: 13px 0 0 0;\">{$self['user_name']}</span>
 							<img style=\"display: block; float: left; padding: 13px 0 0 10px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/arrow.png\" />
 							<img class=\"profile-image\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png":"/{$GLOBALS['CONFIG']['SITE']}/images/users/user.png")."\" alt=\"\" />
@@ -412,7 +461,7 @@ $top .= "\">";
 			{
 				$menu .= "
 					<div style=\"position: relative; float: right;\">
-						<a href=\"#\" id=\"profile\" onclick=\"loadProfile(); return false;\">
+						<a href=\"#\" id=\"profile\">
 							<span style=\"display: block; float: left; padding: 13px 0 0 0;\">{$self['user_name']}</span>
 							<img style=\"display: block; float: left; padding: 13px 0 0 10px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/arrow.png\" />
 							<img class=\"profile-image\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png":"/{$GLOBALS['CONFIG']['SITE']}/images/users/user.png")."\" alt=\"\" />
