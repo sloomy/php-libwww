@@ -305,7 +305,16 @@ $top .= "\">";
 
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			{
+				$names = api::send('busit/connector/selectindex', array('lang'=>translator::getLanguage()), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 				$menu .= "
+						<script>
+							var availableConnectors = [";
+				foreach( $names as $n )
+					$menu .= "\"{$n['connector_name']}\",\n";
+				
+				$menu .= "
+							];
+						</script>
 						<form style=\"float: right; margin-right: 10px;\" id=\"searchform-mob\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px;\" type=\"text\" id=\"search-mob\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
 			}
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
@@ -669,6 +678,22 @@ $bottom .= "\">
 				$(document).ready(function()
 				{
 		";
+		if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
+		{
+			$objects .= "
+					$(\"#search\").autocomplete({
+						select: function( event, ui ) {
+							if( ui.item )
+							{
+								$('#search').val(ui.item.value);
+							}
+							$(\"#searchform\").submit();
+						},
+						source: availableConnectors
+					});
+			";
+		}
+		
 		if( $_SESSION['ERROR']['HANDLER'] == 'signup' )
 			$objects .= " $(\"#signup\").dialog(\"open\");\n";
 		if( $_SESSION['ERROR']['HANDLER'] == 'register' )	
