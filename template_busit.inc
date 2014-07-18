@@ -210,7 +210,7 @@ $top .= "\">";
 							{
 								$menu .= "
 									<li class=\"{$menu_item['text']}\">
-										<a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a>
+										".($menu_item['icon']?"<i class=\"fa fa-{$menu_item['icon']}-o fa-fw\"></i>":"")." <a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a>
 										<ul>";
 									foreach( $menu_item['sub'] as $menu_subitem )
 									{
@@ -219,7 +219,7 @@ $top .= "\">";
 											$subactive = "class=\"active\"";
 						
 										$menu .= "
-												<li class=\"{$menu_subitem['text']}\"><a id=\"link-{$menu_subitem['text']}\" href=\"{$menu_subitem['link']}\" onclick=\"{$menu_subitem['onclick']}\" title=\"\" {$subactive}>{$GLOBALS['lang'][$menu_subitem['text']]}</a></li>";
+												<li class=\"{$menu_subitem['text']}\">".($menu_subitem['icon']?"<i class=\"fa fa-{$menu_subitem['icon']}-o fa-fw\"></i>":"")." <a id=\"link-{$menu_subitem['text']}\" href=\"{$menu_subitem['link']}\" onclick=\"{$menu_subitem['onclick']}\" title=\"\" {$subactive}>{$GLOBALS['lang'][$menu_subitem['text']]}</a></li>";
 									}
 									
 									$menu .= "
@@ -229,7 +229,7 @@ $top .= "\">";
 							else
 							{
 								$menu .= "
-						<li class=\"{$menu_item['text']}\"><a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a></li>";
+						<li class=\"{$menu_item['text']}\">".($menu_item['icon']?"<i class=\"fa fa-{$menu_item['icon']}-o fa-fw\"></i>":"")." <a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}>{$GLOBALS['lang'][$menu_item['text']]}</a></li>";
 							}
 						}
 					}
@@ -277,13 +277,13 @@ $top .= "\">";
 				{
 					if( is_array($menu_item['sub']) )
 					{
-						$menu .= "<li class=\"sub ".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\"><a href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}>".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a>
+						$menu .= "<li class=\"sub ".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\">".($menu_item['icon']?"<a href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}><i class=\"fa fa-{$menu_item['icon']}-o fa-fw\"></i>&nbsp;&nbsp;":"")." ".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a>
 							<ul>";
 								
 						foreach( $menu_item['sub'] as $menu_subitem )
 						{						
 							$menu .= "
-								<li class=\"{$menu_subitem['text']}\"><a href=\"{$menu_subitem['link']}\"  onclick=\"{$menu_subitem['onclick']}\" title=\"\">".($GLOBALS['lang'][$menu_subitem['text']]?"{$GLOBALS['lang'][$menu_subitem['text']]}":"{$menu_subitem['text']}")."</a></li>";
+								<li class=\"{$menu_subitem['text']}\"><a href=\"{$menu_subitem['link']}\"  onclick=\"{$menu_subitem['onclick']}\" title=\"\">".($menu_subitem['icon']?"<i class=\"fa fa-{$menu_subitem['icon']}-o fa-fw\"></i>&nbsp;&nbsp;":"")." ".($GLOBALS['lang'][$menu_subitem['text']]?"{$GLOBALS['lang'][$menu_subitem['text']]}":"{$menu_subitem['text']}")."</a></li>";
 						}
 									
 						$menu .= "
@@ -293,7 +293,7 @@ $top .= "\">";
 					else
 					{
 						$menu .= "
-						<li class=\"{$menu_item['text']}\"><a href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\">".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a></li>
+						<li class=\"{$menu_item['text']}\">".($menu_item['icon']?"<a href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\"><i class=\"fa fa-{$menu_item['icon']}-o fa-fw\"></i>&nbsp;&nbsp;":"")." ".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a></li>
 					";
 					}
 				}
@@ -371,7 +371,7 @@ $top .= "\">";
 
 					if( is_array($menu_item['sub']) )
 					{
-						$menu .= "<li id=\"".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\" class=\"sub ".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\"><a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}>".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a>
+						$menu .= "<li id=\"".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\" class=\"sub ".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\">".($menu_item['icon']?"<i class=\"fa fa-{$menu_item['icon']}-o fa-fw\"></i>&nbsp;&nbsp;":"")." <a id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\" title=\"\" {$active}>".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a>
 							<ul>";
 								
 						foreach( $menu_item['sub'] as $menu_subitem )
@@ -381,7 +381,7 @@ $top .= "\">";
 								$subactive = "class=\"active\"";
 						
 							$menu .= "
-								<li class=\"{$menu_subitem['text']}\"><a id=\"link-{$menu_subitem['text']}\" href=\"{$menu_subitem['link']}\"  onclick=\"{$menu_subitem['onclick']}\" title=\"\" {$subactive}>".($GLOBALS['lang'][$menu_subitem['text']]?"{$GLOBALS['lang'][$menu_subitem['text']]}":"{$menu_subitem['text']}")."</a></li>";
+								<li class=\"{$menu_subitem['text']}\"><a id=\"link-{$menu_subitem['text']}\" href=\"{$menu_subitem['link']}\"  onclick=\"{$menu_subitem['onclick']}\" title=\"\" {$subactive}>".($menu_subitem['icon']?"<i class=\"fa fa-{$menu_subitem['icon']}-o fa-fw\"></i>":"")." ".($GLOBALS['lang'][$menu_subitem['text']]?"{$GLOBALS['lang'][$menu_subitem['text']]}":"{$menu_subitem['text']}")."</a></li>";
 						}
 									
 						$menu .= "
@@ -391,7 +391,7 @@ $top .= "\">";
 					else
 					{
 						$menu .= "
-									<li id=\"".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\" class=\"{$menu_item['text']}\"><a {$a} id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\">".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a></li>
+									<li id=\"".($menu_item['id']?"{$menu_item['id']}":"{$menu_item['text']}")."\" class=\"{$menu_item['text']}\"><a {$a} id=\"link-{$menu_item['text']}\" href=\"{$menu_item['link']}\" onclick=\"{$menu_item['onclick']}\">".($menu_item['icon']?"<i class=\"fa fa-{$menu_item['icon']} fa-fw\"></i>&nbsp;&nbsp;":"")." ".($GLOBALS['lang'][$menu_item['text']]?"{$GLOBALS['lang'][$menu_item['text']]}":"{$menu_item['text']}")."</a></li>
 						";
 					}
 				}
