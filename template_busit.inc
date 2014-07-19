@@ -101,6 +101,7 @@ $top .= "
 		$top .= "background-color: #f0f0f0;";
 		
 	$top .= "\">
+		<div id=\"success\"></div>
 		<div id=\"loading\"></div>
 		<div id=\"overlay\"></div>";
 	
