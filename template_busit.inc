@@ -358,14 +358,22 @@ $top .= "\">";
 				$names = api::send('busit/connector/selectindex', array('lang'=>translator::getLanguage()), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 				$menu .= "
 						<script>
-							var availableConnectors = [";
+							availableConnectors = [
+							";
 				foreach( $names as $n )
-					$menu .= "\"{$n['connector_name']}\",\n";
+				{
+					$menu .= "
+							{
+								value: \"{$n['connector_name']}\",
+								id: \"{$n['connector_id']}\",
+							},
+					";
+				}
 				
 				$menu .= "
 							];
 						</script>
-						<form style=\"float: right; margin-right: 10px;\" id=\"searchform-mob\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px;\" type=\"text\" id=\"search-mob\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
+						<form style=\"float: right; margin-right: 10px;\" id=\"searchform-mob\"><input type=\"hidden\" name=\"connectorid-mob\" value=\"\" id=\"connectorid-mob\" /><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px;\" type=\"text\" id=\"search-mob\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
 			}
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 			{
@@ -450,7 +458,7 @@ $top .= "\">";
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			{
 				$menu .= "
-									<li id=\"search-li\" class=\"search\"><form id=\"searchform\"><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form></li>";
+									<li id=\"search-li\" class=\"search\"><form id=\"searchform\"><input type=\"hidden\" name=\"connectorid\" value=\"\" id=\"connectorid\" /><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form></li>";
 			}
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 			{
@@ -732,15 +740,18 @@ $bottom .= "\">
 		{
 			$objects .= "
 					$(\"#search\").autocomplete({
-						select: function( event, ui ) {
-							if( ui.item )
-							{
-								$('#search').val(ui.item.value);
-							}
-							$(\"#searchform\").submit();
-						},
-						source: availableConnectors
-					});
+							focus: function( event, ui ) {
+								$('#search').val( ui.item.value );
+							},
+							select: function( event, ui ) {
+								if( ui.item )
+								{
+									$('#connectorid').val(ui.item.id);
+								}
+								$(\"#searchform\").submit();
+							},
+							source: availableConnectors
+						});
 			";
 		}
 		
