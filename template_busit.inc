@@ -599,7 +599,7 @@ $bottom .= "\">
 						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'login'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"")."
 					</fieldset>						
 					<fieldset>
-						<input type=\"checkbox\" name=\"chbox\" />
+						<input type=\"checkbox\" name=\"remember\" value=\"remember\"  />
 						<label for=\"remember\" style=\"display: inline-block; padding-left: 10px;\">{$GLOBALS['lang']['remember']}</label>
 					</fieldset>
 					<fieldset>
@@ -619,7 +619,7 @@ $bottom .= "\">
 						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'login'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"")."
 					</fieldset>
 					<fieldset>
-						<input type=\"checkbox\" name=\"chbox\" />
+						<input type=\"checkbox\" name=\"remember\" value=\"remember\" />
 						<label for=\"remember\" style=\"display: inline-block; padding-left: 10px;\">{$GLOBALS['lang']['remember']}</label>
 					</fieldset>
 					<fieldset>
