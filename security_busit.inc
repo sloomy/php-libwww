@@ -146,7 +146,7 @@ class security_busit extends security
 		$crypt = '';
 		for( $i = 0; $i < strlen($auth); $i++ )
 			$crypt .= base_convert(ord($auth[$i]), 10, 36);
-		
+
 		setcookie('BUSITPIE', base64_encode($crypt), mktime(0,0,0,12,31,2030), '/');
 	}
 	
@@ -159,7 +159,7 @@ class security_busit extends security
 		$auth = '';
 		for( $i = 0; $i < strlen($crypt); $i += 2 )
 			$auth .= chr(base_convert(substr($crypt,$i,2), 36, 10));
-		
+
 		$this->directLogin($auth);
 	}
 	
@@ -168,7 +168,7 @@ class security_busit extends security
 		if( !access_busit::access($page) )
 		{
 			// load cookie if the user is not logged yet
-			if( !access_busit::access('/') )
+			if( !access_busit::access('/panel') )
 			{
 				$this->load();
 				return access_busit::access($page);
