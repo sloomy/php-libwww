@@ -386,7 +386,7 @@ $top .= "\">";
 						<a href=\"#\" id=\"profile-mob\">
 							<span style=\"display: block; float: left; padding: 13px 0 0 0;\">{$self['user_name']}</span>
 							<img style=\"display: block; float: left; padding: 13px 0 0 10px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/arrow.png\" />
-							<img class=\"profile-image\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png":"http://www.gravatar.com/avatar/".md5($self['user_mail']))."\" alt=\"\" />
+							<img class=\"profile-image\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png":"https://www.gravatar.com/avatar/".md5($self['user_mail']))."\" alt=\"\" />
 						</a>
 						<div id=\"profile-menu-mob\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/loading_dark_small.gif\" alt=\"\" class=\"loader\" style=\"margin-top: -20px;\" /></div>
 					</div>
@@ -468,7 +468,7 @@ $top .= "\">";
 						<a href=\"#\" id=\"profile\">
 							<span style=\"display: block; float: left; padding: 13px 0 0 0;\">{$self['user_name']}</span>
 							<img style=\"display: block; float: left; padding: 13px 0 0 10px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/arrow.png\" />
-							<img class=\"profile-image\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png":"http://www.gravatar.com/avatar/".md5($self['user_mail']))."\" alt=\"\" />
+							<img class=\"profile-image\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png":"https://www.gravatar.com/avatar/".md5($self['user_mail']))."\" alt=\"\" />
 						</a>
 						<div id=\"profile-menu\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/loading_dark_small.gif\" alt=\"\" class=\"loader\" style=\"margin-top: -20px;\" /></div>
 					</div>
