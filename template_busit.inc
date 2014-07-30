@@ -62,6 +62,7 @@ class template_busit extends template
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-jsplumb.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-sceditor.bbcode.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-toggles.js\"></script>
+		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ddslick.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/prism.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/footer.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/main.js\"></script>";
@@ -163,6 +164,8 @@ $top .= "\">";
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-2.1.1.min.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-globalize.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ui-1.10.4.custom.min.js\"></script>
+		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-jsplumb.js\"></script>
+		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/showcase.js\"></script>
 	</head>
 	<body style=\"padding-top: 20px;\">
 		";
@@ -383,7 +386,7 @@ $top .= "\">";
 						<a href=\"#\" id=\"profile-mob\">
 							<span style=\"display: block; float: left; padding: 13px 0 0 0;\">{$self['user_name']}</span>
 							<img style=\"display: block; float: left; padding: 13px 0 0 10px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/arrow.png\" />
-							<img class=\"profile-image\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png":"/{$GLOBALS['CONFIG']['SITE']}/images/users/user.png")."\" alt=\"\" />
+							<img class=\"profile-image\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png":"http://www.gravatar.com/avatar/".md5($self['user_mail']))."\" alt=\"\" />
 						</a>
 						<div id=\"profile-menu-mob\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/loading_dark_small.gif\" alt=\"\" class=\"loader\" style=\"margin-top: -20px;\" /></div>
 					</div>
@@ -465,7 +468,7 @@ $top .= "\">";
 						<a href=\"#\" id=\"profile\">
 							<span style=\"display: block; float: left; padding: 13px 0 0 0;\">{$self['user_name']}</span>
 							<img style=\"display: block; float: left; padding: 13px 0 0 10px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/arrow.png\" />
-							<img class=\"profile-image\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png":"/{$GLOBALS['CONFIG']['SITE']}/images/users/user.png")."\" alt=\"\" />
+							<img class=\"profile-image\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$self['user_id']}.png":"http://www.gravatar.com/avatar/".md5($self['user_mail']))."\" alt=\"\" />
 						</a>
 						<div id=\"profile-menu\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/loading_dark_small.gif\" alt=\"\" class=\"loader\" style=\"margin-top: -20px;\" /></div>
 					</div>
