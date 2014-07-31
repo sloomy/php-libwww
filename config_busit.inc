@@ -49,10 +49,10 @@ $GLOBALS['CONFIG']['MAIL_TEMPLATE'] = "
                   <table id=\"templateContent\" style=\"border-spacing: 0; border-collapse: collapse; font-family: proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; height: 100%; width: 100%; background: #ffffff; margin: 0; padding: 0; border: 0;\">
                     <tr style=\"vertical-align: top; padding: 0;\">
                       <td style=\"vertical-align: top; text-align: left; padding: 0;\" align=\"left\" valign=\"top\">
-                        <h1 id=\"logo\" style=\"color: #2b6fab; display: block; font-family: hybrea, proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; font-size: 32px; font-weight: 200; text-align: left; margin: 0 0 40px;\" align=\"left\"><img src=\"https://www.bus-it.com/busit/images/logo-dark.png\" alt=\"Bus IT\" width=\"140\" height=\"42\" style=\"outline: none; text-decoration: none; border: 0;\" /></h1>
+                        <h1 id=\"logo\" style=\"color: #2b6fab; display: block; font-family: hybrea, proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; font-size: 32px; font-weight: 200; text-align: left; margin: 0 0 40px;\" align=\"left\"><img src=\"https://www.bus-it.com/busit/images/logo-dark.png\" alt=\"Bus It\" width=\"140\" height=\"42\" style=\"outline: none; text-decoration: none; border: 0;\" /></h1>
 						{CONTENT}
 					   <p style=\"margin: 20px 0;\">
-                          Bus IT<br />
+                          Bus It<br />
                           <a href=\"https://www.bus-it.com\" style=\"color: #2b6fab;\">https://www.bus-it.com</a>
                         </p>
                       </td>
@@ -66,7 +66,7 @@ $GLOBALS['CONFIG']['MAIL_TEMPLATE'] = "
                     <tr style=\"vertical-align: top; padding: 0;\">
                       <td valign=\"top\" style=\"vertical-align: top; text-align: left; padding: 0;\" align=\"left\">
                         <p style=\"margin: 20px 0;\">
-                          Copyright &copy; 2014 Bus IT - <a href=\"https://twitter.com/Bus_IT\" style=\"color: #666666;\">Twitter</a> - <a href=\"https://facebook.com/busit.net\" style=\"color: #666666;\">Facebook</a>
+                          Copyright &copy; 2014 Bus It - <a href=\"https://twitter.com/Bus_IT\" style=\"color: #666666;\">Twitter</a> - <a href=\"https://facebook.com/busit.net\" style=\"color: #666666;\">Facebook</a>
                         </p>
                       </td>
                     </tr>
