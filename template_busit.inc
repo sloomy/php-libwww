@@ -49,12 +49,12 @@ class template_busit extends template
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/main.css\" type=\"text/css\" />
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/prism.css\" type=\"text/css\" />
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/font-awesome.css\" type=\"text/css\" />
-		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery-1.10.4/jquery-ui-1.10.4.custom.min.css\" />
-		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery-1.10.4/default.css\" />
+		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery/jquery-ui.css\" />
+		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery/default.css\" />
 		<link href=\"https://fonts.googleapis.com/css?family=Cuprum\" rel=\"stylesheet\" type=\"text/css\" />
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-2.1.1.min.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-globalize.js\"></script>
-		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ui-1.10.4.custom.min.js\"></script>
+		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ui.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ui-touch-punch.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ui-timepicker.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-chartjs.js\"></script>
@@ -69,7 +69,7 @@ class template_busit extends template
 
 if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel/space/view') !== false )
 	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/view.js\"></script>";
-if( strstr($GLOBALS['CONFIG']['PAGE'], 'showcase') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'learn') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'setup') !== false )
+if( strstr($GLOBALS['CONFIG']['PAGE'], 'showcase') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'learn') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'setup') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'cases') !== false )
 	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/showcase.js\"></script>";
 if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 	$top .= "<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/doc.js\"></script>";
@@ -158,12 +158,12 @@ $top .= "\">";
 		<link rel=\"shortcut icon\" href=\"/{$GLOBALS['CONFIG']['SITE']}/images/favicon.ico\" />
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/main.css\" type=\"text/css\" />
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/font-awesome.css\" type=\"text/css\" />
-		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery-1.10.4/jquery-ui-1.10.4.custom.min.css\" />
-		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery-1.10.4/default.css\" />
+		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery/jquery-ui.css\" />
+		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery/default.css\" />
 		<link href=\"https://fonts.googleapis.com/css?family=Cuprum\" rel=\"stylesheet\" type=\"text/css\" />
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-2.1.1.min.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-globalize.js\"></script>
-		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ui-1.10.4.custom.min.js\"></script>
+		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ui.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-jsplumb.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/showcase.js\"></script>
 	</head>
@@ -368,12 +368,12 @@ $top .= "\">";
 				$menu .= "
 							];
 						</script>
-						<form style=\"float: right; margin-right: 10px;\" id=\"searchform-mob\"><input type=\"hidden\" name=\"connectorid-mob\" value=\"\" id=\"connectorid-mob\" /><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px;\" type=\"text\" id=\"search-mob\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
+						<form style=\"float: right; margin-right: 10px;\" id=\"searchform-mob\"><input type=\"hidden\" name=\"connectorid-mob\" value=\"\" id=\"connectorid-mob\" /><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 250px;\" type=\"text\" id=\"search-mob\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
 			}
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 			{
 				$menu .= "
-						<form style=\"float: right; margin-right: 10px;\" id=\"searchform-mob\" action=\"/doc/".(strstr($GLOBALS['CONFIG']['PAGE'], 'developers')!==false?"developers/":"")."search\" method=\"get\"><input type=\"submit\" style=\"display: none;\" /><input name=\"search\" style=\"width: 200px;\" type=\"text\" id=\"search-mob\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
+						<form style=\"float: right; margin-right: 10px;\" id=\"searchform-mob\" action=\"/doc/".(strstr($GLOBALS['CONFIG']['PAGE'], 'developers')!==false?"developers/":"")."search\" method=\"get\"><input type=\"submit\" style=\"display: none;\" /><input name=\"search\" style=\"width: 250px;\" type=\"text\" id=\"search-mob\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
 			}
 
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
@@ -453,12 +453,12 @@ $top .= "\">";
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			{
 				$menu .= "
-									<li id=\"search-li\" class=\"search\"><form id=\"searchform\"><input type=\"hidden\" name=\"connectorid\" value=\"\" id=\"connectorid\" /><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 200px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form></li>";
+									<li id=\"search-li\" class=\"search\"><form id=\"searchform\"><input type=\"hidden\" name=\"connectorid\" value=\"\" id=\"connectorid\" /><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 250px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form></li>";
 			}
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 			{
 				$menu .= "
-									<li id=\"search-li\" class=\"search\"><form id=\"searchform\" action=\"/doc/".(strstr($GLOBALS['CONFIG']['PAGE'], 'developers')!==false?"developers/":"")."search\" method=\"get\"><input type=\"submit\" style=\"display: none;\" /><input name=\"search\"  style=\"width: 200px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form></li>";
+									<li id=\"search-li\" class=\"search\"><form id=\"searchform\" action=\"/doc/".(strstr($GLOBALS['CONFIG']['PAGE'], 'developers')!==false?"developers/":"")."search\" method=\"get\"><input type=\"submit\" style=\"display: none;\" /><input name=\"search\" style=\"width: 250px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form></li>";
 			}
 			
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
@@ -734,19 +734,29 @@ $bottom .= "\">
 		if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 		{
 			$objects .= "
-					$(\"#search\").autocomplete({
-							focus: function( event, ui ) {
-								$('#search').val( ui.item.value );
-							},
-							select: function( event, ui ) {
-								if( ui.item )
-								{
-									$('#connectorid').val(ui.item.id);
-								}
-								$(\"#searchform\").submit();
-							},
-							source: availableConnectors
-						});
+				$(\"#search\").autocomplete(
+				{
+					source: \"/store/ajax_search\",
+					minLength: 1,
+					focus: function( event, ui )
+					{
+						$('#search').val( ui.item.connector_name );
+					},
+					select: function( event, ui )
+					{
+						if( ui.item )
+						{
+							$('#connectorid').val(ui.item.connector_id);
+						}
+						$(\"#searchform\").submit();
+					}
+				})
+				.data(\"ui-autocomplete\")._renderItem = function( ul, item )
+				{
+					return $(\"<li class='autocomplete' style='padding: 10px;'></li>\")
+					.append(\"<img src='\" + item.connector_image + \"' alt='' /><span class='title'>\" + item.connector_name + \"</span><span class='subtitle'>\" + item.connector_promo + \"</span>\" )
+					.appendTo( ul );
+				};
 			";
 		}
 		
