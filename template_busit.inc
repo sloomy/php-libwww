@@ -349,26 +349,9 @@ $top .= "\">";
 			";
 
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
-			{
-				$names = api::send('busit/connector/selectindex', array('lang'=>translator::getLanguage()), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+			{				
 				$menu .= "
-						<script>
-							availableConnectors = [
-							";
-				foreach( $names as $n )
-				{
-					$menu .= "
-							{
-								value: \"{$n['connector_name']}\",
-								id: \"{$n['connector_id']}\",
-							},
-					";
-				}
-				
-				$menu .= "
-							];
-						</script>
-						<form style=\"float: right; margin-right: 10px;\" id=\"searchform-mob\"><input type=\"hidden\" name=\"connectorid-mob\" value=\"\" id=\"connectorid-mob\" /><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 250px;\" type=\"text\" id=\"search-mob\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
+						<form style=\"float: right; margin-right: 10px;\" id=\"searchform-mob\" autocomplete=\"off\"><input type=\"hidden\" name=\"connectorid-mob\" value=\"\" id=\"connectorid-mob\" /><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 250px;\" type=\"text\" id=\"search-mob\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form>";
 			}
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 			{
@@ -453,7 +436,7 @@ $top .= "\">";
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false )
 			{
 				$menu .= "
-									<li id=\"search-li\" class=\"search\"><form id=\"searchform\"><input type=\"hidden\" name=\"connectorid\" value=\"\" id=\"connectorid\" /><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 250px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form></li>";
+									<li id=\"search-li\" class=\"search\"><form id=\"searchform\" autocomplete=\"off\"><input type=\"hidden\" name=\"connectorid\" value=\"\" id=\"connectorid\" /><input type=\"submit\" style=\"display: none;\" /><input style=\"width: 250px;\" type=\"text\" id=\"search\" placeholder=\"{$GLOBALS['lang']['search']}\" /></form></li>";
 			}
 			if( strstr($GLOBALS['CONFIG']['PAGE'], 'doc') !== false )
 			{
@@ -749,6 +732,29 @@ $bottom .= "\">
 							$('#connectorid').val(ui.item.connector_id);
 						}
 						$(\"#searchform\").submit();
+					}
+				})
+				.data(\"ui-autocomplete\")._renderItem = function( ul, item )
+				{
+					return $(\"<li class='autocomplete' style='padding: 10px;'></li>\")
+					.append(\"<img src='\" + item.connector_image + \"' alt='' /><span class='title'>\" + item.connector_name + \"</span><span class='subtitle'>\" + item.connector_promo + \"</span>\" )
+					.appendTo( ul );
+				};
+				$(\"#search-mob\").autocomplete(
+				{
+					source: \"/store/ajax_search\",
+					minLength: 1,
+					focus: function( event, ui )
+					{
+						$('#search-mob').val( ui.item.connector_name );
+					},
+					select: function( event, ui )
+					{
+						if( ui.item )
+						{
+							$('#connectorid-mob').val(ui.item.connector_id);
+						}
+						$(\"#searchform-mob\").submit();
 					}
 				})
 				.data(\"ui-autocomplete\")._renderItem = function( ul, item )
