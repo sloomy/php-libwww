@@ -52,6 +52,7 @@ class template_sys extends template
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/main.css\" type=\"text/css\" />
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery/jquery-ui-1.10.3.custom.css\" />
 		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/jquery/default.css\" />
+		<link rel=\"stylesheet\" href=\"/{$GLOBALS['CONFIG']['SITE']}/css/font-awesome.css\" type=\"text/css\" />
 		<link href=\"https://fonts.googleapis.com/css?family=Cuprum\" rel=\"stylesheet\" type=\"text/css\" />
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-1.9.1.js\"></script>
 		<script type=\"text/javascript\" src=\"/{$GLOBALS['CONFIG']['SITE']}/js/jquery/jquery-ui-1.10.3.custom.js\"></script>
@@ -85,9 +86,6 @@ class template_sys extends template
 			
 		$top .= "
 				<div class=\"clear\"></div>
-				<div class=\"logo\">
-					<a href=\"/\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/logo.png\" alt=\"logo\" /></a>
-				</div>
 			</div>
 		</div>
 		<div class=\"core\" id=\"core\">";
@@ -269,7 +267,7 @@ class template_sys extends template
 				<ul>
 					<li><a href=\"/about\">{$GLOBALS['lang']['ABOUT']}</a></li>
 					<li><a href=\"/about/contact\">{$GLOBALS['lang']['CONTACT']}</a></li>
-					<li><a href=\"/about/press\">{$GLOBALS['lang']['PRESS']}</a></li>
+					<li><a href=\"/press\">{$GLOBALS['lang']['PRESS']}</a></li>
 					<li><a href=\"/noc\">{$GLOBALS['lang']['INFRA']}</a></li>
 				</ul>
 				<p style=\"padding: 5px 0 0 0; font-size: 12px;\">
