@@ -85,9 +85,6 @@ class template_sys extends template
 			
 		$top .= "
 				<div class=\"clear\"></div>
-				<div class=\"logo\">
-					<a href=\"/\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/logo.png\" alt=\"logo\" /></a>
-				</div>
 			</div>
 		</div>
 		<div class=\"core\" id=\"core\">";
@@ -269,7 +266,7 @@ class template_sys extends template
 				<ul>
 					<li><a href=\"/about\">{$GLOBALS['lang']['ABOUT']}</a></li>
 					<li><a href=\"/about/contact\">{$GLOBALS['lang']['CONTACT']}</a></li>
-					<li><a href=\"/about/press\">{$GLOBALS['lang']['PRESS']}</a></li>
+					<li><a href=\"/press\">{$GLOBALS['lang']['PRESS']}</a></li>
 					<li><a href=\"/noc\">{$GLOBALS['lang']['INFRA']}</a></li>
 				</ul>
 				<p style=\"padding: 5px 0 0 0; font-size: 12px;\">
