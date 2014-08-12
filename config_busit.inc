@@ -32,7 +32,8 @@ $GLOBALS['CONFIG']['PANEL_PAGE']		= '/panel';
 $GLOBALS['CONFIG']['LOGIN_PAGE']		= '/login_action';
 $GLOBALS['CONFIG']['DEFAULT_LANGUAGE']	= 'EN';
 
-$GLOBALS['CONFIG']['MAIL_TEMPLATE'] = "<html>
+$GLOBALS['CONFIG']['MAIL_TEMPLATE'] = "
+<html>
 	<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
 		<style type=\"text/css\">
@@ -100,6 +101,7 @@ $GLOBALS['CONFIG']['MAIL_TEMPLATE'] = "<html>
 				Copyright &copy; 2014 Busit - <a href=\"https://twitter.com/Bus_IT\" class=\"normal\">Twitter</a> - <a href=\"https://facebook.com/busit.net\" class=\"normal\">Facebook</a>
 			</div>
 	</body>
-</html>";
+</html>
+";
 
 ?>
