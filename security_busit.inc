@@ -37,6 +37,7 @@ class access_busit
 		$a['/panel/instance/grant'] = array('SELF_ACCESS');
 		$a['/panel/org'] = array('SELF_ACCESS');	
 		$a['/panel/settings'] = array('SELF_ACCESS');
+		$a['/panel/settings/apps'] = array('SELF_ACCESS');
 		$a['/panel/share'] = array('SELF_ACCESS');
 		$a['/panel/setup'] = array('SELF_ACCESS');
 		$a['/panel/stats'] = array('SELF_ACCESS');
