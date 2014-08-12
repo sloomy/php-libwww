@@ -32,87 +32,74 @@ $GLOBALS['CONFIG']['PANEL_PAGE']		= '/panel';
 $GLOBALS['CONFIG']['LOGIN_PAGE']		= '/login_action';
 $GLOBALS['CONFIG']['DEFAULT_LANGUAGE']	= 'EN';
 
-$GLOBALS['CONFIG']['MAIL_TEMPLATE'] = "
-<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\">
-  <head>
-    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-  </head>
-  <body style=\"width: 100% !important; -webkit-text-size-adjust: none; margin: 0; padding: 0;\">
-    <center>
-      <table id=\"backgroundTable\" style=\"border-spacing: 0; border-collapse: collapse; font-family: proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; height: 100% !important; width: 100% !important; color: #4c4c4c; font-size: 15px; line-height: 150%; background: #ffffff; margin: 0; padding: 0; border: 0;\">
-        <tr style=\"vertical-align: top; padding: 0;\">
-          <td align=\"center\" valign=\"top\" style=\"vertical-align: top; padding: 0;\">
-            <table id=\"templateContainer\" style=\"border-spacing: 0; border-collapse: collapse; font-family: proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; height: 100%; width: 600px; color: #4c4c4c; font-size: 15px; line-height: 150%; background: #ffffff; margin: 40px 0; padding: 0; border: 0;\">
-              <tr style=\"vertical-align: top; padding: 0;\">
-                <td class=\"templateContainerPadding\" align=\"center\" valign=\"top\" style=\"vertical-align: top; padding: 0 40px;\">
-                  <table id=\"templateContent\" style=\"border-spacing: 0; border-collapse: collapse; font-family: proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; height: 100%; width: 100%; background: #ffffff; margin: 0; padding: 0; border: 0;\">
-                    <tr style=\"vertical-align: top; padding: 0;\">
-                      <td style=\"vertical-align: top; text-align: left; padding: 0;\" align=\"left\" valign=\"top\">
-                        <h1 id=\"logo\" style=\"color: #2b6fab; display: block; font-family: hybrea, proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; font-size: 32px; font-weight: 200; text-align: left; margin: 0 0 40px;\" align=\"left\"><img src=\"https://www.bus-it.com/busit/images/logo-dark.png\" alt=\"Busit\" width=\"140\" height=\"42\" style=\"outline: none; text-decoration: none; border: 0;\" /></h1>
-						{CONTENT}
-					   <p style=\"margin: 20px 0;\">
-                          Busit<br />
-                          <a href=\"https://www.bus-it.com\" style=\"color: #2b6fab;\">https://www.bus-it.com</a>
-                        </p>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-              <tr style=\"vertical-align: top; padding: 0;\">
-                <td class=\"templateContainerPadding\" align=\"center\" valign=\"top\" style=\"vertical-align: top; padding: 0 40px;\">
-                  <table id=\"footerContent\" style=\"border-spacing: 0; border-collapse: collapse; font-family: proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; height: 100%; width: 100%; border-top-style: solid; border-top-color: #ebeaef; color: #999999; font-size: 12px; background: #ffffff; margin: 0; padding: 0; border-width: 1px 0 0;\">
-                    <tr style=\"vertical-align: top; padding: 0;\">
-                      <td valign=\"top\" style=\"vertical-align: top; text-align: left; padding: 0;\" align=\"left\">
-                        <p style=\"margin: 20px 0;\">
-                          Copyright &copy; 2014 Busit - <a href=\"https://twitter.com/Bus_IT\" style=\"color: #666666;\">Twitter</a> - <a href=\"https://facebook.com/busit.net\" style=\"color: #666666;\">Facebook</a>
-                        </p>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </center>
-<style type=\"text/css\">
-body {
-width: 100% !important;
-}
-.ReadMsgBody {
-width: 100%;
-}
-.ExternalClass {
-width: 100%;
-}
-body {
--webkit-text-size-adjust: none;
-}
-body {
-margin: 0; padding: 0;
-}
-img {
-border: 0; outline: none; text-decoration: none;
-}
-#backgroundTable {
-height: 100% !important; margin: 0; padding: 0; width: 100% !important;
-}
-#backgroundTable {
-color: #4c4c4c; background-color: #ffffff; font-family: proxima-nova, 'helvetica neue', helvetica, arial, geneva, sans-serif; font-size: 15px; line-height: 150%;
-}
-@media (max-width: 540px) {
-  #templateContainer {
-    width: 100% !important;
-  }
-  #templateContainer .templateContainerPadding {
-    padding: 0 5% !important;
-  }
-}
-</style>
-</body>
+$GLOBALS['CONFIG']['MAIL_TEMPLATE'] = "<html>
+	<head>
+		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
+		<style type=\"text/css\">
+			html, body {
+				background-color: #f5f5f5;
+				font-family: BentonSans;
+				font-size: 14px;
+			}
+			a {
+				color: #005596;
+				text-decoration: none;
+			}
+			a:hover {
+				color: #0482e4;
+			}
+			p {
+				margin: 0 0 15px 0;
+			}
+			@font-face {
+				font-family: \"BentonSans\";
+				src: url('https://www.bus-it.com/busit/fonts/bentonsans-regular.eot');
+				src:
+					url('https://www.bus-it.com/busit/fonts/bentonsans-regular.ttf') format('truetype'),
+					url('https://www.bus-it.com/busit/fonts/bentonsans-regular.woff') format('woff'),
+					url('https://www.bus-it.com/busit/fonts/bentonsans-regular.eot?#iefix') format('embedded-opentype'),
+					url('https://www.bus-it.com/busit/fonts/bentonsans-regular.svg#BentonSans') format('svg');
+				font-weight: normal;
+				font-style: normal;
+			}
+			.core {
+				padding: 20px;
+			}
+			.header {
+				width: 90%;
+				height: 50px;
+				margin: 0 auto;
+			}
+			.content {
+				width: 90%;
+				margin: 0 auto;
+				padding: 10px;
+				background-color: #ffffff;
+				border: 1px solid #e5e5e5;
+				margin-bottom: 10px;
+			}
+			.footer {
+				width: 90%;
+				height: 50px;
+				margin: 0 auto;
+				color: #9f9f9f;
+				font-size: 12px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div class=\"core\">
+			<div class=\"header\">
+				<img src=\"https://www.bus-it.com/busit/images/logo-dark.png\" alt=\"Logo Busit\" style=\"width: 100px;\" />
+			</div>
+			<div class=\"content\">
+				{CONTENT}
+			</div>
+			<div class=\"footer\">
+				Copyright &copy; 2014 Busit - <a href=\"https://twitter.com/Bus_IT\" class=\"normal\">Twitter</a> - <a href=\"https://facebook.com/busit.net\" class=\"normal\">Facebook</a>
+			</div>
+	</body>
 </html>";
 
 ?>
