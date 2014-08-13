@@ -536,11 +536,6 @@ $bottom .= "\">
 			</div>
 		</div>
 	</div>
-	<div id=\"debug\" class=\"debug-fixed\" onclick=\"$('#bug').dialog('open'); return false;\">
-		<div class=\"container\">
-			{$GLOBALS['lang']['DEBUG']}
-		</div>
-	</div>
 	<script type=\"text/javascript\">
 	  var _paq = _paq || [];
 	  _paq.push([\"trackPageView\"]);
