@@ -700,7 +700,7 @@ $bottom .= "\">
 					</fieldset>
 				</form>							
 			</div>
-			<div id=\"message\" class=\"floatingdialog\">
+			<div id=\"alert\" class=\"floatingdialog\">
 				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/notifications/{$_SESSION['MESSAGE']['TYPE']}.png\" /><br />
 				<p>{$_SESSION['MESSAGE']['TEXT']}</p>
 			</div>
@@ -778,7 +778,7 @@ $bottom .= "\">
 		if( $_SESSION['FORM']['OPEN'] )
 			$objects .= "$(\"#{$_SESSION['FORM']['OPEN']}\").dialog(\"open\");\n";
 		if( $_SESSION['MESSAGE'] )
-			$objects .= "$(\"#message\").dialog(\"open\"); setTimeout(\"$('#message').dialog('close')\", 3000);\n";
+			$objects .= "$(\"#alert\").dialog(\"open\"); setTimeout(\"$('#alert').dialog('close')\", 3000);\n";
 		
 		$objects .= "	
 				});
