@@ -788,7 +788,6 @@ $bottom .= "\">
 		unset($_SESSION['ERROR']);
 		unset($_SESSION['MESSAGE']);
 		unset($_SESSION['FORM']['OPEN']);
-		unset($_SESSION['REGISTER']['STATUS']);
 		
 		return $objects;
 	
