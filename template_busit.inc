@@ -81,19 +81,7 @@ if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false )
 $top .= "
 	</head>
 	<body>
-	<div id=\"wrapper\" style=\"";
-	if( strstr($GLOBALS['CONFIG']['PAGE'], 'status') !== false )
-		$top .= "background-color: #f0f0f0; ";
-	else if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false )
-		$top .= "background-color: #f0f0f0; ";
-	else if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'admin') !== false )
-		$top .= "background-color: #f0f0f0;";
-	else if( strstr($GLOBALS['CONFIG']['PAGE'], 'case') !== false )
-		$top .= "background-color: #f0f0f0;";
-	else if( strstr($GLOBALS['CONFIG']['PAGE'], 'companies') !== false )
-		$top .= "background-color: #f0f0f0;";
-		
-	$top .= "\">
+	<div id=\"wrapper\">
 		<div id=\"success\"></div>
 		<div id=\"loading\"></div>
 		<div id=\"overlay\"></div>";
@@ -480,19 +468,7 @@ $top .= "\">";
 		$bottom .= $this->getObjects();
 		
 		$bottom .= "
-		<div id=\"footer\" class=\"footer\" style=\"";
-if( strstr($GLOBALS['CONFIG']['PAGE'], 'status') !== false )
-	$bottom .= "background-color: #ffffff; ";
-else if( strstr($GLOBALS['CONFIG']['PAGE'], 'store') !== false && strstr($GLOBALS['CONFIG']['PAGE'], 'connector') === false )
-	$bottom .= "background-color: #ffffff;";	
-else if( strstr($GLOBALS['CONFIG']['PAGE'], 'panel') !== false || strstr($GLOBALS['CONFIG']['PAGE'], 'admin') !== false )
-	$bottom .= "background-color: #ffffff;";
-else if( strstr($GLOBALS['CONFIG']['PAGE'], 'case') !== false )
-	$bottom .= "background-color: #ffffff;";
-else if( strstr($GLOBALS['CONFIG']['PAGE'], 'companies') !== false )
-	$bottom .= "background-color: #ffffff;";
-	
-$bottom .= "\">
+		<div id=\"footer\" class=\"footer\">
 			<div class=\"content\">
 				<div class=\"social\">
 					<a class=\"link\" href=\"https://twitter.com/Bus_IT\">
@@ -530,7 +506,6 @@ $bottom .= "\">
 	$bottom .= "
 					".(translator::getLanguage()=='EN'?"<span style=\"color: #4d4d4d;\">":"<a href=\"{$request}".(strstr($request,'?')===false?"?":"&")."lang=EN\">")."English".(translator::getLanguage()=='EN'?"</span>":"</a>")."&nbsp;&nbsp;&nbsp;
 					".(translator::getLanguage()=='FR'?"<span style=\"color: #4d4d4d;\">":"<a href=\"{$request}".(strstr($request,'?')===false?"?":"&")."lang=FR\">")."Fran&ccedil;ais".(translator::getLanguage()=='FR'?"</span>":"</a>")."&nbsp;&nbsp;&nbsp;
-					".(translator::getLanguage()=='ES'?"<span style=\"color: #4d4d4d;\">":"<a href=\"{$request}".(strstr($request,'?')===false?"?":"&")."lang=ES\">")."Espa&ntilde;ol".(translator::getLanguage()=='ES'?"</span>":"</a>")."&nbsp;&nbsp;&nbsp;
 				</p>
 				<p>{$GLOBALS['lang']['COPYRIGHT']} | {$GLOBALS['lang']['SYS']}</p>
 			</div>
