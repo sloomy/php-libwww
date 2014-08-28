@@ -557,6 +557,7 @@ $top .= "\">";
 				<h3 class=\"center\">{$GLOBALS['lang']['login']}</h3>
 				<form action=\"/login_action\" method=\"post\" class=\"center\">
 					<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
+					<input type=\"hidden\" name=\"remember\" value=\"remember\" />
 					<fieldset>
 						<input type=\"text\" placeholder=\"{$GLOBALS['lang']['username']}\" name=\"username\" />
 					</fieldset>
@@ -564,10 +565,6 @@ $top .= "\">";
 						<input type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\" />
 						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'login'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"")."
 					</fieldset>						
-					<fieldset>
-						<input type=\"checkbox\" name=\"remember\" value=\"remember\"  />
-						<label for=\"remember\" style=\"display: inline-block; padding-left: 10px;\">{$GLOBALS['lang']['remember']}</label>
-					</fieldset>
 					<fieldset>
 						<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['login']}\" />
 					</fieldset>							
@@ -577,16 +574,13 @@ $top .= "\">";
 				<h3 class=\"center\">{$GLOBALS['lang']['login']}</h3>
 				<form action=\"/login_action\" method=\"post\" class=\"center\">
 					<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
+					<input type=\"hidden\" name=\"remember\" value=\"remember\" />
 					<fieldset>
 						<input type=\"text\" placeholder=\"{$GLOBALS['lang']['username']}\" name=\"username\" />
 					</fieldset>
 					<fieldset>
 						<input type=\"password\" placeholder=\"{$GLOBALS['lang']['password']}\" name=\"password\" />
 						".(isset($_SESSION['ERROR']['MESSAGE']) && $_SESSION['ERROR']['HANDLER'] == 'login'?"<span class=\"help-block\" style=\"color: #bc0000;\">{$_SESSION['ERROR']['MESSAGE']}</span>":"")."
-					</fieldset>
-					<fieldset>
-						<input type=\"checkbox\" name=\"remember\" value=\"remember\" />
-						<label for=\"remember\" style=\"display: inline-block; padding-left: 10px;\">{$GLOBALS['lang']['remember']}</label>
 					</fieldset>
 					<fieldset>
 						<input autofocus type=\"submit\" value=\"{$GLOBALS['lang']['login']}\" />
