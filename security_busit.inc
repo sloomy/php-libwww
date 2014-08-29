@@ -15,8 +15,7 @@ class access_busit
 		$a['/admin/index'] = array('ACCESS', 'USER_SELECT');
 		$a['/admin/group'] = array('ACCESS', 'GROUP_SELECT');
 		$a['/admin/group/index'] = array('ACCESS', 'GROUP_SELECT');
-
-		$a['/developers/start'] = array('SELF_ACCESS');
+		
 		$a['/developers/panel'] = array('ACCESS', 'DEVELOPER_ACCESS');
 		$a['/developers/panel/stats'] = array('ACCESS', 'DEVELOPER_ACCESS');
 		$a['/developers/panel/credits'] = array('ACCESS', 'DEVELOPER_ACCESS');
