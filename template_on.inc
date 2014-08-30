@@ -79,7 +79,7 @@ $top .= "
 			var js, fjs = d.getElementsByTagName(s)[0];
 			if (d.getElementById(id)) return;
 			js = d.createElement(s); js.id = id;
-			js.src = \"//connect.facebook.net/en_US/all.js#xfbml=1&appId=233857746673934\";
+			js.src = \"//connect.facebook.net/en_US/all.js#xfbml=1&appId=587928331315611\";
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
