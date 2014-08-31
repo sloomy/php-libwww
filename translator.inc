@@ -23,6 +23,8 @@ class translator implements ArrayAccess
 				self::setLanguage('EN');
 			else if( substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) == 'de' )
 				self::setLanguage('DE');
+			else if( substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) == 'it' )
+				self::setLanguage('IT');
 			else
 				self::setLanguage($GLOBALS['CONFIG']['DEFAULT_LANGUAGE']);
 		}

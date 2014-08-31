@@ -4,33 +4,69 @@ class search
 {
 	private $data = array();
 	private $titles = array();
+	private $path = array();
 	
 	public function __construct($directory)
 	{
-		if( $handle = opendir($directory) )
+		if( is_array($directory) )
 		{
-			while( false !== ($file = readdir($handle)) )
+			foreach( $directory as $d )
 			{
-				if( $file != "." && $file != ".." && strtolower(substr($file, strrpos($file, '.') + 1)) == 'lang' )
+				if( $handle = opendir($d) )
 				{
-					$page = explode('.', $file);
-					$page = $page[0];
-					
-					$new_data = parse_ini_file($directory . '/' . $file, true );
-					if( is_array($new_data[$GLOBALS['CONFIG']['LANGUAGE']]) )
+					while( false !== ($file = readdir($handle)) )
 					{
-						foreach( $new_data[$GLOBALS['CONFIG']['LANGUAGE']] as $key => $value )
+						if( $file != "." && $file != ".." && strtolower(substr($file, strrpos($file, '.') + 1)) == 'lang' )
 						{
-							$this->data[$page] .= $value;
+							$page = explode('.', $file);
+							$page = $page[0];
+							
+							$new_data = parse_ini_file($d . '/' . $file, true );
+							if( is_array($new_data[$GLOBALS['CONFIG']['LANGUAGE']]) )
+							{
+								foreach( $new_data[$GLOBALS['CONFIG']['LANGUAGE']] as $key => $value )
+								{
+									$this->data[$page] .= $value;
+								}
+								
+								$this->titles[$page] = $new_data[$GLOBALS['CONFIG']['LANGUAGE']]['title'];
+								$this->path[$page] = $d;
+							}					
 						}
+					}
+				}
+				closedir($handle);				
+			}
+		}
+		else
+		{
+			if( $handle = opendir($directory) )
+			{
+				while( false !== ($file = readdir($handle)) )
+				{
+					if( $file != "." && $file != ".." && strtolower(substr($file, strrpos($file, '.') + 1)) == 'lang' )
+					{
+						$page = explode('.', $file);
+						$page = $page[0];
 						
-						$this->titles[$page] = $new_data[$GLOBALS['CONFIG']['LANGUAGE']]['title'];
-					}					
+						$new_data = parse_ini_file($directory . '/' . $file, true );
+						if( is_array($new_data[$GLOBALS['CONFIG']['LANGUAGE']]) )
+						{
+							foreach( $new_data[$GLOBALS['CONFIG']['LANGUAGE']] as $key => $value )
+							{
+								$this->data[$page] .= $value;
+							}
+							
+							$this->titles[$page] = $new_data[$GLOBALS['CONFIG']['LANGUAGE']]['title'];
+							$this->path[$page] = $directory;
+						}					
+					}
 				}
 			}
-		}	
+			closedir($handle);
+		}
 		
-		closedir($handle);
+		
 	}
 	
 	public function find($keyword)
@@ -49,6 +85,11 @@ class search
 		}
 		
 		return $output;
+	}
+	
+	public function getPath($page)
+	{
+		return $this->path[$page];
 	}
 }
 
